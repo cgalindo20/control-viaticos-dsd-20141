@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar Registro</h2>
+    <h2>Eliminar Registro de Viático</h2>
 
     <h3>Está seguro(a) que desea eliminar el registro ?</h3>
     <fieldset>
@@ -47,6 +47,9 @@
         
         <div class="display-label">MontoTotal</div>
         <div class="display-field"><%: String.Format("{0:F}", Model.MontoTotal) %></div>
+
+        <div class="display-label">Estado</div>
+        <div class="display-field"><%: String.Format("{0:F}", Model.Estado) %></div>
         
     </fieldset>
     <% using (Html.BeginForm()) { %>

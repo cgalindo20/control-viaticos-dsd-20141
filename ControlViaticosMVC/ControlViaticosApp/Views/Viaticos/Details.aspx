@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Detalles</h2>
+    <h2>Detalles del Viático</h2>
 
     <fieldset>
         <legend>Campos</legend>
@@ -46,10 +46,12 @@
         
         <div class="display-label">MontoTotal</div>
         <div class="display-field"><%: String.Format("{0:F}", Model.MontoTotal) %></div>
-        
+
+        <div class="display-label">Estado</div>
+        <div class="display-field"><%: Model.Estado %></div>
     </fieldset>
     <p>
-        <%: Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) %> |
+        <%: Html.ActionLink("Editar", "Edit", new { id = Model.Codigo })%> |
         <%: Html.ActionLink("Regresar a la Lista", "Index")%>
     </p>
 
