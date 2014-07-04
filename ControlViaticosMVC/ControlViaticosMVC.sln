@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlViaticosApp", "ControlViaticosApp\ControlViaticosApp.csproj", "{84CEFF6C-5764-42DB-A5BB-50CB5F27A8DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlViaticosServices", "ControlViaticosServices\ControlViaticosServices.csproj", "{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{06A798D7-6030-40D6-85D8-39A1D43F6AC8}"
+	ProjectSection(SolutionItems) = preProject
+		Librerias\Iesi.Collections.dll = Librerias\Iesi.Collections.dll
+		Librerias\NHibernate.dll = Librerias\NHibernate.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -17,6 +25,10 @@ Global
 		{84CEFF6C-5764-42DB-A5BB-50CB5F27A8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84CEFF6C-5764-42DB-A5BB-50CB5F27A8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84CEFF6C-5764-42DB-A5BB-50CB5F27A8DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
