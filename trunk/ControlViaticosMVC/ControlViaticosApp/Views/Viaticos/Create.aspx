@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Nuevo Registro</h2>
+    <h2>Nueva Solicitud</h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
@@ -108,10 +108,9 @@
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.MontoTotal) %>
                 <%: Html.ValidationMessageFor(model => model.MontoTotal) %>
-            </div>
-            
+            </div>            
             <p>
-                <input type="submit" value="Crear" />
+                <input type="submit" value="Solicitar" />
             </p>
         </fieldset>
 

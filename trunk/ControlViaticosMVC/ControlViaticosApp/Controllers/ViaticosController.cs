@@ -20,6 +20,15 @@ namespace ControlViaticosApp.Controllers
 
         return viaticos;
     }
+        private Viaticos ObtenerViatico(int codigo) { 
+        
+            List<Viaticos> viaticos = (List<Viaticos>)Session["viaticos"];
+                Viaticos model = viaticos.Single(delegate(Viaticos viatico){
+                    if (viatico.Codigo == codigo) return true;
+                    else return false;                
+                });
+                return model;
+        }
         //
         // GET: /Viaticos/
 
@@ -31,12 +40,14 @@ namespace ControlViaticosApp.Controllers
             return View(model);
         }
 
+
         //
         // GET: /Viaticos/Details/5
 
         public ActionResult Details(int id)
         {
-            return View();
+            Viaticos model = ObtenerViatico(id);
+            return View(model);
         }
 
         //
@@ -55,7 +66,23 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                List<Viaticos> viaticos = (List<Viaticos>)Session["viaticos"];
+
+                viaticos.Add(new Viaticos()
+                {
+                    Codigo = int.Parse(collection["Codigo"]),
+                    ApellidosNombres = collection["ApellidosNombres"],
+                    Cargo = collection["Cargo"],
+                    Area = collection["Area"],
+                    CentroCosto = collection["CentroCosto"],
+                    JustificacionViaje = collection["JustificacionViaje"],
+                    LugarPartida = collection["LugarPartida"],
+                    LugarDestino = collection["LugarDestino"],
+                    FomaPago = collection["FomaPago"],
+                    NumeroDias = int.Parse(collection["NumeroDias"]),
+                    MontoViaticoDiario = Double.Parse(collection["MontoViaticoDiario"]),
+                    MontoTotal = Double.Parse(collection["MontoTotal"])
+                });
 
                 return RedirectToAction("Index");
             }
@@ -70,7 +97,8 @@ namespace ControlViaticosApp.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            Viaticos model = ObtenerViatico(id);
+            return View(model);
         }
 
         //
@@ -81,7 +109,19 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                Viaticos model = ObtenerViatico(id);
+                model.ApellidosNombres = collection["ApellidosNombres"];
+                model.Cargo = collection["Cargo"];
+                model.Area = collection["Area"];
+                model.CentroCosto = collection["CentroCosto"];
+                model.JustificacionViaje = collection["JustificacionViaje"];
+                model.LugarPartida = collection["LugarPartida"];
+                model.LugarDestino = collection["LugarDestino"];
+                model.FomaPago = collection["FomaPago"];
+                model.NumeroDias = int.Parse(collection["NumeroDias"]);
+                model.MontoViaticoDiario = Double.Parse(collection["MontoViaticoDiario"]);
+                model.MontoTotal = Double.Parse(collection["MontoTotal"]);
+                model.Estado = "Pendiente";
  
                 return RedirectToAction("Index");
             }
@@ -96,7 +136,8 @@ namespace ControlViaticosApp.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View();
+            Viaticos model = ObtenerViatico(id);
+            return View(model);
         }
 
         //
@@ -107,8 +148,9 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
- 
+
+                List<Viaticos> viaticos = (List<Viaticos>)Session["viaticos"];
+                viaticos.Remove(ObtenerViatico(id));
                 return RedirectToAction("Index");
             }
             catch
