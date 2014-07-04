@@ -24,28 +24,16 @@
                 Area
             </th>
             <th>
-                CentroCosto
-            </th>
-            <th>
-                JustificacionViaje
-            </th>
-            <th>
                 Lugar Partida
             </th>
             <th>
                 Lugar Destino
             </th>
             <th>
-                Forma de Pago
-            </th>
-            <th>
-                NumeroDias
-            </th>
-            <th>
-                MontoViaticoDiario
-            </th>
-            <th>
                 MontoTotal
+            </th>
+             <th>
+                Estado
             </th>
         </tr>
 
@@ -70,28 +58,16 @@
                 <%: item.Area %>
             </td>
             <td>
-                <%: item.CentroCosto %>
-            </td>
-            <td>
-                <%: item.JustificacionViaje %>
-            </td>
-            <td>
                 <%: item.LugarPartida %>
             </td>
             <td>
                 <%: item.LugarDestino %>
-            </td>
-            <td>
-                <%: item.FomaPago %>
-            </td>
-            <td>
-                <%: item.NumeroDias %>
-            </td>
-            <td>
-                <%: String.Format("{0:F}", item.MontoViaticoDiario) %>
-            </td>
+            </td>           
             <td>
                 <%: String.Format("{0:F}", item.MontoTotal) %>
+            </td>
+             <td>
+                <%: item.Estado %>
             </td>
         </tr>
     

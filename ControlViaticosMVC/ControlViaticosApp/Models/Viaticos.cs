@@ -19,6 +19,7 @@ namespace ControlViaticosApp.Models
         public int NumeroDias { get; set; }
         public Double MontoViaticoDiario { get; set; }
         public Double MontoTotal { get; set; }
+        public String Estado { get; set; }
 
     }
 }
