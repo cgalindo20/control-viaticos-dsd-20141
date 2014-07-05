@@ -17,8 +17,7 @@ namespace ControlViaticosServices.Persistencia
             {
                 if (_Fabrica == null)
                 {
-                    var _Conf = new Configura
-                    tion();
+                    var _Conf = new Configuration();
                     _Conf.SetProperty("connection.provider", "NHibernate.Connection.DriverConnectionProvider");
                     _Conf.SetProperty("connection.driver_class", "NHibernate.Driver.SqlClientDriver");
                     _Conf.SetProperty("connection.connection_string", ConexionUtil.ObtenerCadena());
