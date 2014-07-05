@@ -68,6 +68,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -77,7 +79,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Dominio\" />
-    <Folder Include="Persistencia\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
