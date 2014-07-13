@@ -9,8 +9,11 @@ namespace ControlViaticosServices.Persistencia
     {
         public static string ObtenerCadena()
         {
-            //return "Data Source=.\\SQLExpress;Initial Catalog=DB_Canchitas;Integrated Security=SSPI;";
-            return "Data Source=(local);Initial Catalog=DB_Viaticos;Integrated Security=SSPI;";
+            //return @"Data Source=MAVERICK-PC\SQLEXPRESS;Initial Catalog=CONTROLVIATICOS;Integrated Security=True;";
+            //return "Data Source=(local);Initial Catalog=DB_Viaticos;Integrated Security=SSPI;";
+            String cadenaConexion = @"Data Source=MAVERICK-PC\SQLEXPRESS;Initial Catalog=CONTROLVIATICOS;Integrated Security=True";
+
+            return cadenaConexion;
         }
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7a646e3c-dd07-42ef-889c-2801c81115c7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:20000/Viaticos.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Viaticos.wsdl" MetadataType="Wsdl" ID="874427f0-c635-494f-ae74-ce49a566f38a" SourceId="1" SourceUrl="http://localhost:20000/Viaticos.svc?wsdl" />
+    <MetadataFile FileName="Viaticos.xsd" MetadataType="Schema" ID="4a64cfd7-ee73-4d41-8df8-a4882d45557c" SourceId="1" SourceUrl="http://localhost:20000/Viaticos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Viaticos1.xsd" MetadataType="Schema" ID="1163a5e4-4146-4c07-a911-84f904bfc02b" SourceId="1" SourceUrl="http://localhost:20000/Viaticos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Viaticos2.xsd" MetadataType="Schema" ID="2b2db098-57a4-48aa-8e06-ee11bc5c6eab" SourceId="1" SourceUrl="http://localhost:20000/Viaticos.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
