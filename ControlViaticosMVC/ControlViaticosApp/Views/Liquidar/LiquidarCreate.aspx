@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Liquidar>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.LiquidacionesWS.Liquidar>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	LiquidarCreate
@@ -55,15 +55,15 @@
             </div>
 
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.solicitud.CodigoSolicitud) %>
+                <%: Html.LabelFor(model => model.solicitud.Co_Solicitud) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.solicitud.CodigoSolicitud)%>
-                <%: Html.ValidationMessageFor(model => model.solicitud.CodigoSolicitud)%>
+                <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud)%>
+                <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
             </div>
                         
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="LiquidarCreate" />
             </p>
         </fieldset>
 
