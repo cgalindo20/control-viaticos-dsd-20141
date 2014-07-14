@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Viatico>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.ViaticoWS.Viatico>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 		Control de Viáticos
@@ -28,10 +28,6 @@
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoEmpleadoSolicitante) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %>

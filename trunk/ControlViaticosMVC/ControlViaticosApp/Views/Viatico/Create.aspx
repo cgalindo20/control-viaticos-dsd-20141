@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Viatico>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.ViaticoWS.Viatico>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -12,34 +12,10 @@
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
-            <legend>Campos</legend>
+            <legend>Campos</legend>                                             
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoSolicitud) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoSolicitud) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSolicitud) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud) %>
-                <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoEmpleadoSolicitante) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoEmpleadoSolicitante) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoUbigeoOrigen) %>
+                Origen
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoUbigeoOrigen) %>
@@ -47,7 +23,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoUbigeoDestino) %>
+               Destino
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoUbigeoDestino) %>
@@ -55,7 +31,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSalida) %>
+               Fecha Salida
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaSalida) %>
@@ -63,7 +39,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaRetorno) %>
+              Fecha Retorno
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaRetorno) %>
@@ -71,7 +47,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.SustentoViaje) %>
+               Motivo
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.SustentoViaje) %>
@@ -79,7 +55,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.TotalSolicitado) %>
+              Total Solicitado
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.TotalSolicitado) %>
