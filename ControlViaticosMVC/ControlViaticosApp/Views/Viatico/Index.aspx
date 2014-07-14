@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.Models.Viatico>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.ViaticoWS.Viatico>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -12,31 +12,28 @@
         <tr>
             <th></th>
             <th>
-                CodigoSolicitud
+                Codigo Solicitud
             </th>
             <th>
-                FechaSolicitud
+                Fecha Solicitud
+            </th>           
+            <th>
+                Origen
             </th>
             <th>
-                CodigoEmpleadoSolicitante
+                Destino
             </th>
             <th>
-                CodigoUbigeoOrigen
+                Fecha Salida
             </th>
             <th>
-                CodigoUbigeoDestino
+                Fecha Retorno
             </th>
             <th>
-                FechaSalida
+                Sustento Viaje
             </th>
             <th>
-                FechaRetorno
-            </th>
-            <th>
-                SustentoViaje
-            </th>
-            <th>
-                TotalSolicitado
+                Total Solicitado
             </th>           
         </tr>
 
@@ -53,12 +50,9 @@
             </td>
             <td>
                 <%: String.Format("{0:g}", item.FechaSolicitud) %>
-            </td>
+            </td>          
             <td>
-                <%: item.CodigoEmpleadoSolicitante %>
-            </td>
-            <td>
-                <%: item.CodigoUbigeoOrigen %>
+                <%: item.CodigoUbigeoOrigen%>
             </td>
             <td>
                 <%: item.CodigoUbigeoDestino %>
