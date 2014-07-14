@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:51564/Liquidaciones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" />
+  <xs:element name="CrearLiquidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FeLiquidacion" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CoSolicitud" type="xs:int" />
+        <xs:element minOccurs="0" name="SsTotalAsignado" type="xs:double" />
+        <xs:element minOccurs="0" name="SsTotalUtilizado" type="xs:double" />
+        <xs:element minOccurs="0" name="SsOtrosGastos" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearLiquidacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="CrearLiquidacionResult" nillable="true" type="q1:Liquidar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerLiquidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerLiquidacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ObtenerLiquidacionResult" nillable="true" type="q2:Liquidar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarLiquidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
+        <xs:element minOccurs="0" name="FeLiquidacion" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CoSolicitud" type="xs:int" />
+        <xs:element minOccurs="0" name="SsTotalAsignado" type="xs:double" />
+        <xs:element minOccurs="0" name="SsTotalUtilizado" type="xs:double" />
+        <xs:element minOccurs="0" name="SsOtrosGastos" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarLiquidacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ModificarLiquidacionResult" nillable="true" type="q3:Liquidar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarLiquidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarLiquidacionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarLiquidaciones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarLiquidacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ListarLiquidacionesResult" nillable="true" type="q4:ArrayOfLiquidar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

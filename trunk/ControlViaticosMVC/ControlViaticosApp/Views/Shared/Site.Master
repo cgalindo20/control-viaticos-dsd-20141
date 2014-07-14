@@ -24,6 +24,7 @@
             
                 <ul id="menu">              
                     <li><%: Html.ActionLink("Viáticos", "Index", "Viatico")%></li>
+                    <li><%: Html.ActionLink("Liquidar Viatico", "Index", "Liquidar")%></li>
                     <li><%: Html.ActionLink("Página principal", "Index", "Home")%></li>
                     <li><%: Html.ActionLink("Acerca de", "About", "Home")%></li>
                 </ul>
