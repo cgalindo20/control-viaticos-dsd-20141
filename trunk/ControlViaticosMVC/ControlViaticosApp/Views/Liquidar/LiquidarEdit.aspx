@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>LiquidarEdit</h2>
+    <h2>LiquidarEdit2</h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
@@ -31,13 +31,13 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.Ss_OtrosGastos) %>
+                <%: Html.LabelFor(model => model.solicitud) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Ss_OtrosGastos, String.Format("{0:F}", Model.Ss_OtrosGastos)) %>
-                <%: Html.ValidationMessageFor(model => model.Ss_OtrosGastos) %>
+                <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud) %>
+                <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
             </div>
-            
+
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Ss_TotalAsignado) %>
             </div>
@@ -45,13 +45,21 @@
                 <%: Html.TextBoxFor(model => model.Ss_TotalAsignado, String.Format("{0:F}", Model.Ss_TotalAsignado)) %>
                 <%: Html.ValidationMessageFor(model => model.Ss_TotalAsignado) %>
             </div>
-            
+
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Ss_TotalUtilizado) %>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.Ss_TotalUtilizado, String.Format("{0:F}", Model.Ss_TotalUtilizado)) %>
                 <%: Html.ValidationMessageFor(model => model.Ss_TotalUtilizado) %>
+            </div>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.Ss_OtrosGastos) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Ss_OtrosGastos, String.Format("{0:F}", Model.Ss_OtrosGastos)) %>
+                <%: Html.ValidationMessageFor(model => model.Ss_OtrosGastos) %>
             </div>
             
             <p>
