@@ -12,40 +12,35 @@ namespace ControlViaticosApp.Controllers
 
         //Instanciar LiquidarServices
         private  LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
-        
-        //
-        // GET: /Liquidar/
 
         public ActionResult Index()
         {
-            return View();
+            List<LiquidacionesWS.Liquidar> liquidaciones = proxy.ListarLiquidaciones();
+            return View(liquidaciones);
         }
-
-        //
-        // GET: /Liquidar/Details/5
 
         public ActionResult Details(int id)
         {
-            return View();
+            LiquidacionesWS.Liquidar liquidacionObtenida = proxy.ObtenerLiquidacion(id);
+            return View(liquidacionObtenida);
         }
-
-        //
-        // GET: /Liquidar/Create
 
         public ActionResult Create()
         {
             return View();
         } 
 
-        //
-        // POST: /Liquidar/Create
-
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                proxy.CrearLiquidacion( DateTime.Parse(collection["Fe_Liquidacion"]),
+                                        int.Parse(collection["Viatico.CodigoSolicitud"]),                    
+                                        Double.Parse(collection["Ss_TotalAsignado"]),
+                                        Double.Parse(collection["Ss_TotalUtilizado"]),
+                                        Double.Parse(collection["Ss_OtrosGastos"])
+                                        );
 
                 return RedirectToAction("Index");
             }
@@ -55,24 +50,25 @@ namespace ControlViaticosApp.Controllers
             }
         }
         
-        //
-        // GET: /Liquidar/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            return View();
+            LiquidacionesWS.Liquidar liquidacionEditar = proxy.ObtenerLiquidacion(id);
+            return View(liquidacionEditar);
         }
-
-        //
-        // POST: /Liquidar/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                proxy.ModificarLiquidacion(  id,
+                                             DateTime.Parse(collection["Fe_Liquidacion"]),
+                                             int.Parse(collection["Viatico.CodigoSolicitud"]),
+                                             Double.Parse(collection["Ss_TotalAsignado"]),
+                                             Double.Parse(collection["Ss_TotalUtilizado"]),
+                                             Double.Parse(collection["Ss_OtrosGastos"])
+                                             );
+
                 return RedirectToAction("Index");
             }
             catch
@@ -81,30 +77,28 @@ namespace ControlViaticosApp.Controllers
             }
         }
 
-        //
-        // GET: /Liquidar/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
 
-        //
-        // POST: /Liquidar/Delete/5
+            LiquidacionesWS.Liquidar liquidacionEliminar = proxy.ObtenerLiquidacion(id);
+            return View(liquidacionEliminar);
+
+        }
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
- 
+                proxy.EliminarLiquidacion(id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ModelState.AddModelError(String.Empty, "Error: " + e.Message);
                 return View();
             }
         }
+        
     }
 }

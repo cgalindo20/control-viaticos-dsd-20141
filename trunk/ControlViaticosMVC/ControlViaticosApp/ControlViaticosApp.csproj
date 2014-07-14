@@ -120,11 +120,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Liquidar\Index.aspx" />
+    <Content Include="Views\Liquidar\LiquidarCreate.aspx" />
+    <Content Include="Views\Liquidar\LiquidarDelete.aspx" />
+    <Content Include="Views\Liquidar\LiquidarEdit.aspx" />
     <Content Include="Views\Viatico\Create.aspx" />
     <Content Include="Views\Viatico\Delete.aspx" />
     <Content Include="Views\Viatico\Details.aspx" />
     <Content Include="Views\Viatico\Edit.aspx" />
     <Content Include="Views\Viatico\Index.aspx" />
+    <Content Include="Views\Viatico\LiquidarDetails.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
