@@ -124,6 +124,7 @@
     <Content Include="Views\Liquidar\LiquidarCreate.aspx" />
     <Content Include="Views\Liquidar\LiquidarDelete.aspx" />
     <Content Include="Views\Liquidar\LiquidarEdit.aspx" />
+    <Content Include="Views\Liquidar\LiquidarEdit2.aspx" />
     <Content Include="Views\Viatico\Create.aspx" />
     <Content Include="Views\Viatico\Delete.aspx" />
     <Content Include="Views\Viatico\Details.aspx" />
