@@ -32,7 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Librerias\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate">
+      <HintPath>..\Librerias\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -52,6 +58,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dominio\Liquidar.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Solicitud.hbm.xml" />
+    <Content Include="Liquidaciones.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -62,6 +71,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Liquidar.cs" />
+    <Compile Include="Dominio\Solicitud.cs" />
+    <Compile Include="ILiquidaciones.cs" />
+    <Compile Include="Liquidaciones.svc.cs">
+      <DependentUpon>Liquidaciones.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\LiquidarDAO.cs" />
+    <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\SolicitudDAO.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
