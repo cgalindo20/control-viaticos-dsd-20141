@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LiquidarServices"
+                   namespace="LiquidarServices.Dominio"
+                   default-lazy="false">
+  <class name="Solicitud" table="T_SOLICITUD">
+    <id name="Co_Solicitud" column="Co_Solicitud">
+      <generator class="increment" />
+    </id>
+    <property name="Fe_Solicitud" column="Fe_Solicitud" />
+  </class>
+</hibernate-mapping>

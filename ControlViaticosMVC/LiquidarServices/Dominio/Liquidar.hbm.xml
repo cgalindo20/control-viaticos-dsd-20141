@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LiquidarServices"
+                   namespace="LiquidarServices.Dominio"
+                   default-lazy="false">
+  <class name="Liquidar" table="T_LIQUIDAR">
+    <id name="Co_Liquidacion" column="Co_Liquidacion">
+      <generator class="increment" />
+    </id>
+    <property name="Fe_Liquidacion" column="Fe_Liquidacion" />
+    <many-to-one name="solicitud" column="Co_Solicitud"/>
+    <property name="Ss_TotalAsignado" column="Ss_TotalAsignado" />
+    <property name="Ss_TotalUtilizado" column="Ss_TotalUtilizado" />
+    <property name="Ss_OtrosGastos" column="Ss_OtrosGastos" />
+  </class>
+</hibernate-mapping>
