@@ -129,7 +129,7 @@
     <Content Include="Views\Viatico\Details.aspx" />
     <Content Include="Views\Viatico\Edit.aspx" />
     <Content Include="Views\Viatico\Index.aspx" />
-    <Content Include="Views\Viatico\LiquidarDetails.aspx" />
+    <Content Include="Views\Liquidar\LiquidarDetails.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

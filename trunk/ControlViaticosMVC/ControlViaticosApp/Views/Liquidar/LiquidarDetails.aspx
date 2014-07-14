@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Liquidar>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.LiquidacionesWS.Liquidar>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	LiquidarDetails
@@ -27,7 +27,7 @@
         <div class="display-field"><%: String.Format("{0:F}", Model.Ss_OtrosGastos) %></div>
         
         <div class="display-label">Solicitud</div>
-        <div class="display-field"><%: String.Format("{0:F}", Model.solicitud.CodigoSolicitud) %></div>
+        <div class="display-field"><%: String.Format("{0:F}", Model.solicitud.Co_Solicitud) %></div>
 
     </fieldset>
     <p>

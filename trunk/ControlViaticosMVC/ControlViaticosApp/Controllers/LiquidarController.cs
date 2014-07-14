@@ -19,19 +19,19 @@ namespace ControlViaticosApp.Controllers
             return View(liquidaciones);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult LiquidarDetails(int id)
         {
             LiquidacionesWS.Liquidar liquidacionObtenida = proxy.ObtenerLiquidacion(id);
             return View(liquidacionObtenida);
         }
 
-        public ActionResult Create()
+        public ActionResult LiquidarCreate()
         {
             return View();
         } 
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult LiquidarCreate(FormCollection collection)
         {
             try
             {
@@ -50,14 +50,14 @@ namespace ControlViaticosApp.Controllers
             }
         }
         
-        public ActionResult Edit(int id)
+        public ActionResult LiquidarEdit(int id)
         {
             LiquidacionesWS.Liquidar liquidacionEditar = proxy.ObtenerLiquidacion(id);
             return View(liquidacionEditar);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult LiquidarEdit(int id, FormCollection collection)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace ControlViaticosApp.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult LiquidarDelete(int id)
         {
 
             LiquidacionesWS.Liquidar liquidacionEliminar = proxy.ObtenerLiquidacion(id);
@@ -86,7 +86,7 @@ namespace ControlViaticosApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult LiquidarDelete(int id, FormCollection collection)
         {
             try
             {
