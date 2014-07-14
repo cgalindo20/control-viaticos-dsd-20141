@@ -216,7 +216,9 @@ namespace ControlViaticosApp.LiquidacionesWS {
         void EliminarLiquidacion(int CoLiquidacion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/ListarLiquidaciones", ReplyAction="http://tempuri.org/ILiquidaciones/ListarLiquidacionesResponse")]
-        ControlViaticosApp.LiquidacionesWS.Liquidar[] ListarLiquidaciones();
+        //ControlViaticosApp.LiquidacionesWS.Liquidar[] ListarLiquidaciones();
+        System.Collections.Generic.List<ControlViaticosApp.LiquidacionesWS.Liquidar> ListarLiquidaciones();
+
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -262,7 +264,14 @@ namespace ControlViaticosApp.LiquidacionesWS {
             base.Channel.EliminarLiquidacion(CoLiquidacion);
         }
         
+        /*
         public ControlViaticosApp.LiquidacionesWS.Liquidar[] ListarLiquidaciones() {
+            return base.Channel.ListarLiquidaciones();
+        }
+        */
+
+        public System.Collections.Generic.List<ControlViaticosApp.LiquidacionesWS.Liquidar> ListarLiquidaciones()
+        {
             return base.Channel.ListarLiquidaciones();
         }
     }
