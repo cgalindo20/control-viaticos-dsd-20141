@@ -63,7 +63,7 @@ namespace ControlViaticosApp.Controllers
             {
                 proxy.ModificarLiquidacion(  id,
                                              DateTime.Parse(collection["Fe_Liquidacion"]),
-                                             int.Parse(collection["Viatico.CodigoSolicitud"]),
+                                             int.Parse(collection["solicitud.Co_Solicitud"]),
                                              Double.Parse(collection["Ss_TotalAsignado"]),
                                              Double.Parse(collection["Ss_TotalUtilizado"]),
                                              Double.Parse(collection["Ss_OtrosGastos"])
