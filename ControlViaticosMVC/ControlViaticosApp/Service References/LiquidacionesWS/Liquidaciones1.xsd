@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Liquidar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_Liquidacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Fe_Liquidacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Ss_OtrosGastos" type="xs:double" />
+      <xs:element minOccurs="0" name="Ss_TotalAsignado" type="xs:double" />
+      <xs:element minOccurs="0" name="Ss_TotalUtilizado" type="xs:double" />
+      <xs:element minOccurs="0" name="solicitud" nillable="true" type="tns:Solicitud" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Liquidar" nillable="true" type="tns:Liquidar" />
+  <xs:complexType name="Solicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_Solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Fe_Solicitud" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Solicitud" nillable="true" type="tns:Solicitud" />
+  <xs:complexType name="ArrayOfLiquidar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Liquidar" nillable="true" type="tns:Liquidar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLiquidar" nillable="true" type="tns:ArrayOfLiquidar" />
+</xs:schema>

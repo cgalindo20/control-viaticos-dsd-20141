@@ -69,13 +69,20 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiquidarController.cs" />
     <Compile Include="Controllers\ViaticoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Liquidar.cs" />
     <Compile Include="Models\Viatico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\LiquidacionesWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ViaticoWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,12 +91,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="Service References\LiquidacionesWS\ControlViaticosApp.LiquidacionesWS.Liquidar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LiquidacionesWS\Liquidaciones.wsdl" />
+    <None Include="Service References\LiquidacionesWS\Liquidaciones.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LiquidacionesWS\Liquidaciones1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LiquidacionesWS\Liquidaciones2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ViaticoWS\configuration91.svcinfo" />
     <None Include="Service References\ViaticoWS\configuration.svcinfo" />
     <None Include="Service References\ViaticoWS\ControlViaticosApp.ViaticoWS.Viatico.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ViaticoWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\LiquidacionesWS\Liquidaciones.disco" />
+    <None Include="Service References\LiquidacionesWS\configuration91.svcinfo" />
+    <None Include="Service References\LiquidacionesWS\configuration.svcinfo" />
+    <None Include="Service References\LiquidacionesWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -136,6 +163,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\LiquidacionesWS\" />
     <WCFMetadataStorage Include="Service References\ViaticoWS\" />
   </ItemGroup>
   <ItemGroup>
