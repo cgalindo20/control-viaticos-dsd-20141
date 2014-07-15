@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AprobarController.cs" />
+    <Compile Include="Controllers\AutorizarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiquidarController.cs" />
     <Compile Include="Controllers\ViaticoController.cs" />
@@ -75,6 +77,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Aprobar.cs" />
+    <Compile Include="Models\Autorizar.cs" />
+    <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Liquidar.cs" />
     <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Models\Viatico.cs" />
@@ -121,6 +127,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Aprobar\Details.aspx" />
+    <Content Include="Views\Aprobar\Edit.aspx" />
+    <Content Include="Views\Aprobar\Index.aspx" />
+    <Content Include="Views\Autorizar\Details.aspx" />
+    <Content Include="Views\Autorizar\Edit.aspx" />
+    <Content Include="Views\Autorizar\Index.aspx" />
     <Content Include="Views\Liquidar\Index.aspx" />
     <Content Include="Views\Liquidar\LiquidarCreate.aspx" />
     <Content Include="Views\Liquidar\LiquidarDelete.aspx" />
