@@ -52,10 +52,10 @@
                 <%: String.Format("{0:g}", item.FechaSolicitud) %>
             </td>          
             <td>
-                <%: item.CodigoUbigeoOrigen%>
+                <%: item.ubigeoOrigen.NoDescripcion%>
             </td>
             <td>
-                <%: item.CodigoUbigeoDestino %>
+                <%: item.ubigeoDestino %>
             </td>
             <td>
                 <%: String.Format("{0:g}", item.FechaSalida) %>

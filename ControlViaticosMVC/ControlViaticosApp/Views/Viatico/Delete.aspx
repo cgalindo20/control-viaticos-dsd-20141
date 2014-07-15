@@ -19,10 +19,10 @@
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaSolicitud) %></div>             
         
         <div class="display-label"><b>Origen</b></div>
-        <div class="display-field"><%: Model.CodigoUbigeoOrigen %></div>
+        <div class="display-field"><%: Model.ubigeoOrigen.NoDescripcion %></div>
         
         <div class="display-label"><b>Destino</b></div>
-        <div class="display-field"><%: Model.CodigoUbigeoDestino %></div>
+        <div class="display-field"><%: Model.ubigeoDestino.NoDescripcion %></div>
         
         <div class="display-label"><b>Fecha Salida</b></div>
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaSalida) %></div>

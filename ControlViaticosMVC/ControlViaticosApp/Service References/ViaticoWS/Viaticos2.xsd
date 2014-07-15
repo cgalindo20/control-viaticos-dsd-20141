@@ -6,8 +6,6 @@
       <xs:element minOccurs="0" name="CodigoEmpleadoAutorizar" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoEmpleadoSolicitante" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoSolicitud" type="xs:int" />
-      <xs:element minOccurs="0" name="CodigoUbigeoDestino" type="xs:int" />
-      <xs:element minOccurs="0" name="CodigoUbigeoOrigen" type="xs:int" />
       <xs:element minOccurs="0" name="FechaAprobar" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaAutorizar" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRetorno" type="xs:dateTime" />
@@ -17,9 +15,18 @@
       <xs:element minOccurs="0" name="FlagAutorizar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SustentoViaje" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalSolicitado" type="xs:double" />
+      <xs:element minOccurs="0" name="ubigeoDestino" nillable="true" type="tns:Ubigeo" />
+      <xs:element minOccurs="0" name="ubigeoOrigen" nillable="true" type="tns:Ubigeo" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Viatico" nillable="true" type="tns:Viatico" />
+  <xs:complexType name="Ubigeo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoUbigeo" type="xs:int" />
+      <xs:element minOccurs="0" name="NoDescripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ubigeo" nillable="true" type="tns:Ubigeo" />
   <xs:complexType name="ArrayOfViatico">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Viatico" nillable="true" type="tns:Viatico" />

@@ -78,7 +78,6 @@
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Persistencia\ViaticoDAO.cs" />
-    <Compile Include="UbigeoDAO.cs" />
     <Compile Include="Viaticos.svc.cs">
       <DependentUpon>Viaticos.svc</DependentUpon>
     </Compile>
