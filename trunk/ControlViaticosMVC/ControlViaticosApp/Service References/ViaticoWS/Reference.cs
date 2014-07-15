@@ -348,13 +348,13 @@ namespace ControlViaticosApp.ViaticoWS {
     public interface IViaticos {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/CrearSolicitud", ReplyAction="http://tempuri.org/IViaticos/CrearSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
+        ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ObtenerSolicitud", ReplyAction="http://tempuri.org/IViaticos/ObtenerSolicitudResponse")]
         ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ModificarSolicitud", ReplyAction="http://tempuri.org/IViaticos/ModificarSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
+        ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/EliminarSolicitud", ReplyAction="http://tempuri.org/IViaticos/EliminarSolicitudResponse")]
         void EliminarSolicitud(int codigoSolicitud);
@@ -389,17 +389,19 @@ namespace ControlViaticosApp.ViaticoWS {
         public ViaticosClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
-        public ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado) {
-            return base.Channel.CrearSolicitud(codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
+
+        public ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
+        {
+            return base.Channel.CrearSolicitud(fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
         }
         
         public ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud) {
             return base.Channel.ObtenerSolicitud(codigoSolicitud);
         }
-        
-        public ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado) {
-            return base.Channel.ModificarSolicitud(codigoSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
+
+        public ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
+        {
+            return base.Channel.ModificarSolicitud(codigoSolicitud, fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
         }
         
         public void EliminarSolicitud(int codigoSolicitud) {

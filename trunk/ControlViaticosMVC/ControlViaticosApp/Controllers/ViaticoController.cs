@@ -48,13 +48,15 @@ namespace ControlViaticosApp.Controllers
             {
                 int CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
 
-                proxy.CrearSolicitud(CodigoEmpleadoSolicitante,
-                                    int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
-                                    int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
-                                    DateTime.Parse(collection["FechaSalida"]),
-                                    DateTime.Parse(collection["FechaRetorno"]),
-                                    collection["SustentoViaje"],
-                                    Double.Parse(collection["TotalSolicitado"]));                   
+                proxy.CrearSolicitud(   DateTime.Parse(collection["FechaSolicitud"]),   
+                                        CodigoEmpleadoSolicitante,
+                                        int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                        int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
+                                        DateTime.Parse(collection["FechaSalida"]),
+                                        DateTime.Parse(collection["FechaRetorno"]),
+                                        collection["SustentoViaje"],
+                                        Double.Parse(collection["TotalSolicitado"])
+                                     );                   
 
                 return RedirectToAction("Index");
             }
@@ -81,14 +83,16 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
-                                    1,
-                                    int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
-                                    int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
-                                    DateTime.Parse(collection["FechaSalida"]),
-                                    DateTime.Parse(collection["FechaRetorno"]),
-                                    collection["SustentoViaje"],
-                                    Double.Parse(collection["TotalSolicitado"]));                
+                proxy.ModificarSolicitud(   int.Parse(collection["CodigoSolicitud"]),
+                                            DateTime.Parse(collection["FechaSalida"]),
+                                            1,
+                                            int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                            int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
+                                            DateTime.Parse(collection["FechaSalida"]),
+                                            DateTime.Parse(collection["FechaRetorno"]),
+                                            collection["SustentoViaje"],
+                                            Double.Parse(collection["TotalSolicitado"])
+                                         );                
  
                 return RedirectToAction("Index");
             }
