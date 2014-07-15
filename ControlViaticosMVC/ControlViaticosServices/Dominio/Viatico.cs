@@ -18,7 +18,7 @@ namespace ControlViaticosServices.Dominio
         [DataMember]
         public Ubigeo ubigeoOrigen { get; set; }
         [DataMember]
-        public int ubigeoDestino { get; set; }
+        public Ubigeo ubigeoDestino { get; set; }
         [DataMember]
         public DateTime FechaSalida { get; set; }
         [DataMember]
