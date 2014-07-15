@@ -4,6 +4,7 @@
   <xs:element name="CrearSolicitud">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="fechaSolicitud" type="xs:dateTime" />
         <xs:element minOccurs="0" name="codigoEmpleadoSolicitante" type="xs:int" />
         <xs:element minOccurs="0" name="codigoUbigeoOrigen" type="xs:int" />
         <xs:element minOccurs="0" name="codigoUbigeoDestino" type="xs:int" />
@@ -39,6 +40,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="codigoSolicitud" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaSolicitud" type="xs:dateTime" />
         <xs:element minOccurs="0" name="codigoEmpleadoSolicitante" type="xs:int" />
         <xs:element minOccurs="0" name="codigoUbigeoOrigen" type="xs:int" />
         <xs:element minOccurs="0" name="codigoUbigeoDestino" type="xs:int" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.ViaticoWS.Viatico>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.Models.Autorizar>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Solicitudes de Viáticos</h2>
+    <h2>Viáticos Por Autorizar</h2>
 
     <table>
         <tr>
@@ -16,12 +16,9 @@
             </th>
             <th>
                 Fecha Solicitud
-            </th>           
-            <th>
-                Origen
             </th>
-            <th>
-                Destino
+             <th>
+                Solicitante
             </th>
             <th>
                 Fecha Salida
@@ -30,32 +27,38 @@
                 Fecha Retorno
             </th>
             <th>
-                Sustento Viaje
+                Motivo Viaje
             </th>
             <th>
                 Total Solicitado
-            </th>           
+            </th>
+            <th>
+                Flag Autorizar
+            </th>
+            <th>
+                Fecha Autorizar
+            </th>
+            <th>
+                Autorizador
+            </th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
             <td>
-                <%: Html.ActionLink("Editar", "Edit", new {  id=item.CodigoSolicitud }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new {  id=item.CodigoSolicitud })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new {  id=item.CodigoSolicitud })%>
+                <%: Html.ActionLink("Edit", "Edit", new { id = item.CodigoSolicitud })%> |
+                <%: Html.ActionLink("Details", "Details", new { id = item.CodigoSolicitud })%> |
+                <%: Html.ActionLink("Delete", "Delete", new { id = item.CodigoSolicitud })%>
             </td>
             <td>
                 <%: item.CodigoSolicitud %>
             </td>
             <td>
                 <%: String.Format("{0:g}", item.FechaSolicitud) %>
-            </td>          
-            <td>
-                <%: item.ubigeoOrigen.NoDescripcion%>
             </td>
-            <td>
-                <%: item.ubigeoDestino.NoDescripcion%>
+             <td>
+                <%: item.empleado.Tx_Ap_Materno %>
             </td>
             <td>
                 <%: String.Format("{0:g}", item.FechaSalida) %>
@@ -68,16 +71,21 @@
             </td>
             <td>
                 <%: String.Format("{0:F}", item.TotalSolicitado) %>
-            </td>           
+            </td>
+            <td>
+                <%: item.FlagAutorizar %>
+            </td>
+            <td>
+                <%: String.Format("{0:g}", item.FechaAutorizar) %>
+            </td>
+            <td>
+                <%: item.CodigoEmpleadoAutorizar %>
+            </td>
         </tr>
     
     <% } %>
 
-    </table>
-
-    <p>
-        <%: Html.ActionLink("Nueva Solicitud", "Create") %>
-    </p>
+    </table> 
 
 </asp:Content>
 
