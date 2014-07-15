@@ -5,12 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using LiquidarServices.Dominio;
+using LiquidarServices.Persistencia;
 
 namespace LiquidarServices
 {
     [ServiceContract]
     public interface ILiquidaciones
     {
+        [FaultContract(typeof(ValidationException))]
         [OperationContract]
         Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
         [OperationContract]

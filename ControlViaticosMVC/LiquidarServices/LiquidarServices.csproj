@@ -82,11 +82,14 @@
     <Compile Include="Persistencia\LiquidarDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\SolicitudDAO.cs" />
+    <Compile Include="Persistencia\ValidationException.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="validationexception.cs" />
+    <Compile Include="validationexception_2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
