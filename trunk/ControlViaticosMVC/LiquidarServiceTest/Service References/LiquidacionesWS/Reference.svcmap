@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="281844dc-f7ce-49f8-90d5-3ccfbc043c03" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51564/Liquidaciones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Liquidaciones.xsd" MetadataType="Schema" ID="9dd65907-e821-4cfa-aeb9-a11dd320570d" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Liquidaciones1.xsd" MetadataType="Schema" ID="ebddac60-bea2-4bc6-97dc-f11d06d1d6b1" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd3" />
+    <MetadataFile FileName="Liquidaciones2.xsd" MetadataType="Schema" ID="26e840ac-c84a-4f85-ab9b-4dac9adc6927" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd2" />
+    <MetadataFile FileName="Liquidaciones3.xsd" MetadataType="Schema" ID="cfed4219-7123-4aa9-9b64-a99e287cffc2" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Liquidaciones.disco" MetadataType="Disco" ID="9f5e167b-4963-453a-8fab-71aefa751b24" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?disco" />
+    <MetadataFile FileName="Liquidaciones.wsdl" MetadataType="Wsdl" ID="28c7adc3-034f-4172-8364-ed6b72165655" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
