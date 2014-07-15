@@ -55,7 +55,7 @@
                 <%: item.ubigeoOrigen.NoDescripcion%>
             </td>
             <td>
-                <%: item.ubigeoDestino %>
+                <%: item.ubigeoDestino.NoDescripcion%>
             </td>
             <td>
                 <%: String.Format("{0:g}", item.FechaSalida) %>
