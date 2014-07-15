@@ -48,13 +48,13 @@ namespace ControlViaticosApp.Controllers
             {
                 int CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
 
-                proxy.CrearSolicitud(CodigoEmpleadoSolicitante, 
-                                    int.Parse(collection["ubigeoOrigen.Co_Ubigeo"]),
-                                    int.Parse(collection["ubigeoDestino.Co_Ubigeo"]),
+                proxy.CrearSolicitud(CodigoEmpleadoSolicitante,
+                                    int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                    int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
                                     DateTime.Parse(collection["FechaSalida"]),
                                     DateTime.Parse(collection["FechaRetorno"]),
                                     collection["SustentoViaje"],
-                                    Double.Parse(collection["TotalSolicitado"]));                
+                                    Double.Parse(collection["TotalSolicitado"]));                   
 
                 return RedirectToAction("Index");
             }
@@ -83,8 +83,8 @@ namespace ControlViaticosApp.Controllers
             {
                 proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
                                     1,
-                                    int.Parse(collection["ubigeoOrigen.Co_Ubigeo"]),
-                                    int.Parse(collection["ubigeoDestino.Co_Ubigeo"]),
+                                    int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                    int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
                                     DateTime.Parse(collection["FechaSalida"]),
                                     DateTime.Parse(collection["FechaRetorno"]),
                                     collection["SustentoViaje"],

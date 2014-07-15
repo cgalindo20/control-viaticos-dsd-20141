@@ -34,7 +34,8 @@ namespace ControlViaticosServices
             }
         }
 
-        public Viatico CrearSolicitud(int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
+        public Viatico CrearSolicitud(  int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, 
+                                        DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
         {         
 
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
@@ -46,7 +47,7 @@ namespace ControlViaticosServices
                 FechaSolicitud = fechaSalida,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
                 ubigeoOrigen = ubigeoO,
-                ubigeoDestino = codigoUbigeoDestino,
+                ubigeoDestino = ubigeoD,
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
@@ -71,7 +72,7 @@ namespace ControlViaticosServices
                 CodigoSolicitud = codigoSolicitud,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
                 ubigeoOrigen = ubigeoOrigen,
-                ubigeoDestino = codigoUbigeoDestino,
+                ubigeoDestino = ubigeoDestino,
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,

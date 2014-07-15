@@ -15,11 +15,12 @@
     <property name="FechaRetorno" column="Fe_Retorno" />
     <property name="SustentoViaje" column="Tx_Sustento" />
     <property name="TotalSolicitado" column="Ss_TotalSolicitado" />
-    <property name="FlagAutorizar" column="Fl_Autorizado" />
-    <property name="FechaAutorizar" column="Fe_Autorizado" />
+    <!--<property name="FlagAutorizar" column="Fl_Autorizado" />
     <property name="CodigoEmpleadoAutorizar" column="Co_EmpAutoriza" />
+    <property name="FechaAutorizar" column="Fe_Autorizado" />
     <property name="FlagAprobar" column="Fl_Aprobado" />
-    <property name="FechaAprobar" column="Fe_Aprobado" />
     <property name="CodigoEmpleadoAprobar" column="Co_EmpAprueba" />
+    <property name="FechaAprobar" column="Fe_Aprobado" />-->
+    
   </class>
 </hibernate-mapping>

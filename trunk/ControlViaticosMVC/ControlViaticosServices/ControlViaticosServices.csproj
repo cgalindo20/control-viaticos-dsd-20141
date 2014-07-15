@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Viatico.hbm.xml" />
-    <Content Include="Dominio\Ubigeo.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Ubigeo.hbm.xml" />
     <Content Include="Viaticos.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

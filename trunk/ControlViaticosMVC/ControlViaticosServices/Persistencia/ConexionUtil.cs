@@ -7,6 +7,7 @@ namespace ControlViaticosServices.Persistencia
 {
     public class ConexionUtil
     {
+        /*
         public static string ObtenerCadena()
         {
             //return @"Data Source=MAVERICK-PC\SQLEXPRESS;Initial Catalog=CONTROLVIATICOS;Integrated Security=True;";
@@ -14,6 +15,12 @@ namespace ControlViaticosServices.Persistencia
             String cadenaConexion = @"Data Source=MAVERICK-PC\SQLEXPRESS;Initial Catalog=CONTROLVIATICOS;Integrated Security=True";
 
             return cadenaConexion;
+        }
+        */
+
+        public static String ObtenerCadena()
+        {
+            return "Data Source =(local);Initial Catalog=CONTROLVIATICOS; Integrated Security=SSPI;";
         }
     }
 }

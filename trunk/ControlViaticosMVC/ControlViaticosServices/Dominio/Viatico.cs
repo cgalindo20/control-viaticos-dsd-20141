@@ -30,15 +30,15 @@ namespace ControlViaticosServices.Dominio
         [DataMember]
         public String FlagAutorizar { get; set; }
         [DataMember]
-        public DateTime FechaAutorizar { get; set; }
-        [DataMember]
         public int CodigoEmpleadoAutorizar { get; set; }
+        [DataMember]
+        public DateTime FechaAutorizar { get; set; }       
         [DataMember]
         public String FlagAprobar { get; set; }
         [DataMember]
-        public DateTime FechaAprobar { get; set; }
-        [DataMember]
         public int CodigoEmpleadoAprobar { get; set; }
+        [DataMember]
+        public DateTime FechaAprobar { get; set; }
         
 
     }
