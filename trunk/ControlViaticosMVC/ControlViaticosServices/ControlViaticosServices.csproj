@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Viatico.hbm.xml" />
+    <Content Include="Dominio\Ubigeo.hbm.xml" />
     <Content Include="Viaticos.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -70,11 +71,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Ubigeo.cs" />
     <Compile Include="Dominio\Viatico.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Persistencia\ViaticoDAO.cs" />
+    <Compile Include="UbigeoDAO.cs" />
     <Compile Include="Viaticos.svc.cs">
       <DependentUpon>Viaticos.svc</DependentUpon>
     </Compile>

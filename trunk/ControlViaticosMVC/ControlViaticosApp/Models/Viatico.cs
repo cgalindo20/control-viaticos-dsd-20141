@@ -11,8 +11,8 @@ namespace ControlViaticosApp.Models
         public int CodigoSolicitud { get; set; }
         public DateTime FechaSolicitud { get; set; }
         public int CodigoEmpleadoSolicitante { get; set; }
-        public int CodigoUbigeoOrigen { get; set; }
-        public int CodigoUbigeoDestino { get; set; }
+        public Ubigeo ubigeoOrigen { get; set; }
+        public Ubigeo ubigeoDestino { get; set; }
         public DateTime FechaSalida { get; set; }
         public DateTime FechaRetorno { get; set; }
         public String SustentoViaje { get; set; }

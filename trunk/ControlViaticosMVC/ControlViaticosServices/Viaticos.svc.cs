@@ -23,24 +23,37 @@ namespace ControlViaticosServices
             }
         }
 
+        private UbigeoDAO ubigeoDAO = null;
+        private UbigeoDAO UbigeoDAO
+        {
+            get
+            {
+                if (ubigeoDAO == null)
+                    ubigeoDAO = new UbigeoDAO();
+                return ubigeoDAO;
+            }
+        }
+
         public Viatico CrearSolicitud(int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
         {
             DateTime Hoy = DateTime.Today;
             string fechaSolicitud = Hoy.ToString("dd-MM-yyyy");
 
+            Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
+            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
+
             Viatico viaticoACRear = new Viatico()
 
             {
-                FechaSolicitud = DateTime.Now,
+                FechaSolicitud = fechaSalida,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
                 CodigoUbigeoOrigen = codigoUbigeoOrigen,
                 CodigoUbigeoDestino = codigoUbigeoDestino,
-                FechaSalida = DateTime.Now,
-                FechaRetorno = DateTime.Now,
+                FechaSalida = fechaSalida,
+                FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
                 TotalSolicitado = totalSolicitado
             };
-            return ViaticoDAO.Crear(viaticoACRear);
 
         }
 
@@ -54,9 +67,12 @@ namespace ControlViaticosServices
             DateTime Hoy = DateTime.Today;
             string fechaSolicitud = Hoy.ToString("dd-MM-yyyy");
 
+            Ubigeo ubigeoOrigen = UbigeoDAO.Obtener(codigoUbigeoOrigen);
+            Ubigeo ubigeoDestino = UbigeoDAO.Obtener(codigoUbigeoDestino);
+
             Viatico viaticoAModificar = new Viatico()
             {
-                CodigoSolicitud = codigoSolicitud,               
+                CodigoSolicitud = codigoSolicitud,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
                 CodigoUbigeoOrigen = codigoUbigeoOrigen,
                 CodigoUbigeoDestino = codigoUbigeoDestino,

@@ -46,15 +46,13 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {                                           
-                int codigoEmpleadoSolicitante = int.Parse(collection["CodigoEmpleadoSolicitante"]);
-                int codigoUbigeoOrigen = int.Parse(collection["CodigoUbigeoOrigen"]);
-                int codigoUbigeoDestino = int.Parse(collection["CodigoUbigeoDestino"]);
-                DateTime fechaSalida = DateTime.Parse(collection["FechaSalida"]);
-                DateTime fechaRetorno = DateTime.Parse(collection["FechaRetorno"]);
-                string sustentoViaje = collection["SustentoViaje"];
-                Double totalSolicitado = Double.Parse(collection["TotalSolicitado"]);
-
-                proxy.CrearSolicitud(codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);                
+                proxy.CrearSolicitud(1, 
+                                    int.Parse(collection["ubigeoOrigen.Co_Ubigeo"]),
+                                    int.Parse(collection["ubigeoDestino.Co_Ubigeo"]),
+                                    DateTime.Parse(collection["FechaSalida"]),
+                                    DateTime.Parse(collection["FechaRetorno"]),
+                                    collection["SustentoViaje"],
+                                    Double.Parse(collection["TotalSolicitado"]));                
 
                 return RedirectToAction("Index");
             }
@@ -80,16 +78,15 @@ namespace ControlViaticosApp.Controllers
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
-            {               
-                int codigoEmpleadoSolicitante = int.Parse(collection["CodigoEmpleadoSolicitante"]);
-                int codigoUbigeoOrigen = int.Parse(collection["CodigoUbigeoOrigen"]);
-                int codigoUbigeoDestino = int.Parse(collection["CodigoUbigeoDestino"]);
-                DateTime fechaSalida = DateTime.Parse(collection["FechaSalida"]);
-                DateTime fechaRetorno = DateTime.Parse(collection["FechaRetorno"]);
-                string sustentoViaje = collection["SustentoViaje"];
-                Double totalSolicitado = Double.Parse(collection["TotalSolicitado"]);
-
-                proxy.ModificarSolicitud(id, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
+            {
+                proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
+                                    1,
+                                    int.Parse(collection["ubigeoOrigen.Co_Ubigeo"]),
+                                    int.Parse(collection["ubigeoDestino.Co_Ubigeo"]),
+                                    DateTime.Parse(collection["FechaSalida"]),
+                                    DateTime.Parse(collection["FechaRetorno"]),
+                                    collection["SustentoViaje"],
+                                    Double.Parse(collection["TotalSolicitado"]));                
  
                 return RedirectToAction("Index");
             }
