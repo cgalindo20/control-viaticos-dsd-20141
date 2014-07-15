@@ -45,8 +45,10 @@ namespace ControlViaticosApp.Controllers
         public ActionResult Create(FormCollection collection)
         {
             try
-            {                                           
-                proxy.CrearSolicitud(1, 
+            {
+                int CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
+
+                proxy.CrearSolicitud(CodigoEmpleadoSolicitante, 
                                     int.Parse(collection["ubigeoOrigen.Co_Ubigeo"]),
                                     int.Parse(collection["ubigeoDestino.Co_Ubigeo"]),
                                     DateTime.Parse(collection["FechaSalida"]),

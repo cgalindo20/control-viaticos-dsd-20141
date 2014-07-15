@@ -35,12 +35,6 @@ namespace ControlViaticosApp.ViaticoWS {
         private int CodigoSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodigoUbigeoDestinoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodigoUbigeoOrigenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaAprobarField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -66,6 +60,12 @@ namespace ControlViaticosApp.ViaticoWS {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double TotalSolicitadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.ViaticoWS.Ubigeo ubigeoDestinoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.ViaticoWS.Ubigeo ubigeoOrigenField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -125,32 +125,6 @@ namespace ControlViaticosApp.ViaticoWS {
                 if ((this.CodigoSolicitudField.Equals(value) != true)) {
                     this.CodigoSolicitudField = value;
                     this.RaisePropertyChanged("CodigoSolicitud");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodigoUbigeoDestino {
-            get {
-                return this.CodigoUbigeoDestinoField;
-            }
-            set {
-                if ((this.CodigoUbigeoDestinoField.Equals(value) != true)) {
-                    this.CodigoUbigeoDestinoField = value;
-                    this.RaisePropertyChanged("CodigoUbigeoDestino");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodigoUbigeoOrigen {
-            get {
-                return this.CodigoUbigeoOrigenField;
-            }
-            set {
-                if ((this.CodigoUbigeoOrigenField.Equals(value) != true)) {
-                    this.CodigoUbigeoOrigenField = value;
-                    this.RaisePropertyChanged("CodigoUbigeoOrigen");
                 }
             }
         }
@@ -268,6 +242,93 @@ namespace ControlViaticosApp.ViaticoWS {
                 if ((this.TotalSolicitadoField.Equals(value) != true)) {
                     this.TotalSolicitadoField = value;
                     this.RaisePropertyChanged("TotalSolicitado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.ViaticoWS.Ubigeo ubigeoDestino {
+            get {
+                return this.ubigeoDestinoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ubigeoDestinoField, value) != true)) {
+                    this.ubigeoDestinoField = value;
+                    this.RaisePropertyChanged("ubigeoDestino");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.ViaticoWS.Ubigeo ubigeoOrigen {
+            get {
+                return this.ubigeoOrigenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ubigeoOrigenField, value) != true)) {
+                    this.ubigeoOrigenField = value;
+                    this.RaisePropertyChanged("ubigeoOrigen");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Ubigeo", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Ubigeo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoUbigeoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NoDescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodigoUbigeo {
+            get {
+                return this.CodigoUbigeoField;
+            }
+            set {
+                if ((this.CodigoUbigeoField.Equals(value) != true)) {
+                    this.CodigoUbigeoField = value;
+                    this.RaisePropertyChanged("CodigoUbigeo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NoDescripcion {
+            get {
+                return this.NoDescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NoDescripcionField, value) != true)) {
+                    this.NoDescripcionField = value;
+                    this.RaisePropertyChanged("NoDescripcion");
                 }
             }
         }

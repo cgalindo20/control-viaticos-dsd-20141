@@ -35,19 +35,19 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoUbigeoOrigen) %>
+                <%: Html.LabelFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoUbigeoOrigen) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoUbigeoOrigen) %>
+                <%: Html.TextBoxFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
+                <%: Html.ValidationMessageFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoUbigeoDestino) %>
+                <%: Html.LabelFor(model => model.ubigeoDestino.CodigoUbigeo)%>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoUbigeoDestino) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoUbigeoDestino) %>
+                <%: Html.TextBoxFor(model => model.ubigeoDestino.CodigoUbigeo)%>
+                <%: Html.ValidationMessageFor(model => model.ubigeoDestino.CodigoUbigeo)%>
             </div>
             
             <div class="editor-label">

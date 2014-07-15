@@ -35,26 +35,24 @@ namespace ControlViaticosServices
         }
 
         public Viatico CrearSolicitud(int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
-        {
-            DateTime Hoy = DateTime.Today;
-            string fechaSolicitud = Hoy.ToString("dd-MM-yyyy");
+        {         
 
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
 
             Viatico viaticoACRear = new Viatico()
 
-            {
+            {                
                 FechaSolicitud = fechaSalida,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
-                CodigoUbigeoOrigen = codigoUbigeoOrigen,
-                CodigoUbigeoDestino = codigoUbigeoDestino,
+                ubigeoOrigen = ubigeoO,
+                ubigeoDestino = codigoUbigeoDestino,
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
                 TotalSolicitado = totalSolicitado
             };
-
+            return ViaticoDAO.Crear(viaticoACRear);
         }
 
         public Viatico ObtenerSolicitud(int codigoSolicitud)
@@ -64,8 +62,6 @@ namespace ControlViaticosServices
 
         public Viatico ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
         {
-            DateTime Hoy = DateTime.Today;
-            string fechaSolicitud = Hoy.ToString("dd-MM-yyyy");
 
             Ubigeo ubigeoOrigen = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoDestino = UbigeoDAO.Obtener(codigoUbigeoDestino);
@@ -74,8 +70,8 @@ namespace ControlViaticosServices
             {
                 CodigoSolicitud = codigoSolicitud,
                 CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
-                CodigoUbigeoOrigen = codigoUbigeoOrigen,
-                CodigoUbigeoDestino = codigoUbigeoDestino,
+                ubigeoOrigen = ubigeoOrigen,
+                ubigeoDestino = codigoUbigeoDestino,
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
