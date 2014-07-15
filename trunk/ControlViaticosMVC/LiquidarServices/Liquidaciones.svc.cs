@@ -35,17 +35,24 @@ namespace LiquidarServices
 
         public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
         {
-            Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
-            Liquidar liquidarCrear = new Liquidar()
+            if (SsOtrosGastos > 0.2 * (SsTotalUtilizado))
             {
-                Fe_Liquidacion = FeLiquidacion,
-                Ss_TotalAsignado = SsTotalAsignado,
-                Ss_TotalUtilizado = SsTotalUtilizado,
-                Ss_OtrosGastos = SsOtrosGastos,
-                solicitud = solicitudExistente
-            };
+                ValidationException validationException = new ValidationException { ValidationError = "Otros Gastos no puede ser mayor al 20% del monto utilizado." };
+                throw new FaultException<ValidationException>(validationException);
+            }else{
+            
+                Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
+                Liquidar liquidarCrear = new Liquidar()
+                {
+                    Fe_Liquidacion = FeLiquidacion,
+                    Ss_TotalAsignado = SsTotalAsignado,
+                    Ss_TotalUtilizado = SsTotalUtilizado,
+                    Ss_OtrosGastos = SsOtrosGastos,
+                    solicitud = solicitudExistente
+                };
 
-            return LiquidarDAO.Crear(liquidarCrear);
+                return LiquidarDAO.Crear(liquidarCrear);
+            }
         }
 
         public Liquidar ObtenerLiquidacion(int CoLiquidacion)
