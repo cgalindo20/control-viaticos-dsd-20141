@@ -27,7 +27,7 @@ namespace ControlViaticosServices.Dominio
         public String SustentoViaje { get; set; }        
         [DataMember]
         public Double TotalSolicitado { get; set; }
-        [DataMember]
+        /*[DataMember]
         public String FlagAutorizar { get; set; }
         [DataMember]
         public int CodigoEmpleadoAutorizar { get; set; }
@@ -38,7 +38,7 @@ namespace ControlViaticosServices.Dominio
         [DataMember]
         public int CodigoEmpleadoAprobar { get; set; }
         [DataMember]
-        public DateTime FechaAprobar { get; set; }
+        public DateTime FechaAprobar { get; set; }*/
         
 
     }

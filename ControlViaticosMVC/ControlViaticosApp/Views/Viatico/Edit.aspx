@@ -29,6 +29,10 @@
                 <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.CodigoEmpleadoSolicitante) %>
+            </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %>
                 <%: Html.ValidationMessageFor(model => model.CodigoEmpleadoSolicitante) %>

@@ -15,6 +15,14 @@
             <legend>Campos</legend>                                             
             
             <div class="editor-label">
+               Fecha Solicitud
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.FechaSolicitud)%>
+                <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
+            </div>
+
+            <div class="editor-label">
                 Origen
             </div>
             <div class="editor-field">
