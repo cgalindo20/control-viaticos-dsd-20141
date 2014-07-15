@@ -17,10 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidarServices", "LiquidarServices\LiquidarServices.csproj", "{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{537451B2-77B5-44C3-86D3-32CBF126FE15}"
+	ProjectSection(SolutionItems) = preProject
+		ControlViaticosMVC.vsmdi = ControlViaticosMVC.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidarServiceTest", "LiquidarServiceTest\LiquidarServiceTest.csproj", "{6A5A9DE9-99B0-4F2C-998F-2333E5F414FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4} = {47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ControlViaticosMVC.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +54,10 @@ Global
 		{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5A9DE9-99B0-4F2C-998F-2333E5F414FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5A9DE9-99B0-4F2C-998F-2333E5F414FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5A9DE9-99B0-4F2C-998F-2333E5F414FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5A9DE9-99B0-4F2C-998F-2333E5F414FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
