@@ -9,8 +9,8 @@
     </id>
     <property name="FechaSolicitud" column="Fe_Solicitud" />
     <property name="CodigoEmpleadoSolicitante" column="Co_EmpSolicitante" />
-    <property name="CodigoUbigeoOrigen" column="Co_UbigeoOrigen" />
-    <property name="CodigoUbigeoDestino" column="Co_UbigeoDestino" />
+    <many-to-one name="ubigeoOrigen" column="Co_UbigeoOrigen" />
+    <many-to-one name="ubigeoDestino" column="Co_UbigeoDestino" />
     <property name="FechaSalida" column="Fe_Salida" />
     <property name="FechaRetorno" column="Fe_Retorno" />
     <property name="SustentoViaje" column="Tx_Sustento" />

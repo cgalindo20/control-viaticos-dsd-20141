@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Liquidar.cs" />
+    <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Models\Viatico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\LiquidacionesWS\Reference.cs">
