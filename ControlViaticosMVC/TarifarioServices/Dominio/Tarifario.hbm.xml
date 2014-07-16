@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="TarifarioServices"
+                   namespace="TarifarioServices.Dominio"
+                   default-lazy="false">
+  <class name="Tarifario" table="T_TARIFARIO">
+    <id name="Co_Tarifa" column="Co_Tarifa">
+      <generator class="increment" />
+    </id>
+    <property name="Co_TipoViatico" column="Co_TipoViatico" />
+    <many-to-one name="Co_Ubigeo" column="Co_Ubigeo" />
+    <property name="Ss_Costo" column="Ss_Costo" />
+    <property name="Co_EmpActualiza" column="Co_EmpActualiza" />
+  </class>
+</hibernate-mapping>
