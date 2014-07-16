@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidarServiceTest", "Liqu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarifarioServices", "TarifarioServices\TarifarioServices.csproj", "{C68E03D0-6B90-47CE-83BB-7A2440FC01A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresupuestoServices", "PresupuestoServices\PresupuestoServices.csproj", "{53B9298B-A539-4F71-817C-7A81BB68C92E}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -64,6 +66,10 @@ Global
 		{C68E03D0-6B90-47CE-83BB-7A2440FC01A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C68E03D0-6B90-47CE-83BB-7A2440FC01A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C68E03D0-6B90-47CE-83BB-7A2440FC01A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
