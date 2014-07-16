@@ -23,7 +23,7 @@
             <div id="menucontainer">
             
                 <ul id="menu">              
-                    <li><%: Html.ActionLink("Viáticos", "Index", "Viatico")%></li>
+                    <li><%: Html.ActionLink("Solicitar Viáticos", "Index", "Viatico")%></li>
                     <li><%: Html.ActionLink("Autorizar Viatico", "Index", "Autorizar")%></li>
                     <li><%: Html.ActionLink("Aprobar Viatico", "Index", "Aprobar")%></li>
                     <li><%: Html.ActionLink("Liquidar Viatico", "Index", "Liquidar")%></li>

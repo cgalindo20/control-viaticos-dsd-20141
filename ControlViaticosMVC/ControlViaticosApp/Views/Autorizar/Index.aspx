@@ -43,7 +43,7 @@
             </th>
         </tr>
 
-    <% foreach (var item in Model) { %>
+<%--    <% foreach (var item in Model) { %>
     
         <tr>
             <td>
@@ -84,7 +84,7 @@
         </tr>
     
     <% } %>
-
+--%>
     </table> 
 
 </asp:Content>

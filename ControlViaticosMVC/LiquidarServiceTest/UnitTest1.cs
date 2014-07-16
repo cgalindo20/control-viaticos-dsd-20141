@@ -19,8 +19,8 @@ namespace LiquidarServiceTest
                 LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
 
                 LiquidacionesWS.Liquidar liquidar = new LiquidacionesWS.Liquidar();
-                liquidar = proxy.CrearLiquidacion(DateTime.Parse("15/07/2014 12:00:00 a.m."),
-                                                    int.Parse("3"),
+                liquidar = proxy.CrearLiquidacion(DateTime.Parse("14/07/2014 0:00:00"),
+                                                    int.Parse("2"),
                                                     Double.Parse("120.00"),
                                                     Double.Parse("100.00"),
                                                     Double.Parse("21.00"));
