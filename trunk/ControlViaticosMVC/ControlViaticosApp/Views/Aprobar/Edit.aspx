@@ -15,7 +15,7 @@
             <legend>Fields</legend>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoSolicitud) %>
+                Codigo de Solicitud
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
@@ -23,7 +23,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSolicitud) %>
+                Fecha de Solictud
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
@@ -31,7 +31,7 @@
             </div>                       
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSalida) %>
+                Fecha de Salida
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:g}", Model.FechaSalida)) %>
@@ -39,7 +39,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaRetorno) %>
+               Fecha de Retorno
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:g}", Model.FechaRetorno)) %>
@@ -47,7 +47,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.SustentoViaje) %>
+                Motivo de Viaje
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.SustentoViaje) %>
@@ -55,7 +55,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.TotalSolicitado) %>
+                Total Solicitado
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.TotalSolicitado, String.Format("{0:F}", Model.TotalSolicitado)) %>
@@ -63,15 +63,14 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FlagAprobar) %>
-            </div>
+               Aprobado            </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FlagAprobar) %>
                 <%: Html.ValidationMessageFor(model => model.FlagAprobar) %>
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaAprobar) %>
+                Fecha Aprobacion
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaAprobar, String.Format("{0:g}", Model.FechaAprobar)) %>
@@ -79,7 +78,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoEmpleadoAprobar) %>
+                Aprobador
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoEmpleadoAprobar) %>
