@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="PresupuestoServices"
+                   namespace="PresupuestoServices.Dominio"
+                   default-lazy="false">
+  <class name="Presupuesto" table="T_PRESUPUESTO">
+    <id name="Co_Presupuesto" column="Co_Presupuesto">
+      <generator class="increment" />
+    </id>
+    <many-to-one name="Co_Area" column="Co_Area"/>
+    <property name="Ss_MontoAsignado" column="Ss_MontoAsignado" />
+    <property name="Ss_MontoDisponible" column="Ss_MontoDisponible" />
+  </class>
+</hibernate-mapping>
