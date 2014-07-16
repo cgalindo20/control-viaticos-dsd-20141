@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="PresupuestoServices"
+                   namespace="PresupuestoServices.Dominio"
+                   default-lazy="false">
+  <class name="Area" table="T_AREA">
+    <id name="Co_Area" column="Co_Area">
+      <generator class="increment" />
+    </id>
+    <property name="No_Descripcion" column="No_Descripcion" />
+  </class>
+</hibernate-mapping>
