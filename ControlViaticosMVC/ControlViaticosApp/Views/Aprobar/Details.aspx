@@ -11,31 +11,31 @@
     <fieldset>
         <legend>Fields</legend>
         
-        <div class="display-label">CodigoSolicitud</div>
+        <div class="display-label">Codigo Solicitud</div>
         <div class="display-field"><%: Model.CodigoSolicitud %></div>
         
-        <div class="display-label">FechaSolicitud</div>
+        <div class="display-label">Fecha  Solicitud</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaSolicitud) %></div>
         
-        <div class="display-label">FechaSalida</div>
+        <div class="display-label">Fecha Salida</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaSalida) %></div>
         
-        <div class="display-label">FechaRetorno</div>
+        <div class="display-label">Fecha  Retorno</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaRetorno) %></div>
         
-        <div class="display-label">SustentoViaje</div>
+        <div class="display-label">Motivo de Viaje</div>
         <div class="display-field"><%: Model.SustentoViaje %></div>
         
-        <div class="display-label">TotalSolicitado</div>
+        <div class="display-label">Total Solicitado</div>
         <div class="display-field"><%: String.Format("{0:F}", Model.TotalSolicitado) %></div>
         
-        <div class="display-label">FlagAprobar</div>
+        <div class="display-label">Aprobacion</div>
         <div class="display-field"><%: Model.FlagAprobar %></div>
         
-        <div class="display-label">FechaAprobar</div>
+        <div class="display-label">Fecha Aprobacion</div>
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaAprobar) %></div>
         
-        <div class="display-label">CodigoEmpleadoAprobar</div>
+        <div class="display-label">Aprobador</div>
         <div class="display-field"><%: Model.CodigoEmpleadoAprobar %></div>
         
     </fieldset>
