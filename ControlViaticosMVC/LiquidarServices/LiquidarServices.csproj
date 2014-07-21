@@ -60,8 +60,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Liquidar.hbm.xml" />
     <EmbeddedResource Include="Dominio\Solicitud.hbm.xml" />
-    <Content Include="Dominio\LiquidarDetalle.hbm.xml" />
-    <Content Include="Dominio\TipoViatico.hbm.xml" />
+    <EmbeddedResource Include="Dominio\LiquidarDetalle.hbm.xml" />
+    <EmbeddedResource Include="Dominio\TipoViatico.hbm.xml" />
     <Content Include="Liquidaciones.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
