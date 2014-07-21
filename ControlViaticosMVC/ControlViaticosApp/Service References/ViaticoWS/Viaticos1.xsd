@@ -82,4 +82,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListarUbigeos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUbigeosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio" minOccurs="0" name="ListarUbigeosResult" nillable="true" type="q5:ArrayOfUbigeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

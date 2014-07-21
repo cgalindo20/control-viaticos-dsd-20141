@@ -15,7 +15,7 @@
             <legend>Campos</legend>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoSolicitud) %>
+               Código Solicitud
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
@@ -23,15 +23,15 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSolicitud) %>
+               Fecha Solicitud
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
+                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
 
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.CodigoEmpleadoSolicitante) %>
+               Solicitante
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %>
@@ -39,39 +39,41 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
+                Origen
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
-                <%: Html.ValidationMessageFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
+             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>
+                <!--%: Html.TextBoxFor(model => model.ubigeoOrigen.CodigoUbigeo)%-->
+                <!--%: Html.ValidationMessageFor(model => model.ubigeoOrigen.CodigoUbigeo)%-->
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.ubigeoDestino.CodigoUbigeo)%>
+               Destino
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.ubigeoDestino.CodigoUbigeo)%>
-                <%: Html.ValidationMessageFor(model => model.ubigeoDestino.CodigoUbigeo)%>
+             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>
+                <!--%: Html.TextBoxFor(model => model.ubigeoDestino.CodigoUbigeo)%-->
+                <!--%: Html.ValidationMessageFor(model => model.ubigeoDestino.CodigoUbigeo)%-->
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaSalida) %>
+                Fecha de Salida
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:g}", Model.FechaSalida)) %>
+                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:d}", Model.FechaSalida)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.FechaRetorno) %>
+               Fecha de Retorno
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:g}", Model.FechaRetorno)) %>
+                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:d}", Model.FechaRetorno)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.SustentoViaje) %>
+               Motivo de Viaje
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.SustentoViaje) %>
@@ -79,7 +81,7 @@
             </div>
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.TotalSolicitado) %>
+              Total Solicitado
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.TotalSolicitado, String.Format("{0:F}", Model.TotalSolicitado)) %>

@@ -39,7 +39,7 @@ namespace ControlViaticosServices
         {         
 
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
-            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
+            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);          
 
             Viatico viaticoACRear = new Viatico()
 
@@ -91,6 +91,11 @@ namespace ControlViaticosServices
         public List<Viatico> ListarSolicitudes()
         {
             return ViaticoDAO.ListarTodos().ToList();
+        }
+
+        public List<Ubigeo> ListarUbigeos()
+        {
+            return UbigeoDAO.ListarTodos().ToList();
         }
     }
 }

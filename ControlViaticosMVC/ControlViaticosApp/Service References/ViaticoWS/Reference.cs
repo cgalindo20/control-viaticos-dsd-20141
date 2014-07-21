@@ -265,6 +265,9 @@ namespace ControlViaticosApp.ViaticoWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarSolicitudes", ReplyAction="http://tempuri.org/IViaticos/ListarSolicitudesResponse")]
         System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Viatico> ListarSolicitudes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarUbigeos", ReplyAction="http://tempuri.org/IViaticos/ListarUbigeosResponse")]
+        System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -312,6 +315,10 @@ namespace ControlViaticosApp.ViaticoWS {
         
         public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Viatico> ListarSolicitudes() {
             return base.Channel.ListarSolicitudes();
+        }
+        
+        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos() {
+            return base.Channel.ListarUbigeos();
         }
     }
 }

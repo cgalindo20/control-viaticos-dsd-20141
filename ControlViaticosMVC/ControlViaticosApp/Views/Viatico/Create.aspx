@@ -14,35 +14,31 @@
         <fieldset>
             <legend>Campos</legend>                                             
             
-            <div class="editor-label">
+            <!--div class="editor-label">
                Fecha Solicitud
             </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud)%>
-                <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
-            </div>
+            <div class="editor-field"-->
+                <!--%: Html.TextBoxFor(model => model.FechaSolicitud)%-->
+                <!--%: Html.ValidationMessageFor(model => model.FechaSolicitud) %-->
+            <!--/div-->
 
             <div class="editor-label">
                 Origen
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.ubigeoOrigen.CodigoUbigeo) %>
-                <%: Html.ValidationMessageFor(model => model.ubigeoOrigen.CodigoUbigeo)%>
-            </div>
-            
+                <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>                
+            </div>            
             <div class="editor-label">
                Destino
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.ubigeoDestino.CodigoUbigeo) %>
-                <%: Html.ValidationMessageFor(model => model.ubigeoDestino.CodigoUbigeo)%>
-            </div>
-            
+                <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>
+            </div>            
             <div class="editor-label">
                Fecha Salida
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida) %>
+                <%: Html.TextBoxFor(model => model.FechaSalida, new { @id = "datepicker1" })%>
                 <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
             </div>
             
@@ -50,7 +46,7 @@
               Fecha Retorno
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno) %>
+                <%: Html.TextBoxFor(model => model.FechaRetorno, new { @id = "datepicker2" })%>
                 <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
             </div>
             
@@ -80,6 +76,18 @@
     <div>
         <%: Html.ActionLink("Regresar a la Lista", "Index") %>
     </div>
+     <script type="text/javascript">
+      
+        $(function() {
+            $("#datepicker1").datepicker({ dateFormat: "dd/mm/yy" });           
+           
+        });        
 
+        $(function () {
+            $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" });            
+        });
+
+        </script>
+                
 </asp:Content>
 

@@ -15,7 +15,8 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Index()
         {            
-            List<ViaticoWS.Viatico> viaticos = proxy.ListarSolicitudes(); 
+            List<ViaticoWS.Viatico> viaticos = proxy.ListarSolicitudes();                      
+
             return View(viaticos);
         }
 
@@ -35,6 +36,12 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Create()
         {
+
+            //Llenar los combobox de Ubigeos
+            List<ViaticoWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
+            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
+            ViewData["ubigeos"] = listUbigeos;
+
             return View();
         } 
 
@@ -48,7 +55,7 @@ namespace ControlViaticosApp.Controllers
             {
                 int CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
 
-                proxy.CrearSolicitud(   DateTime.Parse(collection["FechaSolicitud"]),   
+                proxy.CrearSolicitud(   DateTime.Today,   
                                         CodigoEmpleadoSolicitante,
                                         int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
                                         int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
@@ -72,6 +79,12 @@ namespace ControlViaticosApp.Controllers
         public ActionResult Edit(int id)
         {
             ViaticoWS.Viatico viaticoEditar = proxy.ObtenerSolicitud(id);
+
+            //Llenar los combobox de Ubigeos
+            List<ViaticoWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
+            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
+            ViewData["ubigeos"] = listUbigeos;
+
             return View(viaticoEditar);
         }
 
@@ -129,5 +142,7 @@ namespace ControlViaticosApp.Controllers
                 return View();
             }
         }
+
+        public List<SelectListItem> ViewBag { get; set; }
     }
 }

@@ -113,6 +113,9 @@
     </None>
     <None Include="Service References\ViaticoWS\configuration91.svcinfo" />
     <None Include="Service References\ViaticoWS\configuration.svcinfo" />
+    <None Include="Service References\ViaticoWS\ControlViaticosApp.ViaticoWS.Ubigeo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ViaticoWS\ControlViaticosApp.ViaticoWS.Viatico.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

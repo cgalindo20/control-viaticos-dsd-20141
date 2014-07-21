@@ -28,6 +28,9 @@ namespace ControlViaticosServices
         [OperationContract]
         List<Viatico> ListarSolicitudes();
 
+        [OperationContract]
+        List<Ubigeo> ListarUbigeos();
+
     }
 
 }

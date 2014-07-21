@@ -37,6 +37,12 @@
   <wsdl:message name="IViaticos_ListarSolicitudes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarSolicitudesResponse" />
   </wsdl:message>
+  <wsdl:message name="IViaticos_ListarUbigeos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUbigeos" />
+  </wsdl:message>
+  <wsdl:message name="IViaticos_ListarUbigeos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUbigeosResponse" />
+  </wsdl:message>
   <wsdl:portType name="IViaticos">
     <wsdl:operation name="CrearSolicitud">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/CrearSolicitud" message="tns:IViaticos_CrearSolicitud_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="ListarSolicitudes">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ListarSolicitudes" message="tns:IViaticos_ListarSolicitudes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/ListarSolicitudesResponse" message="tns:IViaticos_ListarSolicitudes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUbigeos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ListarUbigeos" message="tns:IViaticos_ListarUbigeos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/ListarUbigeosResponse" message="tns:IViaticos_ListarUbigeos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IViaticos" type="tns:IViaticos">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarSolicitudes">
       <soap:operation soapAction="http://tempuri.org/IViaticos/ListarSolicitudes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUbigeos">
+      <soap:operation soapAction="http://tempuri.org/IViaticos/ListarUbigeos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
