@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LiquidarServices"
+                   namespace="LiquidarServices.Dominio"
+                   default-lazy="false">
+  <class name="LiquidarDetalle" table="T_LIQUIDAR_DETALLE">
+    <composite-id name="PK">
+      <key-property name="Liquidar" column="Co_Liquidacion" />
+      <key-many-to-one name="TipoViatico" column="Co_TipoViatico" />
+    </composite-id>    
+    <property name="Ss_MontoAsignado" column="Ss_MontoAsignado" />
+    <property name="Ss_MontoUtilizado" column="Ss_MontoUtilizado" />    
+  </class>
+</hibernate-mapping>

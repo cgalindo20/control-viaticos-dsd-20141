@@ -6,11 +6,7 @@ using LiquidarServices.Dominio;
 
 namespace LiquidarServices.Persistencia
 {
-    public class LiquidarDAO : BaseDAO<Liquidar, int>
-    {
-    }
-
-    public class LiquidarDetalleDAO : BaseDAO<LiquidarDetalle, LiquidarDetallePK>
+    public class TipoViaticoDAO : BaseDAO<TipoViatico,int>
     {
     }
 }

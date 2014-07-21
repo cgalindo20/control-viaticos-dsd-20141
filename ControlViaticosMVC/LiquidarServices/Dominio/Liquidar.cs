@@ -23,6 +23,8 @@ namespace LiquidarServices.Dominio
         public Double Ss_TotalUtilizado { get; set; }
         [DataMember]
         public Double Ss_OtrosGastos { get; set; }
+        [DataMember]
+        public IList<LiquidarDetalle> Detalles { get; set; }
 
     }
 }
