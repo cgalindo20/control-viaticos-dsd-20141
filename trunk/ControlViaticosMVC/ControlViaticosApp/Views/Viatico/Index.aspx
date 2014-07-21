@@ -49,7 +49,7 @@
                 <%: item.CodigoSolicitud %>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.FechaSolicitud) %>
+                <%: String.Format("{0:d}", item.FechaSolicitud) %>
             </td>          
             <td>
                 <%: item.ubigeoOrigen.NoDescripcion%>
@@ -58,10 +58,10 @@
                 <%: item.ubigeoDestino.NoDescripcion%>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.FechaSalida) %>
+                <%: String.Format("{0:d}", item.FechaSalida) %>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.FechaRetorno) %>
+                <%: String.Format("{0:d}", item.FechaRetorno) %>
             </td>
             <td>
                 <%: item.SustentoViaje %>

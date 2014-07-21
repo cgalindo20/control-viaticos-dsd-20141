@@ -16,7 +16,7 @@
         <div class="display-field"><%: Model.CodigoSolicitud %></div>
         
         <div class="display-label"><b>Fecha Solicitud</b></div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.FechaSolicitud) %></div>             
+        <div class="display-field"><%: String.Format("{0:d}", Model.FechaSolicitud) %></div>             
         
         <div class="display-label"><b>Origen</b></div>
         <div class="display-field"><%: Model.ubigeoOrigen.NoDescripcion %></div>
@@ -25,10 +25,10 @@
         <div class="display-field"><%: Model.ubigeoDestino.NoDescripcion %></div>
         
         <div class="display-label"><b>Fecha Salida</b></div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.FechaSalida) %></div>
+        <div class="display-field"><%: String.Format("{0:d}", Model.FechaSalida) %></div>
         
         <div class="display-label"><b>Fecha Retorno</b></div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.FechaRetorno) %></div>
+        <div class="display-field"><%: String.Format("{0:d}", Model.FechaRetorno) %></div>
         
         <div class="display-label"><b>Motivo</b></div>
         <div class="display-field"><%: Model.SustentoViaje %></div>
