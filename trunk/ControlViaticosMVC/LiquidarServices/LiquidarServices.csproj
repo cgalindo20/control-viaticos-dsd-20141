@@ -60,6 +60,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Liquidar.hbm.xml" />
     <EmbeddedResource Include="Dominio\Solicitud.hbm.xml" />
+    <Content Include="Dominio\LiquidarDetalle.hbm.xml" />
+    <Content Include="Dominio\TipoViatico.hbm.xml" />
     <Content Include="Liquidaciones.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
@@ -71,8 +73,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Item.cs" />
     <Compile Include="Dominio\Liquidar.cs" />
+    <Compile Include="Dominio\LiquidarDetalle.cs" />
     <Compile Include="Dominio\Solicitud.cs" />
+    <Compile Include="Dominio\TipoViatico.cs" />
     <Compile Include="ILiquidaciones.cs" />
     <Compile Include="Liquidaciones.svc.cs">
       <DependentUpon>Liquidaciones.svc</DependentUpon>
@@ -82,6 +87,7 @@
     <Compile Include="Persistencia\LiquidarDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\SolicitudDAO.cs" />
+    <Compile Include="Persistencia\TipoViaticoDAO.cs" />
     <Compile Include="Persistencia\ValidationException.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

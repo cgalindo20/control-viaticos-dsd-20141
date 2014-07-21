@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 
-namespace LiquidarServices.Persistencia
+namespace LiquidarServices.Dominio
 {
     [DataContract]
-    public class ValidationException
+    public class TipoViatico
     {
         [DataMember]
-        public int CodigoError { get; set; }
+        public int Co_TipoViatico { get; set; }
         [DataMember]
-        public string MensajeError { get; set; }
+        public String No_Descripcion { get; set; }
     }
 }

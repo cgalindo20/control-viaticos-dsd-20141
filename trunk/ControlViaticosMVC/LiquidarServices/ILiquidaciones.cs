@@ -13,20 +13,24 @@ namespace LiquidarServices
     public interface ILiquidaciones
     {
 
-        [FaultContract(typeof(ValidationException))]
-        [OperationContract]
-        Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
+        //[FaultContract(typeof(ValidationException))]
+        //[OperationContract]
+        //Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
+
+        //[OperationContract]
+        //Liquidar ObtenerLiquidacion(int CoLiquidacion);
+
+        //[OperationContract]
+        //Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
+
+        //[OperationContract]
+        //void EliminarLiquidacion(int CoLiquidacion);
 
         [OperationContract]
-        Liquidar ObtenerLiquidacion(int CoLiquidacion);
-        
+        [FaultContract(typeof(ValidationException))]
+        Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos, List<Item> items);
+
         [OperationContract]
-        Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
-        
-        [OperationContract]
-        void EliminarLiquidacion(int CoLiquidacion);
-        
-        [OperationContract]
-        List<Liquidar> ListarLiquidaciones();
+        ICollection<Liquidar> ListarLiquidaciones();
     }
 }

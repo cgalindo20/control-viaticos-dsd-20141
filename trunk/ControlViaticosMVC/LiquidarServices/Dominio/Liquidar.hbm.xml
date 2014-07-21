@@ -12,5 +12,9 @@
     <property name="Ss_TotalAsignado" column="Ss_TotalAsignado" />
     <property name="Ss_TotalUtilizado" column="Ss_TotalUtilizado" />
     <property name="Ss_OtrosGastos" column="Ss_OtrosGastos" />
+    <bag name="Detalles" inverse="true" table="T_LIQUIDAR_DETALLE">
+      <key column="Co_Liquidacion" />
+      <one-to-many class="LiquidarServices.Dominio.LiquidarDetalle" />
+    </bag>
   </class>
 </hibernate-mapping>
