@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="g9yGP9BTiWMk5zbl1NMxddx1Li0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="d+Ot2vjAm9o3oqMZGoLQGDzYhow=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_ILiquidaciones">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ILiquidaciones" contract="LiquidacionesWS.ILiquidaciones" bindingType="basicHttpBinding" address="http://localhost:51564/Liquidaciones.svc" bindingConfiguration="BasicHttpBinding_ILiquidaciones">
+    <endpoint name="BasicHttpBinding_ILiquidaciones" contract="LiquidacionesWS.ILiquidaciones" bindingType="basicHttpBinding" address="http://localhost:2719/Liquidaciones.svc" bindingConfiguration="BasicHttpBinding_ILiquidaciones">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:51564/Liquidaciones.svc</serializedValue>
+          <serializedValue>http://localhost:2719/Liquidaciones.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

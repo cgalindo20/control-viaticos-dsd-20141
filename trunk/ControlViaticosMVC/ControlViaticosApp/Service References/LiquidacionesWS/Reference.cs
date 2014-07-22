@@ -26,6 +26,9 @@ namespace ControlViaticosApp.LiquidacionesWS {
         private int Co_LiquidacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.LiquidacionesWS.LiquidarDetalle[] DetallesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime Fe_LiquidacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -59,6 +62,19 @@ namespace ControlViaticosApp.LiquidacionesWS {
                 if ((this.Co_LiquidacionField.Equals(value) != true)) {
                     this.Co_LiquidacionField = value;
                     this.RaisePropertyChanged("Co_Liquidacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.LiquidacionesWS.LiquidarDetalle[] Detalles {
+            get {
+                return this.DetallesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetallesField, value) != true)) {
+                    this.DetallesField = value;
+                    this.RaisePropertyChanged("Detalles");
                 }
             }
         }
@@ -199,12 +215,330 @@ namespace ControlViaticosApp.LiquidacionesWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LiquidarDetalle", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class LiquidarDetalle : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.LiquidacionesWS.LiquidarDetallePK PKField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double Ss_MontoAsignadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double Ss_MontoUtilizadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.LiquidacionesWS.LiquidarDetallePK PK {
+            get {
+                return this.PKField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PKField, value) != true)) {
+                    this.PKField = value;
+                    this.RaisePropertyChanged("PK");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Ss_MontoAsignado {
+            get {
+                return this.Ss_MontoAsignadoField;
+            }
+            set {
+                if ((this.Ss_MontoAsignadoField.Equals(value) != true)) {
+                    this.Ss_MontoAsignadoField = value;
+                    this.RaisePropertyChanged("Ss_MontoAsignado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Ss_MontoUtilizado {
+            get {
+                return this.Ss_MontoUtilizadoField;
+            }
+            set {
+                if ((this.Ss_MontoUtilizadoField.Equals(value) != true)) {
+                    this.Ss_MontoUtilizadoField = value;
+                    this.RaisePropertyChanged("Ss_MontoUtilizado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LiquidarDetallePK", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class LiquidarDetallePK : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LiquidarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.LiquidacionesWS.TipoViatico TipoViaticoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Liquidar {
+            get {
+                return this.LiquidarField;
+            }
+            set {
+                if ((this.LiquidarField.Equals(value) != true)) {
+                    this.LiquidarField = value;
+                    this.RaisePropertyChanged("Liquidar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.LiquidacionesWS.TipoViatico TipoViatico {
+            get {
+                return this.TipoViaticoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoViaticoField, value) != true)) {
+                    this.TipoViaticoField = value;
+                    this.RaisePropertyChanged("TipoViatico");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoViatico", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class TipoViatico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Co_TipoViaticoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string No_DescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Co_TipoViatico {
+            get {
+                return this.Co_TipoViaticoField;
+            }
+            set {
+                if ((this.Co_TipoViaticoField.Equals(value) != true)) {
+                    this.Co_TipoViaticoField = value;
+                    this.RaisePropertyChanged("Co_TipoViatico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string No_Descripcion {
+            get {
+                return this.No_DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.No_DescripcionField, value) != true)) {
+                    this.No_DescripcionField = value;
+                    this.RaisePropertyChanged("No_Descripcion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Co_TipoViaticoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double Ss_MontoUtilizadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Co_TipoViatico {
+            get {
+                return this.Co_TipoViaticoField;
+            }
+            set {
+                if ((this.Co_TipoViaticoField.Equals(value) != true)) {
+                    this.Co_TipoViaticoField = value;
+                    this.RaisePropertyChanged("Co_TipoViatico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Ss_MontoUtilizado {
+            get {
+                return this.Ss_MontoUtilizadoField;
+            }
+            set {
+                if ((this.Ss_MontoUtilizadoField.Equals(value) != true)) {
+                    this.Ss_MontoUtilizadoField = value;
+                    this.RaisePropertyChanged("Ss_MontoUtilizado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Persistencia")]
+    [System.SerializableAttribute()]
+    public partial class ValidationException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MensajeErrorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodigoError {
+            get {
+                return this.CodigoErrorField;
+            }
+            set {
+                if ((this.CodigoErrorField.Equals(value) != true)) {
+                    this.CodigoErrorField = value;
+                    this.RaisePropertyChanged("CodigoError");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MensajeError {
+            get {
+                return this.MensajeErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MensajeErrorField, value) != true)) {
+                    this.MensajeErrorField = value;
+                    this.RaisePropertyChanged("MensajeError");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LiquidacionesWS.ILiquidaciones")]
     public interface ILiquidaciones {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/CrearLiquidacion", ReplyAction="http://tempuri.org/ILiquidaciones/CrearLiquidacionResponse")]
-        ControlViaticosApp.LiquidacionesWS.Liquidar CrearLiquidacion(System.DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/ObtenerLiquidacion", ReplyAction="http://tempuri.org/ILiquidaciones/ObtenerLiquidacionResponse")]
         ControlViaticosApp.LiquidacionesWS.Liquidar ObtenerLiquidacion(int CoLiquidacion);
@@ -215,10 +549,12 @@ namespace ControlViaticosApp.LiquidacionesWS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/EliminarLiquidacion", ReplyAction="http://tempuri.org/ILiquidaciones/EliminarLiquidacionResponse")]
         void EliminarLiquidacion(int CoLiquidacion);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/CrearLiquidacion", ReplyAction="http://tempuri.org/ILiquidaciones/CrearLiquidacionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ControlViaticosApp.LiquidacionesWS.ValidationException), Action="http://tempuri.org/ILiquidaciones/CrearLiquidacionValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Persistencia")]
+        ControlViaticosApp.LiquidacionesWS.Liquidar CrearLiquidacion(System.DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, ControlViaticosApp.LiquidacionesWS.Item[] items);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiquidaciones/ListarLiquidaciones", ReplyAction="http://tempuri.org/ILiquidaciones/ListarLiquidacionesResponse")]
-        //ControlViaticosApp.LiquidacionesWS.Liquidar[] ListarLiquidaciones();
         System.Collections.Generic.List<ControlViaticosApp.LiquidacionesWS.Liquidar> ListarLiquidaciones();
-
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -248,10 +584,6 @@ namespace ControlViaticosApp.LiquidacionesWS {
                 base(binding, remoteAddress) {
         }
         
-        public ControlViaticosApp.LiquidacionesWS.Liquidar CrearLiquidacion(System.DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos) {
-            return base.Channel.CrearLiquidacion(FeLiquidacion, CoSolicitud, SsTotalAsignado, SsTotalUtilizado, SsOtrosGastos);
-        }
-        
         public ControlViaticosApp.LiquidacionesWS.Liquidar ObtenerLiquidacion(int CoLiquidacion) {
             return base.Channel.ObtenerLiquidacion(CoLiquidacion);
         }
@@ -264,12 +596,10 @@ namespace ControlViaticosApp.LiquidacionesWS {
             base.Channel.EliminarLiquidacion(CoLiquidacion);
         }
         
-        /*
-        public ControlViaticosApp.LiquidacionesWS.Liquidar[] ListarLiquidaciones() {
-            return base.Channel.ListarLiquidaciones();
+        public ControlViaticosApp.LiquidacionesWS.Liquidar CrearLiquidacion(System.DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, ControlViaticosApp.LiquidacionesWS.Item[] items) {
+            return base.Channel.CrearLiquidacion(FeLiquidacion, CoSolicitud, SsTotalAsignado, SsTotalUtilizado, SsOtrosGastos, items);
         }
-        */
-
+        
         public System.Collections.Generic.List<ControlViaticosApp.LiquidacionesWS.Liquidar> ListarLiquidaciones()
         {
             return base.Channel.ListarLiquidaciones();
