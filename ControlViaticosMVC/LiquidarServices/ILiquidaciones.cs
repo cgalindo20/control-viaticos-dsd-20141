@@ -17,20 +17,20 @@ namespace LiquidarServices
         //[OperationContract]
         //Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
 
-        //[OperationContract]
-        //Liquidar ObtenerLiquidacion(int CoLiquidacion);
+        [OperationContract]
+        Liquidar ObtenerLiquidacion(int CoLiquidacion);
 
-        //[OperationContract]
-        //Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
+        [OperationContract]
+        Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos);
 
-        //[OperationContract]
-        //void EliminarLiquidacion(int CoLiquidacion);
+        [OperationContract]
+        void EliminarLiquidacion(int CoLiquidacion);
 
         [OperationContract]
         [FaultContract(typeof(ValidationException))]
         Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, Double SsTotalAsignado, Double SsTotalUtilizado, Double SsOtrosGastos, List<Item> items);
 
         [OperationContract]
-        ICollection<Liquidar> ListarLiquidaciones();
+        List<Liquidar> ListarLiquidaciones();
     }
 }

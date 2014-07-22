@@ -12,11 +12,30 @@ namespace LiquidarServices
 
     public class Liquidaciones : ILiquidaciones
     {
-        private SolicitudDAO solicitudDAO = new SolicitudDAO();
+        //private SolicitudDAO solicitudDAO = new SolicitudDAO();
         private TipoViaticoDAO tipoViaticoDAO = new TipoViaticoDAO();
-        private LiquidarDAO liquidarDAO = new LiquidarDAO();
+        //private LiquidarDAO liquidarDAO = new LiquidarDAO();
         private LiquidarDetalleDAO liquidarDetalleDAO = new LiquidarDetalleDAO();
-
+        private LiquidarDAO liquidarDAO = null;
+        private LiquidarDAO LiquidarDAO
+        {
+            get
+            {
+                if (liquidarDAO == null)
+                    liquidarDAO = new LiquidarDAO();
+                return liquidarDAO;
+            }
+        }
+        private SolicitudDAO solicitudDAO = null;
+        private SolicitudDAO SolicitudDAO
+        {
+            get
+            {
+                if (solicitudDAO == null)
+                    solicitudDAO = new SolicitudDAO();
+                return solicitudDAO;
+            }
+        }
 
         //public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
         //{
@@ -39,37 +58,37 @@ namespace LiquidarServices
 
         //}
 
-        //public Liquidar ObtenerLiquidacion(int CoLiquidacion)
-        //{
-        //    return LiquidarDAO.Obtener(CoLiquidacion);
-        //}
+        public Liquidar ObtenerLiquidacion(int CoLiquidacion)
+        {
+            return LiquidarDAO.Obtener(CoLiquidacion);
+        }
 
-        //public Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
-        //{
-        //    Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
-        //    Liquidar liquidarModificar = new Liquidar()
-        //    {
-        //        Co_Liquidacion = CoLiquidacion,
-        //        Fe_Liquidacion = FeLiquidacion,
-        //        Ss_TotalAsignado = SsTotalAsignado,
-        //        Ss_TotalUtilizado = SsTotalUtilizado,
-        //        Ss_OtrosGastos = SsOtrosGastos,
-        //        solicitud = solicitudExistente
-        //    };
+        public Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
+        {
+            Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
+            Liquidar liquidarModificar = new Liquidar()
+            {
+                Co_Liquidacion = CoLiquidacion,
+                Fe_Liquidacion = FeLiquidacion,
+                Ss_TotalAsignado = SsTotalAsignado,
+                Ss_TotalUtilizado = SsTotalUtilizado,
+                Ss_OtrosGastos = SsOtrosGastos,
+                solicitud = solicitudExistente
+            };
 
-        //    return LiquidarDAO.Modificar(liquidarModificar);
-        //}
+            return LiquidarDAO.Modificar(liquidarModificar);
+        }
 
-        //public void EliminarLiquidacion(int CoLiquidacion)
-        //{
-        //    Liquidar liquidarExistente = LiquidarDAO.Obtener(CoLiquidacion);
-        //    LiquidarDAO.Eliminar(liquidarExistente);
-        //}
+        public void EliminarLiquidacion(int CoLiquidacion)
+        {
+            Liquidar liquidarExistente = LiquidarDAO.Obtener(CoLiquidacion);
+            LiquidarDAO.Eliminar(liquidarExistente);
+        }
 
-        //public List<Liquidar> ListarLiquidaciones()
-        //{
-        //    return LiquidarDAO.ListarTodos().ToList();
-        //}
+        public List<Liquidar> ListarLiquidaciones()
+        {
+            return LiquidarDAO.ListarTodos().ToList();
+        }
 
 
         public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, List<Item> items)
@@ -117,9 +136,9 @@ namespace LiquidarServices
         }
 
 
-        public ICollection<Liquidar> ListarLiquidaciones()
-        {
-            return liquidarDAO.ListarTodos();
-        }
+        //public ICollection<Liquidar> ListarLiquidaciones()
+        //{
+        //    return liquidarDAO.ListarTodos();
+        //}
     }
 }

@@ -6,6 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <form id="form1" runat="server">
+
     <h2>Crear REgistro</h2>
 
     <% using (Html.BeginForm()) {%>
@@ -61,7 +63,7 @@
                 <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud)%>
                 <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
             </div>
-                        
+            
             <p>
                 <input type="submit" value="LiquidarCreate" />
             </p>
@@ -72,6 +74,8 @@
     <div>
         <%: Html.ActionLink("Regresar a la Lista", "Index") %>
     </div>
+
+</form>
 
 </asp:Content>
 
