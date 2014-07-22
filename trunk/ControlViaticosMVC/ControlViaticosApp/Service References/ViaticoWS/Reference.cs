@@ -274,7 +274,7 @@ namespace ControlViaticosApp.ViaticoWS {
     public interface IViaticosChannel : ControlViaticosApp.ViaticoWS.IViaticos, System.ServiceModel.IClientChannel {
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()] 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ViaticosClient : System.ServiceModel.ClientBase<ControlViaticosApp.ViaticoWS.IViaticos>, ControlViaticosApp.ViaticoWS.IViaticos {
         
