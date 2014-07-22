@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5dda4125-a7f5-4d2c-a49c-982c61f83533" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6f753da0-39fc-40ce-8218-9662957debb3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,14 +18,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:51564/Liquidaciones.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:2719/Liquidaciones.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Liquidaciones.xsd" MetadataType="Schema" ID="84a0a40d-bc83-4ee6-a6bd-d81f1ac90b3b" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd0" />
-    <MetadataFile FileName="Liquidaciones1.xsd" MetadataType="Schema" ID="db406cf1-5ed2-4926-9bdf-53cf7c7d5e0d" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd2" />
-    <MetadataFile FileName="Liquidaciones.disco" MetadataType="Disco" ID="3afd6c6c-9a80-4eed-a854-aabe5544632a" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?disco" />
-    <MetadataFile FileName="Liquidaciones.wsdl" MetadataType="Wsdl" ID="9031677d-f992-4361-ae3f-3d827ab2bf8a" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?wsdl" />
-    <MetadataFile FileName="Liquidaciones2.xsd" MetadataType="Schema" ID="79b59d24-baf6-4ab7-b04f-4c4df71014c1" SourceId="1" SourceUrl="http://localhost:51564/Liquidaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Liquidaciones.wsdl" MetadataType="Wsdl" ID="2c26b028-12c6-459c-a36d-dff955e9935d" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?wsdl" />
+    <MetadataFile FileName="Liquidaciones.disco" MetadataType="Disco" ID="5b2a2e75-5c68-4e07-8035-6116f63a95df" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?disco" />
+    <MetadataFile FileName="Liquidaciones.xsd" MetadataType="Schema" ID="1337b9fc-a58d-491d-9cd3-8fbef8446ce3" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?xsd=xsd2" />
+    <MetadataFile FileName="Liquidaciones1.xsd" MetadataType="Schema" ID="af10f979-1968-42bb-8e2e-b7b72f124f24" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?xsd=xsd3" />
+    <MetadataFile FileName="Liquidaciones2.xsd" MetadataType="Schema" ID="26615f52-0eee-45a7-ae9b-68ee933b5d49" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Liquidaciones3.xsd" MetadataType="Schema" ID="3a836916-18ce-4f99-94af-523ed6393f89" SourceId="1" SourceUrl="http://localhost:2719/Liquidaciones.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

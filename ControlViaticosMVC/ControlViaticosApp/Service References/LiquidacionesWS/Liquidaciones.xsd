@@ -1,79 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:51564/Liquidaciones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" />
-  <xs:element name="CrearLiquidacion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="FeLiquidacion" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="CoSolicitud" type="xs:int" />
-        <xs:element minOccurs="0" name="SsTotalAsignado" type="xs:double" />
-        <xs:element minOccurs="0" name="SsTotalUtilizado" type="xs:double" />
-        <xs:element minOccurs="0" name="SsOtrosGastos" type="xs:double" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CrearLiquidacionResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="CrearLiquidacionResult" nillable="true" type="q1:Liquidar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerLiquidacion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerLiquidacionResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ObtenerLiquidacionResult" nillable="true" type="q2:Liquidar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ModificarLiquidacion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
-        <xs:element minOccurs="0" name="FeLiquidacion" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="CoSolicitud" type="xs:int" />
-        <xs:element minOccurs="0" name="SsTotalAsignado" type="xs:double" />
-        <xs:element minOccurs="0" name="SsTotalUtilizado" type="xs:double" />
-        <xs:element minOccurs="0" name="SsOtrosGastos" type="xs:double" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ModificarLiquidacionResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ModificarLiquidacionResult" nillable="true" type="q3:Liquidar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarLiquidacion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CoLiquidacion" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarLiquidacionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListarLiquidaciones">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListarLiquidacionesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" minOccurs="0" name="ListarLiquidacionesResult" nillable="true" type="q4:ArrayOfLiquidar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LiquidarServices.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Liquidar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_Liquidacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfLiquidarDetalle" />
+      <xs:element minOccurs="0" name="Fe_Liquidacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Ss_OtrosGastos" type="xs:double" />
+      <xs:element minOccurs="0" name="Ss_TotalAsignado" type="xs:double" />
+      <xs:element minOccurs="0" name="Ss_TotalUtilizado" type="xs:double" />
+      <xs:element minOccurs="0" name="solicitud" nillable="true" type="tns:Solicitud" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Liquidar" nillable="true" type="tns:Liquidar" />
+  <xs:complexType name="ArrayOfLiquidarDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LiquidarDetalle" nillable="true" type="tns:LiquidarDetalle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLiquidarDetalle" nillable="true" type="tns:ArrayOfLiquidarDetalle" />
+  <xs:complexType name="LiquidarDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PK" nillable="true" type="tns:LiquidarDetallePK" />
+      <xs:element minOccurs="0" name="Ss_MontoAsignado" type="xs:double" />
+      <xs:element minOccurs="0" name="Ss_MontoUtilizado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LiquidarDetalle" nillable="true" type="tns:LiquidarDetalle" />
+  <xs:complexType name="LiquidarDetallePK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Liquidar" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoViatico" nillable="true" type="tns:TipoViatico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LiquidarDetallePK" nillable="true" type="tns:LiquidarDetallePK" />
+  <xs:complexType name="TipoViatico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_TipoViatico" type="xs:int" />
+      <xs:element minOccurs="0" name="No_Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoViatico" nillable="true" type="tns:TipoViatico" />
+  <xs:complexType name="Solicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_Solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Fe_Solicitud" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Solicitud" nillable="true" type="tns:Solicitud" />
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_TipoViatico" type="xs:int" />
+      <xs:element minOccurs="0" name="Ss_MontoUtilizado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:complexType name="ArrayOfLiquidar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Liquidar" nillable="true" type="tns:Liquidar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLiquidar" nillable="true" type="tns:ArrayOfLiquidar" />
 </xs:schema>

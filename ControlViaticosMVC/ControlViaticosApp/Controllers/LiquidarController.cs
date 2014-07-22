@@ -39,7 +39,8 @@ namespace ControlViaticosApp.Controllers
                                         int.Parse(collection["solicitud.Co_Solicitud"]),                    
                                         Double.Parse(collection["Ss_TotalAsignado"]),
                                         Double.Parse(collection["Ss_TotalUtilizado"]),
-                                        Double.Parse(collection["Ss_OtrosGastos"])
+                                        Double.Parse(collection["Ss_OtrosGastos"]),
+                                        null
                                         );
 
                 return RedirectToAction("Index");
