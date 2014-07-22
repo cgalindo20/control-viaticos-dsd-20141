@@ -15,52 +15,48 @@
             <legend>Campos</legend>
             
             <div class="editor-label">
-               Código Solicitud
+               <span style="color:red">Solicitud</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
+                <%: Html.TextBoxFor(model => model.CodigoSolicitud, new Dictionary<string, object> { { "readonly", "readonly" } })%>
                 <%: Html.ValidationMessageFor(model => model.CodigoSolicitud) %>
             </div>
             
             <div class="editor-label">
-               Fecha Solicitud
+               <span style="color:red">Fecha Solicitud</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
+                <%: Html.TextBoxFor(model => model.FechaSolicitud) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
 
-            <div class="editor-label">
+            <!--div class="editor-label">
                Solicitante
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoEmpleadoSolicitante) %>
-            </div>
+            </div-->
+            <!--div class="editor-field">
+                <!--%: Html.TextBoxFor(model => model.CodigoEmpleadoSolicitante) %-->
+                <!--%: Html.ValidationMessageFor(model => model.CodigoEmpleadoSolicitante) %-->
+            <!--/div-->
             
             <div class="editor-label">
                 Origen
             </div>
             <div class="editor-field">
-             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>
-                <!--%: Html.TextBoxFor(model => model.ubigeoOrigen.CodigoUbigeo)%-->
-                <!--%: Html.ValidationMessageFor(model => model.ubigeoOrigen.CodigoUbigeo)%-->
+             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
             </div>
             
             <div class="editor-label">
                Destino
             </div>
             <div class="editor-field">
-             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>
-                <!--%: Html.TextBoxFor(model => model.ubigeoDestino.CodigoUbigeo)%-->
-                <!--%: Html.ValidationMessageFor(model => model.ubigeoDestino.CodigoUbigeo)%-->
+             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
             </div>
             
             <div class="editor-label">
                 Fecha de Salida
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:d}", Model.FechaSalida)) %>
+                <%: Html.TextBoxFor(model => model.FechaSalida, new { @id = "datepicker1", @Value = Model.FechaSalida.ToString("dd/MM/yyyy") })%>
                 <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
             </div>
             
@@ -68,7 +64,7 @@
                Fecha de Retorno
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:d}", Model.FechaRetorno)) %>
+                <%: Html.TextBoxFor(model => model.FechaRetorno, new { @id = "datepicker2", @Value = Model.FechaRetorno.ToString("dd/MM/yyyy") })%>
                 <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
             </div>
             
@@ -98,6 +94,18 @@
     <div>
         <%: Html.ActionLink("Regresar a la Lista", "Index") %>
     </div>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#datepicker1").datepicker({ dateFormat: "dd/mm/yy" });
+
+        });
+
+        $(function () {
+            $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" });
+        });
+
+        </script>
 
 </asp:Content>
 
