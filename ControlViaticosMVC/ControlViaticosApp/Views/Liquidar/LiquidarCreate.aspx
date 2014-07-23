@@ -64,12 +64,57 @@
                 <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
             </div>
             
+            <fieldset>	
+		        <table>
+			        <thead>
+				        <tr>
+					        <th width="60" align="center">Tipo de Viatico</th>
+					        <th width="60" align="center">Monto Asignado</th>
+					        <th width="60" align="center">Monto Utilizado</th>
+				        </tr>
+			        </thead>
+			        <tbody>
+					    <tr>
+						    <td width="60">
+                                <%: Html.TextBoxFor(model => model.Detalles[0].PK.TipoViatico)%>
+						    </td>
+			
+						    <td width="60">
+							    <%: Html.TextBoxFor(model => model.Detalles[0].Ss_MontoAsignado)%>
+						    </td>
+
+						    <td width="60">
+							    <%: Html.TextBoxFor(model => model.Detalles[0].Ss_MontoUtilizado)%>
+						    </td>
+					    </tr>
+
+					    <tr>
+						    <td width="60">
+                                <%: Html.TextBoxFor(model => model.Detalles[1].PK.TipoViatico)%>
+						    </td>
+			
+						    <td width="60">
+							    <%: Html.TextBoxFor(model => model.Detalles[1].Ss_MontoAsignado)%>
+						    </td>
+
+						    <td width="60">
+							    <%: Html.TextBoxFor(model => model.Detalles[1].Ss_MontoUtilizado)%>
+						    </td>
+					    </tr>
+
+			        </tbody>
+		        </table>
+	        </fieldset>	
+
+
+
             <p>
                 <input type="submit" value="LiquidarCreate" />
             </p>
         </fieldset>
 
     <% } %>
+
 
     <div>
         <%: Html.ActionLink("Regresar a la Lista", "Index") %>
