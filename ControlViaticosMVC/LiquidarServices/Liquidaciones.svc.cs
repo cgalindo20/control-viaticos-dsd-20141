@@ -12,10 +12,11 @@ namespace LiquidarServices
 
     public class Liquidaciones : ILiquidaciones
     {
-        //private SolicitudDAO solicitudDAO = new SolicitudDAO();
+        private SolicitudDAO solicitudDAO = new SolicitudDAO();
         private TipoViaticoDAO tipoViaticoDAO = new TipoViaticoDAO();
-        //private LiquidarDAO liquidarDAO = new LiquidarDAO();
+        private LiquidarDAO liquidarDAO = new LiquidarDAO();
         private LiquidarDetalleDAO liquidarDetalleDAO = new LiquidarDetalleDAO();
+        /*
         private LiquidarDAO liquidarDAO = null;
         private LiquidarDAO LiquidarDAO
         {
@@ -36,7 +37,7 @@ namespace LiquidarServices
                 return solicitudDAO;
             }
         }
-
+        */
         //public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
         //{
         //    if (SsOtrosGastos > 0.2 * (SsTotalUtilizado))
@@ -60,12 +61,12 @@ namespace LiquidarServices
 
         public Liquidar ObtenerLiquidacion(int CoLiquidacion)
         {
-            return LiquidarDAO.Obtener(CoLiquidacion);
+            return liquidarDAO.Obtener(CoLiquidacion);
         }
 
         public Liquidar ModificarLiquidacion(int CoLiquidacion, DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
         {
-            Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
+            Solicitud solicitudExistente = solicitudDAO.Obtener(CoSolicitud);
             Liquidar liquidarModificar = new Liquidar()
             {
                 Co_Liquidacion = CoLiquidacion,
@@ -76,24 +77,24 @@ namespace LiquidarServices
                 solicitud = solicitudExistente
             };
 
-            return LiquidarDAO.Modificar(liquidarModificar);
+            return liquidarDAO.Modificar(liquidarModificar);
         }
 
         public void EliminarLiquidacion(int CoLiquidacion)
         {
-            Liquidar liquidarExistente = LiquidarDAO.Obtener(CoLiquidacion);
-            LiquidarDAO.Eliminar(liquidarExistente);
+            Liquidar liquidarExistente = liquidarDAO.Obtener(CoLiquidacion);
+            liquidarDAO.Eliminar(liquidarExistente);
         }
 
         public List<Liquidar> ListarLiquidaciones()
         {
-            return LiquidarDAO.ListarTodos().ToList();
+            return liquidarDAO.ListarTodos().ToList();
         }
 
 
         public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, List<Item> items)
         {
-            Solicitud solicitudAux = SolicitudDAO.Obtener(CoSolicitud);
+            Solicitud solicitudAux = solicitudDAO.Obtener(CoSolicitud);
             if (solicitudAux == null) //solicitud inexistente
                 throw new FaultException<ValidationException>(
                     new ValidationException()
