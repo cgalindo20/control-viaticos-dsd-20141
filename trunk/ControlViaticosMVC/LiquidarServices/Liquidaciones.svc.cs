@@ -93,7 +93,7 @@ namespace LiquidarServices
 
         public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, List<Item> items)
         {
-            Solicitud solicitudAux = solicitudDAO.Obtener(CoSolicitud);
+            Solicitud solicitudAux = SolicitudDAO.Obtener(CoSolicitud);
             if (solicitudAux == null) //solicitud inexistente
                 throw new FaultException<ValidationException>(
                     new ValidationException()
