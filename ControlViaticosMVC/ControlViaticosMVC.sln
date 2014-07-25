@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarifarioServices", "Tarifa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresupuestoServices", "PresupuestoServices\PresupuestoServices.csproj", "{53B9298B-A539-4F71-817C-7A81BB68C92E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTServices", "RESTServices\RESTServices.csproj", "{3CE44F60-E849-4F6A-A2AA-33D4F1C01FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTTEST3", "RESTTEST3\RESTTEST3.csproj", "{7DBF1164-6A56-4CD5-A0B7-FD3F44980CAF}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -70,6 +74,14 @@ Global
 		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53B9298B-A539-4F71-817C-7A81BB68C92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE44F60-E849-4F6A-A2AA-33D4F1C01FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE44F60-E849-4F6A-A2AA-33D4F1C01FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE44F60-E849-4F6A-A2AA-33D4F1C01FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE44F60-E849-4F6A-A2AA-33D4F1C01FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DBF1164-6A56-4CD5-A0B7-FD3F44980CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DBF1164-6A56-4CD5-A0B7-FD3F44980CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DBF1164-6A56-4CD5-A0B7-FD3F44980CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DBF1164-6A56-4CD5-A0B7-FD3F44980CAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
