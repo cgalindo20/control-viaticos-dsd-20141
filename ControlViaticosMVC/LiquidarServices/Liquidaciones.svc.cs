@@ -59,6 +59,8 @@ namespace LiquidarServices
 
         //}
 
+
+
         public Liquidar ObtenerLiquidacion(int CoLiquidacion)
         {
             return liquidarDAO.Obtener(CoLiquidacion);

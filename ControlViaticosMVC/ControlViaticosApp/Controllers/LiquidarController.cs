@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ControlViaticosApp.Models;
+using LiquidarServices.Dominio;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -35,6 +36,7 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
+                //List<Item>
                 proxy.CrearLiquidacion( DateTime.Parse(collection["Fe_Liquidacion"]),
                                         int.Parse(collection["solicitud.Co_Solicitud"]),                    
                                         Double.Parse(collection["Ss_TotalAsignado"]),
