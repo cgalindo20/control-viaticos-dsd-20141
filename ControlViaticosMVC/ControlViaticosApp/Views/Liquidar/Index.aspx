@@ -64,7 +64,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "LiquidarCreate") %>
+        <%: Html.ActionLink("Create New", "BuscaSolicitud") %>
     </p>
 
 </asp:Content>

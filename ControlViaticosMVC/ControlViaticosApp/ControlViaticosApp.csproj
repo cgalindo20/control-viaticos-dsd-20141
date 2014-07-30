@@ -140,6 +140,7 @@
     <Content Include="Views\Autorizar\Details.aspx" />
     <Content Include="Views\Autorizar\Edit.aspx" />
     <Content Include="Views\Autorizar\Index.aspx" />
+    <Content Include="Views\Liquidar\BuscaSolicitud.aspx" />
     <Content Include="Views\Liquidar\Index.aspx" />
     <Content Include="Views\Liquidar\LiquidarCreate.aspx" />
     <Content Include="Views\Liquidar\LiquidarDelete.aspx" />

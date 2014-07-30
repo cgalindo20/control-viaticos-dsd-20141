@@ -16,23 +16,6 @@
         <fieldset>
             <legend>Campos</legend>
             
-            
-<%--            <div class="editor-label">
-                <%: Html.LabelFor(model => model.Co_Liquidacion) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Co_Liquidacion) %>
-                <%: Html.ValidationMessageFor(model => model.Co_Liquidacion) %>
-            </div>
-            
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.Fe_Liquidacion) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Fe_Liquidacion) %>
-                <%: Html.ValidationMessageFor(model => model.Fe_Liquidacion) %>
-            </div>--%>
-            
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.solicitud.Co_Solicitud) %>
             </div>
