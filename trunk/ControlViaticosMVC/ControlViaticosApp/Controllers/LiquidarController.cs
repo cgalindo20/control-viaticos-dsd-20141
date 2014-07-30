@@ -12,7 +12,7 @@ namespace ControlViaticosApp.Controllers
     {
 
         //Instanciar LiquidarServices
-        private  LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
+        private LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
         private ViaticoWS.ViaticosClient proxy2 = new ViaticoWS.ViaticosClient();
 
         public ActionResult Index()
@@ -27,19 +27,30 @@ namespace ControlViaticosApp.Controllers
             return View(liquidacionObtenida);
         }
 
-
-        public ActionResult BuscaSolicitud(int id)
+        [HttpPost]
+        public ActionResult ConsultarSolicitud(FormCollection form)
         {
-            ViaticoWS.Viatico viaticoObtenido = proxy2.ObtenerSolicitud(id);
+            ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();
             LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
-            liquidacionObtenida.Ss_TotalAsignado = viaticoObtenido.TotalSolicitado;
+            LiquidacionesWS.Solicitud solicitudObtenida = new LiquidacionesWS.Solicitud();
 
-            return View(liquidacionObtenida);
+            viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(form["nuSolicitud"]));
+            solicitudObtenida.Co_Solicitud = viaticoObtenido.CodigoSolicitud;
+            solicitudObtenida.Fe_Solicitud = viaticoObtenido.FechaSolicitud;
+            
+
+            liquidacionObtenida.solicitud = solicitudObtenida;
+            return View("LiquidarCreate", liquidacionObtenida);
         }
 
-        public ActionResult LiquidarCreate()
+        public ActionResult BuscaSolicitud()
         {
             return View();
+        }
+
+        public ActionResult LiquidarCreate(LiquidacionesWS.Liquidar liquidacionObtenida)
+        {
+            return View(liquidacionObtenida);
         } 
 
         [HttpPost]

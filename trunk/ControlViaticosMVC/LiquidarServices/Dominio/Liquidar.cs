@@ -11,19 +11,19 @@ namespace LiquidarServices.Dominio
     public class Liquidar
     {
 
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public int Co_Liquidacion { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public DateTime Fe_Liquidacion { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public Solicitud solicitud { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public Double Ss_TotalAsignado { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public Double Ss_TotalUtilizado { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public Double Ss_OtrosGastos { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public IList<LiquidarDetalle> Detalles { get; set; }
 
     }
