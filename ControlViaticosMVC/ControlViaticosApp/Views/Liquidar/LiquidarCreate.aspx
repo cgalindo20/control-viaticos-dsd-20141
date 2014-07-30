@@ -16,7 +16,8 @@
         <fieldset>
             <legend>Campos</legend>
             
-            <div class="editor-label">
+            
+<%--            <div class="editor-label">
                 <%: Html.LabelFor(model => model.Co_Liquidacion) %>
             </div>
             <div class="editor-field">
@@ -30,8 +31,24 @@
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.Fe_Liquidacion) %>
                 <%: Html.ValidationMessageFor(model => model.Fe_Liquidacion) %>
-            </div>
+            </div>--%>
             
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.solicitud.Co_Solicitud) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud)%>
+                <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
+            </div>
+
+            <table>
+            <tr>
+                <td>
+                    <%: Html.ActionLink("Buscar", "BuscaSolicitud", new { id = 1 })%> 
+                </td>
+            </tr>
+            </table>
+
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Ss_TotalAsignado) %>
             </div>
@@ -56,13 +73,7 @@
                 <%: Html.ValidationMessageFor(model => model.Ss_OtrosGastos) %>
             </div>
 
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.solicitud.Co_Solicitud) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud)%>
-                <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud)%>
-            </div>
+
             
             <fieldset>	
 		        <table>

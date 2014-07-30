@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ControlViaticosApp.Models;
-using LiquidarServices.Dominio;
+using ControlViaticosApp.LiquidacionesWS;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -13,6 +13,7 @@ namespace ControlViaticosApp.Controllers
 
         //Instanciar LiquidarServices
         private  LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
+        private ViaticoWS.ViaticosClient proxy2 = new ViaticoWS.ViaticosClient();
 
         public ActionResult Index()
         {
@@ -26,6 +27,16 @@ namespace ControlViaticosApp.Controllers
             return View(liquidacionObtenida);
         }
 
+
+        public ActionResult BuscaSolicitud(int id)
+        {
+            ViaticoWS.Viatico viaticoObtenido = proxy2.ObtenerSolicitud(id);
+            LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
+            liquidacionObtenida.Ss_TotalAsignado = viaticoObtenido.TotalSolicitado;
+
+            return View(liquidacionObtenida);
+        }
+
         public ActionResult LiquidarCreate()
         {
             return View();
@@ -36,19 +47,25 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
+                
+                LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[1];
+                LiquidacionesWS.Item itemY = new LiquidacionesWS.Item();
+                itemY.Co_TipoViatico = 1;
+                itemY.Ss_MontoUtilizado = 550;
+
+                itemX[0]=itemY;
+                
                 //List<Item>
-                proxy.CrearLiquidacion( DateTime.Parse(collection["Fe_Liquidacion"]),
+                proxy.CrearLiquidacion( DateTime.Today,
                                         int.Parse(collection["solicitud.Co_Solicitud"]),                    
                                         Double.Parse(collection["Ss_TotalAsignado"]),
                                         Double.Parse(collection["Ss_TotalUtilizado"]),
                                         Double.Parse(collection["Ss_OtrosGastos"]),
-                                        null
+                                        itemX
                                         );
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+                return RedirectToAction("Index");           
+            }catch (Exception e){
                 return View();
             }
         }
