@@ -30,15 +30,29 @@ namespace ControlViaticosApp.Controllers
         [HttpPost]
         public ActionResult ConsultarSolicitud(FormCollection form)
         {
-            ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();
+            ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();            
             LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
             LiquidacionesWS.Solicitud solicitudObtenida = new LiquidacionesWS.Solicitud();
+            LiquidacionesWS.Ubigeo ubigeoOri = new LiquidacionesWS.Ubigeo();
+            LiquidacionesWS.Ubigeo ubigeoDest = new LiquidacionesWS.Ubigeo();
 
             viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(form["nuSolicitud"]));
             solicitudObtenida.Co_Solicitud = viaticoObtenido.CodigoSolicitud;
             solicitudObtenida.Fe_Solicitud = viaticoObtenido.FechaSolicitud;
+            solicitudObtenida.Co_EmpSolicitante = viaticoObtenido.CodigoEmpleadoSolicitante;
             
+            ubigeoOri.CodigoUbigeo = viaticoObtenido.ubigeoOrigen.CodigoUbigeo;
+            ubigeoOri.NoDescripcion = viaticoObtenido.ubigeoOrigen.NoDescripcion;
+            solicitudObtenida.ubigeoOrigen = ubigeoOri;
 
+            ubigeoDest.CodigoUbigeo = viaticoObtenido.ubigeoDestino.CodigoUbigeo;
+            ubigeoDest.NoDescripcion = viaticoObtenido.ubigeoDestino.NoDescripcion;
+            solicitudObtenida.ubigeoDestino = ubigeoDest;
+
+            solicitudObtenida.Fe_Salida = viaticoObtenido.FechaSalida;
+            solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
+            solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
+                            
             liquidacionObtenida.solicitud = solicitudObtenida;
             return View("LiquidarCreate", liquidacionObtenida);
         }

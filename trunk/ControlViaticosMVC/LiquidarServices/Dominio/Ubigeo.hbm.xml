@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LiquidarServices"
+                   namespace="LiquidarServices.Dominio"
+                   default-lazy="false">
+  <class name="Ubigeo" table="T_UBIGEO">
+    <id name="CodigoUbigeo" column="Co_Ubigeo">
+      <generator class="increment" />
+    </id>
+    <property name="NoDescripcion" column="No_Descripcion" />    
+  </class>
+</hibernate-mapping>
