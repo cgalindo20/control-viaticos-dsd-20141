@@ -26,8 +26,9 @@ namespace ControlViaticosServices.Dominio
         [DataMember]
         public String SustentoViaje { get; set; }        
         [DataMember]
-        public Double TotalSolicitado { get; set; }       
-        
+        public Double TotalSolicitado { get; set; }
+        [DataMember]
+        public IList<ViaticoDetalle> Detalles { get; set; }        
 
     }
 }

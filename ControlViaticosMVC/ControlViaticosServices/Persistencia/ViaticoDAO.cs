@@ -9,4 +9,8 @@ namespace ControlViaticosServices.Persistencia
     public class ViaticoDAO : BaseDAO<Viatico, int>
     {
     }
+
+    public class ViaticoDetalleDAO : BaseDAO<ViaticoDetalle, ViaticoDetallePK>
+    {
+    }
 }

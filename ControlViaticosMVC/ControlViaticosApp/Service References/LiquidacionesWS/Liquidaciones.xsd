@@ -44,6 +44,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Co_EmpSolicitante" type="xs:int" />
       <xs:element minOccurs="0" name="Co_Solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfSolicitudDetalle" />
       <xs:element minOccurs="0" name="Fe_Retorno" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Fe_Salida" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Fe_Solicitud" type="xs:dateTime" />
@@ -54,6 +55,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Solicitud" nillable="true" type="tns:Solicitud" />
+  <xs:complexType name="ArrayOfSolicitudDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SolicitudDetalle" nillable="true" type="tns:SolicitudDetalle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSolicitudDetalle" nillable="true" type="tns:ArrayOfSolicitudDetalle" />
+  <xs:complexType name="SolicitudDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PK" nillable="true" type="tns:SolicitudDetallePK" />
+      <xs:element minOccurs="0" name="Ss_MontoSolicitado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SolicitudDetalle" nillable="true" type="tns:SolicitudDetalle" />
+  <xs:complexType name="SolicitudDetallePK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoViatico" nillable="true" type="tns:TipoViatico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SolicitudDetallePK" nillable="true" type="tns:SolicitudDetallePK" />
   <xs:complexType name="Ubigeo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CodigoUbigeo" type="xs:int" />
