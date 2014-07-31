@@ -35,16 +35,7 @@
 
             <div class="display-label"><b>Sustento</b></div>
             <div class="display-field"><%: Model.solicitud.Tx_Sustento %></div>
-                      
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.Ss_OtrosGastos) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Ss_OtrosGastos) %>
-                <%: Html.ValidationMessageFor(model => model.Ss_OtrosGastos) %>
-            </div>
-
-                        
+                                    
             <fieldset>	
 		        <table>
 			        <thead>
@@ -73,7 +64,14 @@
 			        </tbody>
 		        </table>
 	        </fieldset>	
-
+                      
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.Ss_OtrosGastos) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Ss_OtrosGastos) %>
+                <%: Html.ValidationMessageFor(model => model.Ss_OtrosGastos) %>
+            </div>
 
             <p>
                 <input type="submit" value="LiquidarCreate" />

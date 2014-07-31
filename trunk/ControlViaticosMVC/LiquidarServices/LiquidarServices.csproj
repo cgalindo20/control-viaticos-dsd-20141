@@ -63,6 +63,7 @@
     <EmbeddedResource Include="Dominio\LiquidarDetalle.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoViatico.hbm.xml" />
     <EmbeddedResource Include="Dominio\Ubigeo.hbm.xml" />
+    <EmbeddedResource Include="Dominio\SolicitudDetalle.hbm.xml" />
     <Content Include="Liquidaciones.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
@@ -80,6 +81,7 @@
     <Compile Include="Dominio\Solicitud.cs" />
     <Compile Include="Dominio\TipoViatico.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
+    <Compile Include="Dominio\SolicitudDetalle.cs" />
     <Compile Include="ILiquidaciones.cs" />
     <Compile Include="Liquidaciones.svc.cs">
       <DependentUpon>Liquidaciones.svc</DependentUpon>

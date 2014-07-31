@@ -15,5 +15,9 @@
 	<property name="Fe_Retorno" column="Fe_Retorno" />
 	<property name="Tx_Sustento" column="Tx_Sustento" />
 	<property name="Ss_TotalSolicitado" column="Ss_TotalSolicitado" />
+    <bag name="Detalles" inverse="true" table="T_SOLICITUD_DETALLE">
+      <key column="Co_Solicitud" />
+      <one-to-many class="LiquidarServices.Dominio.SolicitudDetalle" />
+    </bag>
   </class>
 </hibernate-mapping>

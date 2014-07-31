@@ -9,4 +9,8 @@ namespace LiquidarServices.Persistencia
     public class SolicitudDAO : BaseDAO<Solicitud, int>
     {
     }
+
+    public class SolicitudDetalleDAO : BaseDAO<SolicitudDetalle, SolicitudDetallePK>
+    {
+    }
 }

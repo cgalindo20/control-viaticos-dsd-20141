@@ -4,6 +4,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CodigoEmpleadoSolicitante" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfViaticoDetalle" />
       <xs:element minOccurs="0" name="FechaRetorno" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaSalida" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaSolicitud" type="xs:dateTime" />
@@ -14,6 +15,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Viatico" nillable="true" type="tns:Viatico" />
+  <xs:complexType name="ArrayOfViaticoDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ViaticoDetalle" nillable="true" type="tns:ViaticoDetalle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfViaticoDetalle" nillable="true" type="tns:ArrayOfViaticoDetalle" />
+  <xs:complexType name="ViaticoDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PK" nillable="true" type="tns:ViaticoDetallePK" />
+      <xs:element minOccurs="0" name="Ss_MontoSolicitado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ViaticoDetalle" nillable="true" type="tns:ViaticoDetalle" />
+  <xs:complexType name="ViaticoDetallePK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TipoViatico" nillable="true" type="tns:TipoViatico" />
+      <xs:element minOccurs="0" name="Viatico" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ViaticoDetallePK" nillable="true" type="tns:ViaticoDetallePK" />
+  <xs:complexType name="TipoViatico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_TipoViatico" type="xs:int" />
+      <xs:element minOccurs="0" name="No_Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoViatico" nillable="true" type="tns:TipoViatico" />
   <xs:complexType name="Ubigeo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CodigoUbigeo" type="xs:int" />

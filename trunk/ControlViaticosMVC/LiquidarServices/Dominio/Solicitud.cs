@@ -27,6 +27,8 @@ namespace LiquidarServices.Dominio
         [DataMember]
         public String Tx_Sustento { get; set; }
         [DataMember]
-        public Double Ss_TotalSolicitado { get; set; } 
+        public Double Ss_TotalSolicitado { get; set; }
+        [DataMember]
+        public IList<SolicitudDetalle> Detalles { get; set; }     
     }
 }

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="LiquidarServices"
+                   namespace="LiquidarServices.Dominio"
+                   default-lazy="false">
+  <class name="SolicitudDetalle" table="T_SOLICITUD_DETALLE">
+    <composite-id name="PK">
+      <key-property name="Solicitud" column="Co_Solicitud" />
+      <key-many-to-one name="TipoViatico" column="Co_TipoViatico" />
+    </composite-id>    
+    <property name="Ss_MontoSolicitado" column="Ss_MontoSolicitado" />    
+  </class>
+</hibernate-mapping>
