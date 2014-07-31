@@ -42,11 +42,25 @@
   <xs:element name="TipoViatico" nillable="true" type="tns:TipoViatico" />
   <xs:complexType name="Solicitud">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Co_EmpSolicitante" type="xs:int" />
       <xs:element minOccurs="0" name="Co_Solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Fe_Retorno" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fe_Salida" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Fe_Solicitud" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Ss_TotalSolicitado" type="xs:double" />
+      <xs:element minOccurs="0" name="Tx_Sustento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ubigeoDestino" nillable="true" type="tns:Ubigeo" />
+      <xs:element minOccurs="0" name="ubigeoOrigen" nillable="true" type="tns:Ubigeo" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Solicitud" nillable="true" type="tns:Solicitud" />
+  <xs:complexType name="Ubigeo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoUbigeo" type="xs:int" />
+      <xs:element minOccurs="0" name="NoDescripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ubigeo" nillable="true" type="tns:Ubigeo" />
   <xs:complexType name="ArrayOfItem">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />

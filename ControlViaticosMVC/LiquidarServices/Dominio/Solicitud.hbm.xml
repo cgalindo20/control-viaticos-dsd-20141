@@ -8,5 +8,12 @@
       <generator class="increment" />
     </id>
     <property name="Fe_Solicitud" column="Fe_Solicitud" />
+	<property name="Co_EmpSolicitante" column="Co_EmpSolicitante" />
+	<many-to-one name="ubigeoOrigen" column="Co_UbigeoOrigen" />
+	<many-to-one name="ubigeoDestino" column="Co_UbigeoDestino" />
+	<property name="Fe_Salida" column="Fe_Salida" />
+	<property name="Fe_Retorno" column="Fe_Retorno" />
+	<property name="Tx_Sustento" column="Tx_Sustento" />
+	<property name="Ss_TotalSolicitado" column="Ss_TotalSolicitado" />
   </class>
 </hibernate-mapping>

@@ -14,5 +14,19 @@ namespace LiquidarServices.Dominio
         public int Co_Solicitud { get; set; }
         [DataMember]
         public DateTime Fe_Solicitud { get; set; }
+        [DataMember]
+        public int Co_EmpSolicitante { get; set; }
+        [DataMember]
+        public Ubigeo ubigeoOrigen { get; set; }
+        [DataMember]
+        public Ubigeo ubigeoDestino { get; set; }
+        [DataMember]
+        public DateTime Fe_Salida { get; set; }
+        [DataMember]
+        public DateTime Fe_Retorno { get; set; }
+        [DataMember]
+        public String Tx_Sustento { get; set; }
+        [DataMember]
+        public Double Ss_TotalSolicitado { get; set; } 
     }
 }
