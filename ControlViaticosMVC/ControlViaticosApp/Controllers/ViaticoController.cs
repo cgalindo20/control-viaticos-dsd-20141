@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ControlViaticosApp.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ServiceModel;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -67,8 +69,10 @@ namespace ControlViaticosApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (FaultException<ValidationException> ex)
             {
+
+                TempData["alertMessage"] = ex.Detail.ValidationResult;               
                 return View();
             }
         }

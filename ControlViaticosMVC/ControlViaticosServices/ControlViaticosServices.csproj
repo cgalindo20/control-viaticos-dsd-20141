@@ -76,6 +76,7 @@
     <Compile Include="Dominio\TipoViatico.cs" />
     <Compile Include="Dominio\ViaticoDetalle.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
+    <Compile Include="Dominio\ValidationException.cs" />
     <Compile Include="Dominio\Viatico.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
