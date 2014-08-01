@@ -33,6 +33,7 @@ namespace ControlViaticosApp.Controllers
             ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();
             LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
             LiquidacionesWS.Solicitud solicitudObtenida = new LiquidacionesWS.Solicitud();
+            
             LiquidacionesWS.SolicitudDetalle solicitudDetalleObtenida = new LiquidacionesWS.SolicitudDetalle();
             LiquidacionesWS.SolicitudDetallePK solicitudDetallePKObtenida = new LiquidacionesWS.SolicitudDetallePK();
             LiquidacionesWS.TipoViatico tipoViaticoObtenida = new LiquidacionesWS.TipoViatico();            
@@ -57,23 +58,26 @@ namespace ControlViaticosApp.Controllers
             solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
             solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
 
-            IList<LiquidacionesWS.SolicitudDetalle> listDetalles = new List<LiquidacionesWS.SolicitudDetalle>();
-
+            List<LiquidacionesWS.SolicitudDetalle> listDetalles = new List<LiquidacionesWS.SolicitudDetalle>();
+            
+   
             for (int i = 0; i < viaticoObtenido.Detalles.Count; i++)
             {
-                tipoViaticoObtenida.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
-                tipoViaticoObtenida.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
+                //tipoViaticoObtenida.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
+                //tipoViaticoObtenida.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
+                //solicitudDetallePKObtenida.Solicitud = viaticoObtenido.Detalles[i].PK.Viatico;
+                //solicitudDetallePKObtenida.TipoViatico = tipoViaticoObtenida;
+                //solicitudDetalleObtenida.PK = solicitudDetallePKObtenida;
+                //solicitudDetalleObtenida.Ss_MontoSolicitado = viaticoObtenido.Detalles[i].Ss_MontoSolicitado;
 
-                solicitudDetallePKObtenida.Solicitud = viaticoObtenido.Detalles[i].PK.Viatico;
-                solicitudDetallePKObtenida.TipoViatico = tipoViaticoObtenida;
+                //listDetalles.Add(solicitudDetalleObtenida);
 
-                solicitudDetalleObtenida.PK = solicitudDetallePKObtenida;
-                solicitudDetalleObtenida.Ss_MontoSolicitado = viaticoObtenido.Detalles[i].Ss_MontoSolicitado;
-
-                listDetalles.Add(solicitudDetalleObtenida);
-
-
+                solicitudObtenida.Detalles[i].PK.Solicitud = solicitudDetallePKObtenida.Solicitud;
+                solicitudObtenida.Detalles[i].PK.TipoViatico.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
+                solicitudObtenida.Detalles[i].PK.TipoViatico.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
+                solicitudObtenida.Detalles[i].Ss_MontoSolicitado = solicitudDetalleObtenida.Ss_MontoSolicitado;
             }
+
             //solicitudObtenida.Detalles = listDetalles;
 
             liquidacionObtenida.solicitud = solicitudObtenida;
