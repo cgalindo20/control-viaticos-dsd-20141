@@ -910,7 +910,7 @@ namespace ControlViaticosApp.LiquidacionesWS {
         public ControlViaticosApp.LiquidacionesWS.Liquidar CrearLiquidacion(System.DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, ControlViaticosApp.LiquidacionesWS.Item[] items) {
             return base.Channel.CrearLiquidacion(FeLiquidacion, CoSolicitud, SsTotalAsignado, SsTotalUtilizado, SsOtrosGastos, items);
         }
-
+        
         public System.Collections.Generic.List<ControlViaticosApp.LiquidacionesWS.Liquidar> ListarLiquidaciones()
         {
             return base.Channel.ListarLiquidaciones();

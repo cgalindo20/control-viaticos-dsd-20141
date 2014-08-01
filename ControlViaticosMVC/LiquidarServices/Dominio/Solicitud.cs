@@ -30,5 +30,7 @@ namespace LiquidarServices.Dominio
         public Double Ss_TotalSolicitado { get; set; }
         [DataMember]
         public IList<SolicitudDetalle> Detalles { get; set; }     
+        
+
     }
 }
