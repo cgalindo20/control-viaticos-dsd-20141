@@ -36,7 +36,25 @@ namespace ControlViaticosServices
 
         public Viatico CrearSolicitud(  DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, 
                                         DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
-        {         
+        {
+            //La fecha de salida debe ser mayor a 10 dias de la fecha de la solicitud
+            DateTime d1 = fechaSolicitud;
+            DateTime d2 = fechaSalida;
+            // Creamos una variable TimeSpan para almacenar el intervalo de tiempo
+            TimeSpan ts = d2 - d1;
+            // Diferencia en días.
+            int NumDias = ts.Days;
+
+
+            if (NumDias < 10)
+            {
+                throw new FaultException<ValidationException>(
+                    new ValidationException()
+                    {
+                        CodigoError = 6510,
+                        MensajeError = "La Solicitud de viático debe ser mayor a 10 días de la fecha de salida."
+                    });
+            };
 
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);          

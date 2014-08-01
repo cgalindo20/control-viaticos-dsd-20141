@@ -12,7 +12,7 @@ namespace ControlViaticosServices
     [ServiceContract]
     public interface IViaticos
     {
-
+        [FaultContract(typeof(ValidationException))]
         [OperationContract]
         Viatico CrearSolicitud(DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
 

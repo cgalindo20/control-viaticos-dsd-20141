@@ -8,7 +8,15 @@
 
     <h2>Nueva Solicitud</h2>
 
+     <% if(null != TempData["alertMessage"]) 
+           { %>
+              <script type="text/javascript">
+                  alert("@TempData[alertMessage]");
+              </script>
+           <% } %>
+
     <% using (Html.BeginForm()) {%>
+           
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
