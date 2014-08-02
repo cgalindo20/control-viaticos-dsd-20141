@@ -58,9 +58,10 @@ namespace ControlViaticosApp.Controllers
             solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
             solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
 
-            List<LiquidacionesWS.SolicitudDetalle> listDetalles = new List<LiquidacionesWS.SolicitudDetalle>();
-            
-   
+            //List<LiquidacionesWS.SolicitudDetalle> listDetalles = new List<LiquidacionesWS.SolicitudDetalle>();
+
+            LiquidacionesWS.SolicitudDetalle[] item = new LiquidacionesWS.SolicitudDetalle[viaticoObtenido.Detalles.Count];
+
             for (int i = 0; i < viaticoObtenido.Detalles.Count; i++)
             {
                 //tipoViaticoObtenida.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
@@ -72,13 +73,17 @@ namespace ControlViaticosApp.Controllers
 
                 //listDetalles.Add(solicitudDetalleObtenida);
 
-                solicitudObtenida.Detalles[i].PK.Solicitud = solicitudDetallePKObtenida.Solicitud;
-                solicitudObtenida.Detalles[i].PK.TipoViatico.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
-                solicitudObtenida.Detalles[i].PK.TipoViatico.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
-                solicitudObtenida.Detalles[i].Ss_MontoSolicitado = solicitudDetalleObtenida.Ss_MontoSolicitado;
+                item[i] = new SolicitudDetalle();
+                item[i].PK = new SolicitudDetallePK();
+                item[i].PK.TipoViatico = new TipoViatico();
+
+                item[i].PK.TipoViatico.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
+                item[i].PK.TipoViatico.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
+                item[i].PK.Solicitud = viaticoObtenido.Detalles[i].PK.Viatico;
+                item[i].Ss_MontoSolicitado = viaticoObtenido.Detalles[i].Ss_MontoSolicitado;
             }
 
-            //solicitudObtenida.Detalles = listDetalles;
+            solicitudObtenida.Detalles = item;
 
             liquidacionObtenida.solicitud = solicitudObtenida;
 

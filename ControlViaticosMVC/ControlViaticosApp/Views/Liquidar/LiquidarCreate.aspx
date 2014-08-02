@@ -46,19 +46,19 @@
 				        </tr>
 			        </thead>
 			        <tbody>
-				        <% foreach (var item in Model.Detalles)  { %>
+				        <% foreach (var item in Model.solicitud.Detalles)  { %>
 					        <tr>
 						        <td width="60">
                                     <%: item.PK.TipoViatico.No_Descripcion %> 
 						        </td>
 			
 						        <td width="60">
-							        <%: String.Format("{0:F}", item.Ss_MontoAsignado) %>
+							        <%: String.Format("{0:F}", item.Ss_MontoSolicitado) %>
 						        </td>
-
+<%--
 						        <td width="60">
 							        <%: Html.TextBoxFor(model => item.Ss_MontoUtilizado, item.Ss_MontoUtilizado)%>
-						        </td>
+						        </td>--%>
 					        </tr>
 				        <% }  %>
 			        </tbody>
