@@ -15,6 +15,6 @@
     <property name="TotalSolicitado" column="Ss_TotalSolicitado" />
     <property name="FlagAutorizar" column="Fl_Autorizado" />
     <property name="FechaAutorizar" column="Fe_Autorizado" />
-    <property name="CodigoEmpleadoAutorizar" column="Co_EmpAutoriza" />      
+    <property name="CodigoEmpleadoAutorizar" column="Co_EmpAutoriza" />    
   </class>
 </hibernate-mapping>

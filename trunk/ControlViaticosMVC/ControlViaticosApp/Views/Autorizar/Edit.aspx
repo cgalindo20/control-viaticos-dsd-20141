@@ -20,8 +20,7 @@
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
                 <%: Html.ValidationMessageFor(model => model.CodigoSolicitud) %>
-            </div>
-            
+            </div>                     
             <div class="editor-label">
                 Fecha de Solicitud
             </div>
@@ -29,7 +28,26 @@
                 <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
+             <div class="editor-label">
+                Solicitante
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.empleado.CoEmpleado) %>
+                <%: Html.ValidationMessageFor(model => model.empleado.CoEmpleado) %>
+            </div>   
+              <div class="editor-label">
+                Origen
+            </div>
+            <div class="editor-field">
+             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+            </div>
             
+            <div class="editor-label">
+               Destino
+            </div>
+            <div class="editor-field">
+             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+            </div>
             <div class="editor-label">
                Fecha de Salida
             </div>
@@ -63,12 +81,12 @@
             
             <div class="editor-label">
                Autorizar
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FlagAutorizar) %>
-                <%: Html.ValidationMessageFor(model => model.FlagAutorizar) %>
-            </div>                                             
-            
+            </div>           
+             <div class="editor-field">
+             <%: Html.DropDownList("FlagAutorizar", ViewData["estados"] as SelectList)%>                
+            </div>                                                        
+            <br />
+            <br />
             <p>
                 <input type="submit" value="Grabar" />
             </p>

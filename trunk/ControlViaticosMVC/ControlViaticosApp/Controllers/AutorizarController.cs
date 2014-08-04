@@ -61,6 +61,19 @@ namespace ControlViaticosApp.Controllers
         {
             AutorizarWS.Autorizar viaticoEditar = proxy.ObtenerSolicitud(id);
 
+            //Llenar los combobox de Ubigeos
+            List<AutorizarWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
+            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
+            ViewData["ubigeos"] = listUbigeos;
+
+            //Llenar combobox de Estado
+            var list = new[] {   
+                new Estado { Id = "P", Name = "Pendiente" }, 
+                new Estado { Id = "A", Name = "Autorizado" }
+            };
+            var listEstados = new SelectList(list, "Id", "Name");
+            ViewData["estados"] = listEstados;
+
             return View(viaticoEditar);
         }
 
@@ -70,12 +83,22 @@ namespace ControlViaticosApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            int CodigoEmpleadoAutorizar = 2;//obtener de la sesion de login;
+
             try
             {
                 proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
-                                            collection["FlagAutorizar"],
-                                            DateTime.Parse(collection["FechaAutorizar"]),
-                                            1);
+                                        int.Parse(collection["empleado.CoEmpleado"]),
+                                        int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                        int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
+                                        DateTime.Parse(collection["FechaSolicitud"]),
+                                        DateTime.Parse(collection["FechaSalida"]),
+                                        DateTime.Parse(collection["FechaRetorno"]),
+                                        collection["SustentoViaje"],
+                                        Double.Parse(collection["TotalSolicitado"]),
+                                        collection["FlagAutorizar"],
+                                        DateTime.Today,
+                                        CodigoEmpleadoAutorizar); 
 
                 return RedirectToAction("Index");
             }
@@ -109,6 +132,12 @@ namespace ControlViaticosApp.Controllers
             {
                 return View();
             }
+        }
+
+        public class Estado
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }

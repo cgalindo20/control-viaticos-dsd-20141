@@ -19,6 +19,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="codigoSolicitud" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoEmpleadoSolicitante" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoUbigeoOrigen" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoUbigeoDestino" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaSolicitud" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaSalida" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaRetorno" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sustentoViaje" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalSolicitado" type="xs:double" />
         <xs:element minOccurs="0" name="flagAutorizar" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="fechaAutorizar" type="xs:dateTime" />
         <xs:element minOccurs="0" name="codigoEmpleadoAutorizar" type="xs:int" />
@@ -41,6 +49,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AutorizarServices.Dominio" minOccurs="0" name="ListarSolicitudesResult" nillable="true" type="q3:ArrayOfAutorizar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUbigeos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUbigeosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AutorizarServices.Dominio" minOccurs="0" name="ListarUbigeosResult" nillable="true" type="q4:ArrayOfUbigeo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

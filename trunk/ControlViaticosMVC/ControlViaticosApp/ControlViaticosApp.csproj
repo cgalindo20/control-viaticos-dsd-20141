@@ -117,6 +117,9 @@
     <None Include="Service References\AutorizarWS\ControlViaticosApp.AutorizarWS.Autorizar.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AutorizarWS\ControlViaticosApp.AutorizarWS.Ubigeo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LiquidacionesWS\ControlViaticosApp.LiquidacionesWS.Liquidar.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

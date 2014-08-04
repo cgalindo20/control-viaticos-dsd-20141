@@ -24,19 +24,56 @@ namespace AutorizarServices
             }
         }
 
+        private EmpleadoDAO empleadoDAO = null;
+        private EmpleadoDAO EmpleadoDAO
+        {
+            get
+            {
+                if (empleadoDAO == null)
+                    empleadoDAO = new EmpleadoDAO();
+                return empleadoDAO;
+            }
+        }
+
+        private UbigeoDAO ubigeoDAO = null;
+        private UbigeoDAO UbigeoDAO
+        {
+            get
+            {
+                if (ubigeoDAO == null)
+                    ubigeoDAO = new UbigeoDAO();
+                return ubigeoDAO;
+            }
+        }
+
         public Autorizar ObtenerSolicitud(int codigoSolicitud)
         {
             return AutorizarDAO.Obtener(codigoSolicitud);
         }
 
-        public Autorizar ModificarSolicitud(int codigoSolicitud, string flagAutorizar, DateTime fechaAutorizar, int codigoEmpleadoAutorizar)
+        public Autorizar ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, Double totalSolicitado, string flagAutorizar, DateTime fechaAutorizar, int codigoEmpleadoAutorizar)
+           
         {
+
+            Empleado empleadoObt = EmpleadoDAO.Obtener(codigoEmpleadoSolicitante);
+            Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
+            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);         
+
+
             Autorizar autorizarAModificar = new Autorizar()
             {
-                CodigoSolicitud = codigoSolicitud,
-                FlagAutorizar = flagAutorizar,
-                FechaAutorizar = fechaAutorizar,
-                CodigoEmpleadoAutorizar = codigoEmpleadoAutorizar
+               CodigoSolicitud = codigoSolicitud,               
+               FechaSolicitud = fechaSolicitud,
+               empleado = empleadoObt,
+               ubigeoOrigen = ubigeoO,
+               ubigeoDestino = ubigeoD,
+               FechaSalida = fechaSalida,
+               FechaRetorno = fechaRetorno,
+               SustentoViaje = sustentoViaje,
+               TotalSolicitado = totalSolicitado,
+               FlagAutorizar = flagAutorizar,
+               FechaAutorizar = fechaAutorizar,
+               CodigoEmpleadoAutorizar = codigoEmpleadoAutorizar
             };
             return AutorizarDAO.Modificar(autorizarAModificar);
         }
@@ -44,6 +81,11 @@ namespace AutorizarServices
         public List<Autorizar> ListarSolicitudes()
         {
             return AutorizarDAO.ListarTodos().ToList();
+        }
+
+        public List<Ubigeo> ListarUbigeos()
+        {
+            return UbigeoDAO.ListarTodos().ToList();
         }
     }
 }
