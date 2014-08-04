@@ -7,7 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <form id="form1" runat="server">
-
     <h2>Liquidar Solicitud</h2>
 
     <% using (Html.BeginForm()) {%>
@@ -55,10 +54,10 @@
 						        <td width="60">
 							        <%: String.Format("{0:F}", item.Ss_MontoSolicitado) %>
 						        </td>
-<%--
+
 						        <td width="60">
-							        <%: Html.TextBoxFor(model => item.Ss_MontoUtilizado, item.Ss_MontoUtilizado)%>
-						        </td>--%>
+							        <%: Html.TextBoxFor(model => item.Ss_MontoSolicitado, item.Ss_MontoSolicitado)%>
+						        </td>
 					        </tr>
 				        <% }  %>
 			        </tbody>

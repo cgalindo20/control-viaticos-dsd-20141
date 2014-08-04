@@ -40,7 +40,7 @@ namespace ControlViaticosApp.Controllers
             LiquidacionesWS.Ubigeo ubigeoOri = new LiquidacionesWS.Ubigeo();
             LiquidacionesWS.Ubigeo ubigeoDest = new LiquidacionesWS.Ubigeo();
 
-            viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(form["nuSolicitud"]));
+            viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(form["Co_Solicitud"]));
 
             solicitudObtenida.Co_Solicitud = viaticoObtenido.CodigoSolicitud;
             solicitudObtenida.Fe_Solicitud = viaticoObtenido.FechaSolicitud;
@@ -57,24 +57,16 @@ namespace ControlViaticosApp.Controllers
             solicitudObtenida.Fe_Salida = viaticoObtenido.FechaSalida;
             solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
             solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
-
-            //List<LiquidacionesWS.SolicitudDetalle> listDetalles = new List<LiquidacionesWS.SolicitudDetalle>();
-
+            
             LiquidacionesWS.SolicitudDetalle[] item = new LiquidacionesWS.SolicitudDetalle[viaticoObtenido.Detalles.Count];
+            //LiquidacionesWS.LiquidarDetalle[] item = new LiquidacionesWS.LiquidarDetalle[viaticoObtenido.Detalles.Count];
 
             for (int i = 0; i < viaticoObtenido.Detalles.Count; i++)
             {
-                //tipoViaticoObtenida.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
-                //tipoViaticoObtenida.No_Descripcion = viaticoObtenido.Detalles[i].PK.TipoViatico.No_Descripcion;
-                //solicitudDetallePKObtenida.Solicitud = viaticoObtenido.Detalles[i].PK.Viatico;
-                //solicitudDetallePKObtenida.TipoViatico = tipoViaticoObtenida;
-                //solicitudDetalleObtenida.PK = solicitudDetallePKObtenida;
-                //solicitudDetalleObtenida.Ss_MontoSolicitado = viaticoObtenido.Detalles[i].Ss_MontoSolicitado;
-
-                //listDetalles.Add(solicitudDetalleObtenida);
-
                 item[i] = new SolicitudDetalle();
+                //item[i] = new LiquidarDetalle();
                 item[i].PK = new SolicitudDetallePK();
+                //item[i].PK = new LiquidarDetallePK();
                 item[i].PK.TipoViatico = new TipoViatico();
 
                 item[i].PK.TipoViatico.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
@@ -105,24 +97,34 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
+                int contador = 0;
+                LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[collection["solicitud.Detalles"].Count()];                        
                 
-                LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[1];
-                LiquidacionesWS.Item itemY = new LiquidacionesWS.Item();
-                itemY.Co_TipoViatico = 1;
-                itemY.Ss_MontoUtilizado = 550;
+                foreach (var item in collection["solicitud.Detalles"])  
+                {
+                    itemX[contador].Co_TipoViatico = contador + 1;
+                    itemX[contador].Ss_MontoUtilizado = 0;
+                }
 
-                itemX[0]=itemY;
                 
-                //List<Item>
+
+                //LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[1];
+                //LiquidacionesWS.Item itemY = new LiquidacionesWS.Item();
+                //itemY.Co_TipoViatico = 1;
+                //itemY.Ss_MontoUtilizado = 550;
+
+                //itemX[0]=itemY;
+                
+                
                 proxy.CrearLiquidacion( DateTime.Today,
-                                        int.Parse(collection["solicitud.Co_Solicitud"]),                    
-                                        Double.Parse(collection["Ss_TotalAsignado"]),
-                                        Double.Parse(collection["Ss_TotalUtilizado"]),
+                                        int.Parse(collection["solicitud.Co_Solicitud"]),
+                                        Double.Parse(collection["solicitud.Ss_MontoSolicitado"]),
+                                        Double.Parse(collection["solicitud.Ss_MontoSolicitado"]),
                                         Double.Parse(collection["Ss_OtrosGastos"]),
                                         itemX
                                         );
 
-                return RedirectToAction("Index");           
+                return RedirectToAction("Index");                
             }catch (Exception e){
                 return View();
             }
