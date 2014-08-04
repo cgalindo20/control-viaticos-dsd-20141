@@ -17,6 +17,12 @@
              <th>
                 Solicitante
             </th>
+             <th>
+                Origen
+            </th>
+            <th>
+                Destino
+            </th>
             <th>
                 Fecha Salida
             </th>
@@ -30,7 +36,7 @@
                 Total Solicitado
             </th>
             <th>
-                Flag Autorizar
+                Estado
             </th>            
         </tr>
 
@@ -38,14 +44,19 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Autorizar", "Edit", new { id = item.CodigoSolicitud })%> |
-                <%: Html.ActionLink("Detalles", "Details", new { id = item.CodigoSolicitud })%>                
+                <%: Html.ActionLink("Autorizar", "Edit", new { id = item.CodigoSolicitud })%>                               
             </td>
             <td align='center'>
                 <%: item.CodigoSolicitud %>
             </td>          
              <td>
                 <%: item.empleado.TxAp_Paterno + " " + item.empleado.TxPreNombre %>
+            </td>
+            <td>
+                <%: item.ubigeoOrigen.NoDescripcion%>
+            </td>
+            <td>
+                <%: item.ubigeoDestino.NoDescripcion%>
             </td>
             <td>
                 <%: String.Format("{0:d}", item.FechaSalida) %>

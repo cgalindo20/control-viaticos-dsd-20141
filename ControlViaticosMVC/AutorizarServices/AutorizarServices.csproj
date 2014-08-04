@@ -77,11 +77,13 @@
     <Compile Include="Persistencia\AutorizarDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\EmpleadoDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Autorizaciones.svc.cs">
       <DependentUpon>Autorizaciones.svc</DependentUpon>
     </Compile>
     <Compile Include="IAutorizaciones.cs" />
+    <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

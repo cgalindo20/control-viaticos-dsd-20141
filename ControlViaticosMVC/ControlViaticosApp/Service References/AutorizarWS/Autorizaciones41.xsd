@@ -39,4 +39,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAutorizar" nillable="true" type="tns:ArrayOfAutorizar" />
+  <xs:complexType name="ArrayOfUbigeo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ubigeo" nillable="true" type="tns:Ubigeo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUbigeo" nillable="true" type="tns:ArrayOfUbigeo" />
 </xs:schema>

@@ -15,12 +15,15 @@ namespace AutorizarServices
 
         [OperationContract]
         Autorizar ObtenerSolicitud(int codigoSolicitud);
-
+        
         [OperationContract]
-        Autorizar ModificarSolicitud(int codigoSolicitud, string flagAutorizar, DateTime fechaAutorizar, int codigoEmpleadoAutorizar);
+        Autorizar ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, Double totalSolicitado, string flagAutorizar, DateTime fechaAutorizar, int codigoEmpleadoAutorizar);
 
         [OperationContract]
         List<Autorizar> ListarSolicitudes();
+
+        [OperationContract]
+        List<Ubigeo> ListarUbigeos();
     }
  
 }

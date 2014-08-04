@@ -11,11 +11,17 @@
     <fieldset>
         <legend>Campos</legend>
         
-        <div class="display-label"><b>Codigo Solicitud</b></div>
+        <div class="display-label"><b>Solicitud</b></div>
         <div class="display-field"><%: Model.CodigoSolicitud %></div>
         
         <div class="display-label"><b>Fecha Solicitud</b></div>
         <div class="display-field"><%: String.Format("{0:d}", Model.FechaSolicitud) %></div>
+
+         <div class="display-label"><b>Origen</b></div>
+        <div class="display-field"><%: Model.ubigeoOrigen.NoDescripcion %></div>
+        
+        <div class="display-label"><b>Destino</b></div>
+        <div class="display-field"><%: Model.ubigeoDestino.NoDescripcion%></div>
         
         <div class="display-label"><b>Fecha Salida</b></div>
         <div class="display-field"><%: String.Format("{0:d}", Model.FechaSalida) %></div>
@@ -36,8 +42,8 @@
         <div class="display-field"><%: String.Format("{0:g}", Model.FechaAutorizar) %></div>
         
         <div class="display-label"><b>Autorizador</b></div>
-        <div class="display-field"><%: Model.CodigoEmpleadoAutorizar %></div>
-        
+        <div class="display-field"><%: Model.empleado.TxAp_Paterno + " " + Model.empleado.TxPreNombre %></div>
+      
     </fieldset>
     <p>
         <%: Html.ActionLink("Autorizar", "Edit", new {  id=Model.CodigoSolicitud  }) %> |
