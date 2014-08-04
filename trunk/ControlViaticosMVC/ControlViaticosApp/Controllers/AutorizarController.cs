@@ -8,12 +8,14 @@ namespace ControlViaticosApp.Controllers
 {
     public class AutorizarController : Controller
     {
-        //
-        // GET: /Aprobar/
+        //Instanciar AutorizarService
+        private AutorizarWS.AutorizacionesClient proxy = new AutorizarWS.AutorizacionesClient();
 
         public ActionResult Index()
         {
-            return View();
+            List<AutorizarWS.Autorizar> viaticos = proxy.ListarSolicitudes();
+
+            return View(viaticos);
         }
 
         //
@@ -21,7 +23,9 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            AutorizarWS.Autorizar viaticoObtenido = proxy.ObtenerSolicitud(id);
+
+            return View(viaticoObtenido);
         }
 
         //
@@ -55,7 +59,9 @@ namespace ControlViaticosApp.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            AutorizarWS.Autorizar viaticoEditar = proxy.ObtenerSolicitud(id);
+
+            return View(viaticoEditar);
         }
 
         //
@@ -66,8 +72,11 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                // TODO: Add update logic here
- 
+                proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
+                                            collection["FlagAutorizar"],
+                                            DateTime.Parse(collection["FechaAutorizar"]),
+                                            1);
+
                 return RedirectToAction("Index");
             }
             catch

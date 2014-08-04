@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 
-namespace ControlViaticosServices.Dominio
+namespace AutorizarServices.Dominio
 {
     [DataContract]
     public class Ubigeo

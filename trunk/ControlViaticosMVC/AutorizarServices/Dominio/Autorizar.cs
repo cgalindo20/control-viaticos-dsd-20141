@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ControlViaticosServices.Dominio;
+using AutorizarServices.Dominio;
 
 namespace AutorizarServices.Dominio
 {
@@ -15,7 +15,7 @@ namespace AutorizarServices.Dominio
         [DataMember]
         public DateTime FechaSolicitud { get; set; }
         [DataMember]
-        public int CodigoEmpleadoSolicitante { get; set; }
+        public Empleado empleado { get; set; }
         [DataMember]
         public Ubigeo ubigeoOrigen { get; set; }
         [DataMember]

@@ -5,7 +5,7 @@ using System.Web;
 using NHibernate;
 using NHibernate.Cfg;
 
-namespace ControlViaticosServices.Persistencia
+namespace AutorizarServices.Persistencia
 {
     public class NHibernateHelper
     {

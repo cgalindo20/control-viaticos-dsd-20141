@@ -60,7 +60,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Ubigeo.hbm.xml" />
     <EmbeddedResource Include="Dominio\Autorizar.hbm.xml" />
-    <Content Include="Service1.svc" />
+    <Content Include="Autorizaciones.svc" />
+    <EmbeddedResource Include="Dominio\Empleado.hbm.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -71,14 +72,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Autorizar.cs" />
+    <Compile Include="Dominio\Empleado.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
+    <Compile Include="Persistencia\AutorizarDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Autorizaciones.svc.cs">
+      <DependentUpon>Autorizaciones.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IAutorizaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,8 +94,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>14295</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>61546</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

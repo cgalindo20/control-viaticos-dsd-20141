@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Autorizar>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.AutorizarWS.Autorizar>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -26,7 +26,7 @@
                 Fecha de Solicitud
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
+                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
             
@@ -34,7 +34,7 @@
                Fecha de Salida
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:g}", Model.FechaSalida)) %>
+                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:d}", Model.FechaSalida)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
             </div>
             
@@ -42,7 +42,7 @@
                 Fecha de Retorno
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:g}", Model.FechaRetorno)) %>
+                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:d}", Model.FechaRetorno)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
             </div>
             
@@ -62,28 +62,12 @@
             </div>
             
             <div class="editor-label">
-               Autorizado
+               Autorizar
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FlagAutorizar) %>
                 <%: Html.ValidationMessageFor(model => model.FlagAutorizar) %>
-            </div>
-            
-            <div class="editor-label">
-                Fecha Autorizacion
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaAutorizar, String.Format("{0:g}", Model.FechaAutorizar)) %>
-                <%: Html.ValidationMessageFor(model => model.FechaAutorizar) %>
-            </div>
-            
-            <div class="editor-label">
-               Autorizado Por
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoEmpleadoAutorizar) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoEmpleadoAutorizar) %>
-            </div>
+            </div>                                             
             
             <p>
                 <input type="submit" value="Grabar" />
