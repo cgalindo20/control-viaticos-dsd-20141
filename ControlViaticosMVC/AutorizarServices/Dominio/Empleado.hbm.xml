@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AutorizarServices"
+                   namespace="AutorizarServices.Dominio"
+                   default-lazy="false">
+  <class name="Empleado" table="T_EMPLEADO">
+    <id name="CoEmpleado" column="Co_Empleado">
+      <generator class="increment" />
+    </id>
+    <property name="TxPreNombre" column="Tx_PreNombre" />
+    <property name="TxAp_Paterno" column="Tx_Ap_Paterno" />
+    <property name="TxAp_Materno" column="Tx_Ap_Materno" />    
+  </class>
+</hibernate-mapping>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.Models.Autorizar>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.AutorizarWS.Autorizar>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -12,11 +12,8 @@
         <tr>
             <th></th>
             <th>
-                Codigo Solicitud
-            </th>
-            <th>
-                Fecha Solicitud
-            </th>
+                Solicitud
+            </th>           
              <th>
                 Solicitante
             </th>
@@ -34,57 +31,45 @@
             </th>
             <th>
                 Flag Autorizar
-            </th>
-            <th>
-                Fecha Autorizar
-            </th>
-            <th>
-                Autorizador
-            </th>
+            </th>            
         </tr>
 
-<%--    <% foreach (var item in Model) { %>
+   <% foreach (var item in Model) { %>
     
         <tr>
             <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id = item.CodigoSolicitud })%> |
-                <%: Html.ActionLink("Details", "Details", new { id = item.CodigoSolicitud })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id = item.CodigoSolicitud })%>
+                <%: Html.ActionLink("Autorizar", "Edit", new { id = item.CodigoSolicitud })%> |
+                <%: Html.ActionLink("Detalles", "Details", new { id = item.CodigoSolicitud })%>                
             </td>
-            <td>
+            <td align='center'>
                 <%: item.CodigoSolicitud %>
-            </td>
-            <td>
-                <%: String.Format("{0:g}", item.FechaSolicitud) %>
-            </td>
+            </td>          
              <td>
-                <%: item.empleado.Tx_Ap_Materno %>
+                <%: item.empleado.TxAp_Paterno + " " + item.empleado.TxPreNombre %>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.FechaSalida) %>
+                <%: String.Format("{0:d}", item.FechaSalida) %>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.FechaRetorno) %>
+                <%: String.Format("{0:d}", item.FechaRetorno) %>
             </td>
             <td>
                 <%: item.SustentoViaje %>
             </td>
             <td>
                 <%: String.Format("{0:F}", item.TotalSolicitado) %>
-            </td>
+            </td>            
             <td>
-                <%: item.FlagAutorizar %>
-            </td>
-            <td>
-                <%: String.Format("{0:g}", item.FechaAutorizar) %>
-            </td>
-            <td>
-                <%: item.CodigoEmpleadoAutorizar %>
-            </td>
+            <% if (item.FlagAutorizar.Equals("P"))
+               { %>
+                Pendiente
+            <% }else{ %>
+                Autorizado            
+             <% } %>
+            </td>           
         </tr>
     
     <% } %>
---%>
     </table> 
 
 </asp:Content>

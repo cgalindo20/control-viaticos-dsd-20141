@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using NHibernate;
 
-namespace ControlViaticosServices.Persistencia
+namespace AutorizarServices.Persistencia
 {
     public class BaseDAO<Entidad, Id>
     {

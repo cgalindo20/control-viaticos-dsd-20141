@@ -3,10 +3,10 @@
                    assembly="AutorizarServices"
                    namespace="AutorizarServices.Dominio"
                    default-lazy="false">
-  <class name="Viatico" table="T_SOLICITUD">
+  <class name="Autorizar" table="T_SOLICITUD">
     <id name="CodigoSolicitud" column="Co_Solicitud"></id>
-    <property name="FechaSolicitud" column="Fe_Solicitud" />
-    <property name="CodigoEmpleadoSolicitante" column="Co_EmpSolicitante" />
+    <property name="FechaSolicitud" column="Fe_Solicitud" />    
+    <many-to-one name="empleado" column="Co_EmpSolicitante" />
     <many-to-one name="ubigeoOrigen" column="Co_UbigeoOrigen" />
     <many-to-one name="ubigeoDestino" column="Co_UbigeoDestino" />
     <property name="FechaSalida" column="Fe_Salida" />
@@ -14,7 +14,7 @@
     <property name="SustentoViaje" column="Tx_Sustento" />
     <property name="TotalSolicitado" column="Ss_TotalSolicitado" />
     <property name="FlagAutorizar" column="Fl_Autorizado" />
-    <property name="FechaAutorizar" column="Co_EmpAutoriza" />
-    <property name="CodigoEmpleadoAutorizar" column="Fe_Autorizado" />      
+    <property name="FechaAutorizar" column="Fe_Autorizado" />
+    <property name="CodigoEmpleadoAutorizar" column="Co_EmpAutoriza" />      
   </class>
 </hibernate-mapping>
