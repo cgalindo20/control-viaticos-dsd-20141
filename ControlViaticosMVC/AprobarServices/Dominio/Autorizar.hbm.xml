@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AprobarServices"
+                   namespace="AprobarServices.Dominio"
+                   default-lazy="false">
+  <class name="Aprobar" table="T_SOLICITUD">
+    <id name="CodigoSolicitud" column="Co_Solicitud"></id>
+    <property name="FechaSolicitud" column="Fe_Solicitud" />    
+    <many-to-one name="empleado" column="Co_EmpSolicitante" />
+    <many-to-one name="ubigeoOrigen" column="Co_UbigeoOrigen" />
+    <many-to-one name="ubigeoDestino" column="Co_UbigeoDestino" />
+    <property name="FechaSalida" column="Fe_Salida" />
+    <property name="FechaRetorno" column="Fe_Retorno" />
+    <property name="SustentoViaje" column="Tx_Sustento" />
+    <property name="TotalSolicitado" column="Ss_TotalSolicitado" />
+    <property name="FlagAprobado" column="Fl_Aprobado" />
+    <property name="FeAprobado" column="Fe_Aprobado" />
+    <property name="CodigoEmpleadoAprueba" column="Co_EmpAprueba" />    
+  </class>
+</hibernate-mapping>
