@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlViaticosApp", "ControlViaticosApp\ControlViaticosApp.csproj", "{84CEFF6C-5764-42DB-A5BB-50CB5F27A8DE}"
 	ProjectSection(ProjectDependencies) = postProject
+		{9B7B8D02-ABB8-4E32-B41F-826ED5865C00} = {9B7B8D02-ABB8-4E32-B41F-826ED5865C00}
 		{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4} = {47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}
 		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A} = {2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}
 		{CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA} = {CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA}
@@ -41,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTTarifarioServices", "RESTTarifarioServices\RESTTarifarioServices.csproj", "{FC97B754-CB87-4119-9DA5-5CD495331FC6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutorizarServices", "AutorizarServices\AutorizarServices.csproj", "{CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprobarServices", "AprobarServices\AprobarServices.csproj", "{9B7B8D02-ABB8-4E32-B41F-826ED5865C00}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -95,6 +98,10 @@ Global
 		{CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CACF3CE1-EC59-4DD8-9E7B-E98CFD386BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7B8D02-ABB8-4E32-B41F-826ED5865C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7B8D02-ABB8-4E32-B41F-826ED5865C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7B8D02-ABB8-4E32-B41F-826ED5865C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7B8D02-ABB8-4E32-B41F-826ED5865C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

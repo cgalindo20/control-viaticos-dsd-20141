@@ -15,9 +15,9 @@ namespace ControlViaticosApp.Models
         public DateTime FechaSalida { get; set; }
         public DateTime FechaRetorno { get; set; }
         public String SustentoViaje { get; set; }
-        public Double TotalSolicitado { get; set; }       
-        public String FlagAprobar { get; set; }
-        public DateTime FechaAprobar { get; set; }
-        public int CodigoEmpleadoAprobar { get; set; }
+        public Double TotalSolicitado { get; set; }
+        public String FlagAprobado { get; set; }
+        public DateTime FeAprobado { get; set; }
+        public int CodigoEmpleadoAprueba { get; set; }
     }
 }

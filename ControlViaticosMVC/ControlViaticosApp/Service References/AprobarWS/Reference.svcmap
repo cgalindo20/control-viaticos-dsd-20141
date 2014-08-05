@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5eadea4b-acec-4c08-91a5-b20260582647" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5918/Aprobaciones.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Aprobaciones.xsd" MetadataType="Schema" ID="1311b516-62c9-47b1-a803-a53e2c49a1ad" SourceId="1" SourceUrl="http://localhost:5918/Aprobaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Aprobaciones1.xsd" MetadataType="Schema" ID="c2fbc0da-e8da-4fb2-a998-7f9531296b81" SourceId="1" SourceUrl="http://localhost:5918/Aprobaciones.svc?xsd=xsd2" />
+    <MetadataFile FileName="Aprobaciones.wsdl" MetadataType="Wsdl" ID="63c4eb79-c9f5-4277-bbea-0cfb8fca197c" SourceId="1" SourceUrl="http://localhost:5918/Aprobaciones.svc?wsdl" />
+    <MetadataFile FileName="Aprobaciones2.xsd" MetadataType="Schema" ID="67cf9c5c-216f-4855-befc-750ad4804930" SourceId="1" SourceUrl="http://localhost:5918/Aprobaciones.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
