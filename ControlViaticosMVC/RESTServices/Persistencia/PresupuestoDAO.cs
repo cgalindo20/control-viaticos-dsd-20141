@@ -53,13 +53,13 @@ namespace RESTServices.Persistencia
         public Presupuesto Obtener(String codigo)
         {
             Presupuesto presupuestoEncontrado = null;
-            string sql = "SELECT * FROM T_PRESUPUESTO WHERE Co_Presupuesto=@Co_Presupuesto";
+            string sql = "SELECT * FROM T_PRESUPUESTO WHERE Co_Area=@Co_Area";
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
                 con.Open();
                 using (SqlCommand com = new SqlCommand(sql, con))
                 {
-                    com.Parameters.Add(new SqlParameter("@Co_Presupuesto", codigo));
+                    com.Parameters.Add(new SqlParameter("@Co_Area", codigo));
                     using (SqlDataReader resultado = com.ExecuteReader())
                     {
                         if (resultado.Read())

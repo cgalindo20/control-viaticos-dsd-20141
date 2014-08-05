@@ -73,7 +73,9 @@
   <ItemGroup>
     <Compile Include="Dominio\Aprobar.cs" />
     <Compile Include="Dominio\Empleado.cs" />
+    <Compile Include="Dominio\Presupuesto.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
+    <Compile Include="Dominio\ValidationException.cs" />
     <Compile Include="Persistencia\AprobarDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
