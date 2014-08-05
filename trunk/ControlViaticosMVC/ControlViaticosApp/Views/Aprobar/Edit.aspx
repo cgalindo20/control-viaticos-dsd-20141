@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.Models.Aprobar>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.AprobarWS.Aprobar>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -12,7 +12,7 @@
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend>Campos</legend>
             
             <div class="editor-label">
                 Codigo de Solicitud
@@ -20,29 +20,47 @@
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
                 <%: Html.ValidationMessageFor(model => model.CodigoSolicitud) %>
-            </div>
-            
+            </div>                     
             <div class="editor-label">
-                Fecha de Solictud
+                Fecha de Solicitud
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:g}", Model.FechaSolicitud)) %>
+                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
-            </div>                       
-            
-            <div class="editor-label">
-                Fecha de Salida
+            </div>
+             <div class="editor-label">
+                Solicitante
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:g}", Model.FechaSalida)) %>
+                <%: Html.TextBoxFor(model => model.empleado.CoEmpleado)%>
+                <%: Html.ValidationMessageFor(model => model.empleado.CoEmpleado) %>
+            </div>   
+              <div class="editor-label">
+                Origen
+            </div>
+            <div class="editor-field">
+             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+            </div>
+            
+            <div class="editor-label">
+               Destino
+            </div>
+            <div class="editor-field">
+             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+            </div>
+            <div class="editor-label">
+               Fecha de Salida
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:d}", Model.FechaSalida)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
             </div>
             
             <div class="editor-label">
-               Fecha de Retorno
+                Fecha de Retorno
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:g}", Model.FechaRetorno)) %>
+                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:d}", Model.FechaRetorno)) %>
                 <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
             </div>
             
@@ -55,36 +73,20 @@
             </div>
             
             <div class="editor-label">
-                Total Solicitado
-            </div>
+                Total Solicitado            </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.TotalSolicitado, String.Format("{0:F}", Model.TotalSolicitado)) %>
                 <%: Html.ValidationMessageFor(model => model.TotalSolicitado) %>
             </div>
             
             <div class="editor-label">
-               Aprobado            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FlagAprobar) %>
-                <%: Html.ValidationMessageFor(model => model.FlagAprobar) %>
-            </div>
-            
-            <div class="editor-label">
-                Fecha Aprobacion
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaAprobar, String.Format("{0:g}", Model.FechaAprobar)) %>
-                <%: Html.ValidationMessageFor(model => model.FechaAprobar) %>
-            </div>
-            
-            <div class="editor-label">
-                Aprobador
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoEmpleadoAprobar) %>
-                <%: Html.ValidationMessageFor(model => model.CodigoEmpleadoAprobar) %>
-            </div>
-            
+               Autorizar
+            </div>           
+             <div class="editor-field">
+             <%: Html.DropDownList("FlagAprobado", ViewData["estados"] as SelectList)%>                
+            </div>                                                        
+            <br />
+            <br />
             <p>
                 <input type="submit" value="Grabar" />
             </p>
