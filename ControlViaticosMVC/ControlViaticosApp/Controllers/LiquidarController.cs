@@ -17,8 +17,13 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Index()
         {
-            List<LiquidacionesWS.Liquidar> liquidaciones = proxy.ListarLiquidaciones();
-            return View(liquidaciones);
+            //List<LiquidacionesWS.Liquidar> liquidaciones = proxy.ListarLiquidaciones();
+            //return View(liquidaciones);
+
+            List<ViaticoWS.Viatico> viaticos = proxy2.ListarSolicitudes();
+            return View(viaticos);
+
+
         }
 
         public ActionResult LiquidarDetails(int id)
@@ -27,20 +32,18 @@ namespace ControlViaticosApp.Controllers
             return View(liquidacionObtenida);
         }
 
-        [HttpPost]
-        public ActionResult ConsultarSolicitud(FormCollection form)
+        public ActionResult LiquidarCreate(int ID)
         {
             ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();
             LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
             LiquidacionesWS.Solicitud solicitudObtenida = new LiquidacionesWS.Solicitud();
-            
             LiquidacionesWS.SolicitudDetalle solicitudDetalleObtenida = new LiquidacionesWS.SolicitudDetalle();
             LiquidacionesWS.SolicitudDetallePK solicitudDetallePKObtenida = new LiquidacionesWS.SolicitudDetallePK();
-            LiquidacionesWS.TipoViatico tipoViaticoObtenida = new LiquidacionesWS.TipoViatico();            
+            LiquidacionesWS.TipoViatico tipoViaticoObtenida = new LiquidacionesWS.TipoViatico();
             LiquidacionesWS.Ubigeo ubigeoOri = new LiquidacionesWS.Ubigeo();
             LiquidacionesWS.Ubigeo ubigeoDest = new LiquidacionesWS.Ubigeo();
 
-            viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(form["Co_Solicitud"]));
+            viaticoObtenido = proxy2.ObtenerSolicitud(ID);
 
             solicitudObtenida.Co_Solicitud = viaticoObtenido.CodigoSolicitud;
             solicitudObtenida.Fe_Solicitud = viaticoObtenido.FechaSolicitud;
@@ -57,7 +60,8 @@ namespace ControlViaticosApp.Controllers
             solicitudObtenida.Fe_Salida = viaticoObtenido.FechaSalida;
             solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
             solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
-            
+            solicitudObtenida.Ss_TotalSolicitado = viaticoObtenido.TotalSolicitado;
+
             LiquidacionesWS.SolicitudDetalle[] item = new LiquidacionesWS.SolicitudDetalle[viaticoObtenido.Detalles.Count];
             //LiquidacionesWS.LiquidarDetalle[] item = new LiquidacionesWS.LiquidarDetalle[viaticoObtenido.Detalles.Count];
 
@@ -79,16 +83,6 @@ namespace ControlViaticosApp.Controllers
 
             liquidacionObtenida.solicitud = solicitudObtenida;
 
-            return View("LiquidarCreate", liquidacionObtenida);
-        }
-
-        public ActionResult BuscaSolicitud()
-        {
-            return View();
-        }
-
-        public ActionResult LiquidarCreate(LiquidacionesWS.Liquidar liquidacionObtenida)
-        {
             return View(liquidacionObtenida);
         } 
 
@@ -97,31 +91,49 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
-                int contador = 0;
-                LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[collection["solicitud.Detalles"].Count()];                        
+                ViaticoWS.Viatico viaticoObtenido = new ViaticoWS.Viatico();
+                LiquidacionesWS.Liquidar liquidacionObtenida = new LiquidacionesWS.Liquidar();
+                LiquidacionesWS.Solicitud solicitudObtenida = new LiquidacionesWS.Solicitud();
+                LiquidacionesWS.SolicitudDetalle solicitudDetalleObtenida = new LiquidacionesWS.SolicitudDetalle();
+                LiquidacionesWS.SolicitudDetallePK solicitudDetallePKObtenida = new LiquidacionesWS.SolicitudDetallePK();
+                LiquidacionesWS.TipoViatico tipoViaticoObtenida = new LiquidacionesWS.TipoViatico();
+                LiquidacionesWS.Ubigeo ubigeoOri = new LiquidacionesWS.Ubigeo();
+                LiquidacionesWS.Ubigeo ubigeoDest = new LiquidacionesWS.Ubigeo();
                 
-                foreach (var item in collection["solicitud.Detalles"])  
+                viaticoObtenido = proxy2.ObtenerSolicitud(int.Parse(collection["solicitud.Co_Solicitud"]));
+
+                solicitudObtenida.Co_Solicitud = viaticoObtenido.CodigoSolicitud;
+                solicitudObtenida.Fe_Solicitud = viaticoObtenido.FechaSolicitud;
+                solicitudObtenida.Co_EmpSolicitante = viaticoObtenido.CodigoEmpleadoSolicitante;
+
+                ubigeoOri.CodigoUbigeo = viaticoObtenido.ubigeoOrigen.CodigoUbigeo;
+                ubigeoOri.NoDescripcion = viaticoObtenido.ubigeoOrigen.NoDescripcion;
+                solicitudObtenida.ubigeoOrigen = ubigeoOri;
+
+                ubigeoDest.CodigoUbigeo = viaticoObtenido.ubigeoDestino.CodigoUbigeo;
+                ubigeoDest.NoDescripcion = viaticoObtenido.ubigeoDestino.NoDescripcion;
+                solicitudObtenida.ubigeoDestino = ubigeoDest;
+
+                solicitudObtenida.Fe_Salida = viaticoObtenido.FechaSalida;
+                solicitudObtenida.Fe_Retorno = viaticoObtenido.FechaRetorno;
+                solicitudObtenida.Tx_Sustento = viaticoObtenido.SustentoViaje;
+                solicitudObtenida.Ss_TotalSolicitado = viaticoObtenido.TotalSolicitado;
+
+                LiquidacionesWS.Item[] item = new LiquidacionesWS.Item[viaticoObtenido.Detalles.Count];
+                for (int i = 0; i < viaticoObtenido.Detalles.Count; i++)
                 {
-                    itemX[contador].Co_TipoViatico = contador + 1;
-                    itemX[contador].Ss_MontoUtilizado = 0;
+                    LiquidacionesWS.Item itemY = new LiquidacionesWS.Item();
+                    itemY.Co_TipoViatico = viaticoObtenido.Detalles[i].PK.TipoViatico.Co_TipoViatico;
+                    itemY.Ss_MontoUtilizado = viaticoObtenido.Detalles[i].Ss_MontoSolicitado;
+                    item[i] = itemY;
                 }
 
-                
-
-                //LiquidacionesWS.Item[] itemX = new LiquidacionesWS.Item[1];
-                //LiquidacionesWS.Item itemY = new LiquidacionesWS.Item();
-                //itemY.Co_TipoViatico = 1;
-                //itemY.Ss_MontoUtilizado = 550;
-
-                //itemX[0]=itemY;
-                
-                
                 proxy.CrearLiquidacion( DateTime.Today,
-                                        int.Parse(collection["solicitud.Co_Solicitud"]),
-                                        Double.Parse(collection["solicitud.Ss_MontoSolicitado"]),
-                                        Double.Parse(collection["solicitud.Ss_MontoSolicitado"]),
+                                        solicitudObtenida.Co_Solicitud,
+                                        solicitudObtenida.Ss_TotalSolicitado,
+                                        solicitudObtenida.Ss_TotalSolicitado,
                                         Double.Parse(collection["Ss_OtrosGastos"]),
-                                        itemX
+                                        item
                                         );
 
                 return RedirectToAction("Index");                
