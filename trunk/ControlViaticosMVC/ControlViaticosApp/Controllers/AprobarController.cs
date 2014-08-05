@@ -8,12 +8,14 @@ namespace ControlViaticosApp.Controllers
 {
     public class AprobarController : Controller
     {
-        //
-        // GET: /Aprobar/
+        //Instanciar AutorizarService
+        private AprobarWS.AprobacionesClient proxy = new AprobarWS.AprobacionesClient();
 
         public ActionResult Index()
         {
-            return View();
+            List<AprobarWS.Aprobar> viaticos = proxy.ListarSolicitudes();
+
+            return View(viaticos);
         }
 
         //
@@ -21,7 +23,9 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            AprobarWS.Aprobar viaticoObtenido = proxy.ObtenerSolicitud(id);
+
+            return View(viaticoObtenido);
         }
 
         //
@@ -55,7 +59,22 @@ namespace ControlViaticosApp.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            AprobarWS.Aprobar viaticoEditar = proxy.ObtenerSolicitud(id);
+
+            //Llenar los combobox de Ubigeos
+            List<AprobarWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
+            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
+            ViewData["ubigeos"] = listUbigeos;
+
+            //Llenar combobox de Estado
+            var list = new[] {   
+                new Estado { Id = "P", Name = "Pendiente" }, 
+                new Estado { Id = "A", Name = "Aprobado" }
+            };
+            var listEstados = new SelectList(list, "Id", "Name");
+            ViewData["estados"] = listEstados;
+
+            return View(viaticoEditar);
         }
 
         //
@@ -64,10 +83,22 @@ namespace ControlViaticosApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            int CodigoEmpleadoAprobar = 3;//obtener de la sesion de login;
             try
             {
-                // TODO: Add update logic here
- 
+                proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
+                                        int.Parse(collection["empleado.CoEmpleado"]),
+                                        int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
+                                        int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
+                                        DateTime.Parse(collection["FechaSolicitud"]),
+                                        DateTime.Parse(collection["FechaSalida"]),
+                                        DateTime.Parse(collection["FechaRetorno"]),
+                                        collection["SustentoViaje"],
+                                        Double.Parse(collection["TotalSolicitado"]),
+                                        collection["FlagAprobado"],
+                                        DateTime.Today,
+                                        CodigoEmpleadoAprobar);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -100,6 +131,11 @@ namespace ControlViaticosApp.Controllers
             {
                 return View();
             }
+        }
+        public class Estado
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }

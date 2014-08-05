@@ -28,9 +28,9 @@
             
                 <ul id="menu">              
                     <li><%: Html.ActionLink("Solicitar Viáticos", "Index", "Viatico")%></li>
-                    <li><%: Html.ActionLink("Autorizar Viatico", "Index", "Autorizar")%></li>
-                    <li><%: Html.ActionLink("Aprobar Viatico", "Index", "Aprobar")%></li>
-                    <li><%: Html.ActionLink("Liquidar Viatico", "Index", "Liquidar")%></li>
+                    <li><%: Html.ActionLink("Autorizar Viático", "Index", "Autorizar")%></li>
+                    <li><%: Html.ActionLink("Aprobar Viático", "Index", "Aprobar")%></li>
+                    <li><%: Html.ActionLink("Liquidar Viático", "Index", "Liquidar")%></li>
                     <li><%: Html.ActionLink("Página principal", "Index", "Home")%></li>
                     <li><%: Html.ActionLink("Acerca de", "About", "Home")%></li>
                 </ul>

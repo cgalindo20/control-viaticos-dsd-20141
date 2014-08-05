@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5918/Aprobaciones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" />
+  <xs:element name="ObtenerSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigoSolicitud" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="ObtenerSolicitudResult" nillable="true" type="q1:Aprobar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigoSolicitud" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoEmpleadoSolicitante" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoUbigeoOrigen" type="xs:int" />
+        <xs:element minOccurs="0" name="codigoUbigeoDestino" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaSolicitud" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaSalida" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaRetorno" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sustentoViaje" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalSolicitado" type="xs:double" />
+        <xs:element minOccurs="0" name="flagAprobado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="feAprobado" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CodigoEmpleadoAprueba" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="ModificarSolicitudResult" nillable="true" type="q2:Aprobar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSolicitudes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSolicitudesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="ListarSolicitudesResult" nillable="true" type="q3:ArrayOfAprobar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUbigeos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUbigeosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="ListarUbigeosResult" nillable="true" type="q4:ArrayOfUbigeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
