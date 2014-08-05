@@ -11,14 +11,14 @@ namespace RESTTEST3
 {
     
     [TestClass]
-    public class PresupuestoTest
+    public class RESTPresupuestoTest
     {
     
         [TestMethod]
         public void ObtenerPresupuesto()
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:2181/PresupuestoService.svc/Presupuestos/1");
+                .Create("http://localhost:2181/PresupuestoService.svc/Presupuestos/3");
             req.Method = "GET";
             
             try
@@ -38,14 +38,14 @@ namespace RESTTEST3
                 string error = readerError1.ReadToEnd();
                 JavaScriptSerializer jsError1 = new JavaScriptSerializer();
                 ValidationException excepcion = jsError1.Deserialize<ValidationException>(error);
-                Assert.AreEqual("El Presupuesto NO existe.", excepcion.MensajeError);
+                Assert.AreEqual("No_existe Presupuesto para el Area indicada.", excepcion.MensajeError);
             }
         }
 
         [TestMethod]
         public void CrearPresupuesto() {
             
-            string postdata = "{\"Co_Presupuesto\":\"8\",\"Co_Area\":\"3\",\"Ss_MontoAsignado\":\"120\",\"Ss_MontoDisponible\":\"80\"}";
+            string postdata = "{\"Co_Presupuesto\":\"7\",\"Co_Area\":\"3\",\"Ss_MontoAsignado\":\"120\",\"Ss_MontoDisponible\":\"80\"}";
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req1 = (HttpWebRequest)WebRequest
                 .Create("http://localhost:2181/PresupuestoService.svc/Presupuestos");

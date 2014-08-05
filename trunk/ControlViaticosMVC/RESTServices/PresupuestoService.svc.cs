@@ -42,11 +42,10 @@ namespace RESTServices
                     new ValidationException()
                     {
                         CodigoError = "E002",
-                        MensajeError = "El Presupuesto NO existe."
+                        MensajeError = "No existe Presupuesto para el Area indicada."
                     },
                         HttpStatusCode.InternalServerError
                     );
-            //return dao.Obtener(codigo);
             return presupuestoEncontrado;
         }
 
