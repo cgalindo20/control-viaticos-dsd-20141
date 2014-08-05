@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.LiquidacionesWS.Liquidar>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.ViaticoWS.Viatico>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -6,28 +6,19 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Liquidación de Viáticos</h2>
+    <h2>Liquidación Solicitudes de Viáticos</h2>
 
     <table>
         <tr>
             <th></th>
             <th>
-                Co_Liquidacion
+                Solicitud
             </th>
             <th>
-                Fe_Liquidacion
+                Fecha Solicitud
             </th>
             <th>
-                Ss_OtrosGastos
-            </th>
-            <th>
-                Ss_TotalAsignado
-            </th>
-            <th>
-                Ss_TotalUtilizado
-            </th>
-            <th>
-                Co_Solicitud
+                Total Solicitado
             </th>
         </tr>
 
@@ -35,37 +26,22 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Editar", "LiquidarEdit", new {  id=item.Co_Liquidacion }) %> |
-                <%: Html.ActionLink("Detalle", "LiquidarDetails", new { id = item.Co_Liquidacion })%> |
-                <%: Html.ActionLink("Eliminar", "LiquidarDelete", new { id = item.Co_Liquidacion })%>
+                <%: Html.ActionLink("Liquidar", "LiquidarCreate", new {  id=item.CodigoSolicitud }) %> |
             </td>
             <td>
-                <%: item.Co_Liquidacion %>
+                <%: item.CodigoSolicitud %>
             </td>
             <td>
-                <%: String.Format("{0:g}", item.Fe_Liquidacion) %>
+                <%: String.Format("{0:d}", item.FechaSolicitud) %>
             </td>
             <td>
-                <%: String.Format("{0:F}", item.Ss_OtrosGastos) %>
+                <%: String.Format("{0:F}", item.TotalSolicitado) %>
             </td>
-            <td>
-                <%: String.Format("{0:F}", item.Ss_TotalAsignado) %>
-            </td>
-            <td>
-                <%: String.Format("{0:F}", item.Ss_TotalUtilizado) %>
-            </td>
-            <td>
-                <%: item.solicitud.Co_Solicitud %>
-            </td>        
         </tr>
     
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Create New", "BuscaSolicitud") %>
-    </p>
 
 </asp:Content>
 

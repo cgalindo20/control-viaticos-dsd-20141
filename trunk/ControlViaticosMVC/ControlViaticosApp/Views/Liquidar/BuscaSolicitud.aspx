@@ -7,21 +7,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <h2>Liquidar Solicitud</h2>
+
+
     <h2>BuscaSolicitud</h2>
 
      <fieldset>
         <legend>Campos</legend>
-            
-         <%: Html.ValidationSummary(true) %>
-        <form action="ConsultarSolicitud" method="post">
-            <div>
-                N° de Solicitud a Liquidar: <input name="Co_Solicitud" type="text"/>
+          
+        <div>
+            N° de Solicitud a Liquidar: <input name="Co_Solicitud" type="text"/>
+        </div>
+        <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.solicitud.Co_Solicitud) %>
+                <%: Html.ValidationMessageFor(model => model.solicitud.Co_Solicitud) %>
             </div>
-            <div>
-                <input type="submit" value="Buscar"/>
-            </div>
-        </form>
-
+        <div>
+            <%: Html.ActionLink("LiquidarCreate", "LiquidarCreate", new {  ID= model.solicitud.Co_Solicitud}) %> |
+        </div>
+        
     </fieldset>
-
+    
 </asp:Content>
