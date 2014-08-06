@@ -63,6 +63,7 @@
     <EmbeddedResource Include="Dominio\Ubigeo.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoViatico.hbm.xml" />
     <EmbeddedResource Include="Dominio\ViaticoDetalle.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Tarifario.hbm.xml" />
     <Content Include="Viaticos.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -73,6 +74,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Item.cs" />
+    <Compile Include="Dominio\Tarifario.cs" />
     <Compile Include="Dominio\TipoViatico.cs" />
     <Compile Include="Dominio\ViaticoDetalle.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
@@ -81,6 +84,8 @@
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\TarifarioDAO.cs" />
+    <Compile Include="Persistencia\TipoViaticoDAO.cs" />
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Persistencia\ViaticoDAO.cs" />
     <Compile Include="Viaticos.svc.cs">

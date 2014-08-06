@@ -14,7 +14,7 @@ namespace ControlViaticosServices
     {
         [FaultContract(typeof(ValidationException))]
         [OperationContract]
-        Viatico CrearSolicitud(DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
+        Viatico CrearSolicitud(DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, List<Item> items);
 
         [OperationContract]
         Viatico ObtenerSolicitud(int codigoSolicitud);
@@ -31,6 +31,8 @@ namespace ControlViaticosServices
         [OperationContract]
         List<Ubigeo> ListarUbigeos();
 
+        [OperationContract]
+        List<Tarifario> ListarTarifarioContingencia();
     }
 
 }

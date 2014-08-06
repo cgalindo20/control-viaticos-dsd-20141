@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_TipoViatico" type="xs:int" />
+      <xs:element minOccurs="0" name="Ss_MontoSolicitado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
   <xs:complexType name="Viatico">
     <xs:sequence>
       <xs:element minOccurs="0" name="CodigoEmpleadoSolicitante" type="xs:int" />
@@ -49,6 +62,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ubigeo" nillable="true" type="tns:Ubigeo" />
+  <xs:complexType name="ValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoError" type="xs:int" />
+      <xs:element minOccurs="0" name="MensajeError" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidationException" nillable="true" type="tns:ValidationException" />
   <xs:complexType name="ArrayOfViatico">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Viatico" nillable="true" type="tns:Viatico" />
@@ -61,4 +81,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfUbigeo" nillable="true" type="tns:ArrayOfUbigeo" />
+  <xs:complexType name="ArrayOfTarifario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tarifario" nillable="true" type="tns:Tarifario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTarifario" nillable="true" type="tns:ArrayOfTarifario" />
+  <xs:complexType name="Tarifario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Co_EmpActualiza" type="xs:int" />
+      <xs:element minOccurs="0" name="Co_Tarifa" type="xs:int" />
+      <xs:element minOccurs="0" name="Co_TipoViatico" nillable="true" type="tns:TipoViatico" />
+      <xs:element minOccurs="0" name="Co_Ubigeo" nillable="true" type="tns:Ubigeo" />
+      <xs:element minOccurs="0" name="Ss_Costo" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tarifario" nillable="true" type="tns:Tarifario" />
 </xs:schema>
