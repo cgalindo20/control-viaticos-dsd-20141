@@ -11,8 +11,6 @@ namespace ControlViaticosApp.Controllers
 {
     public class ViaticoController : Controller
     {
-
-        //Instanciar ControlViaticosService
         private ViaticoWS.ViaticosClient proxy = new ViaticoWS.ViaticosClient();
 
         public ActionResult Index()
@@ -23,18 +21,12 @@ namespace ControlViaticosApp.Controllers
         }
 
 
-        //
-        // GET: /Viaticos/Details/5
-
         public ActionResult Details(int id)
         {
             ViaticoWS.Viatico viaticoObtenido = proxy.ObtenerSolicitud(id);            
 
             return View(viaticoObtenido);
         }
-
-        //
-        // GET: /Viaticos/Create
 
         public ActionResult Create()
         {
@@ -44,27 +36,44 @@ namespace ControlViaticosApp.Controllers
             var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
             ViewData["ubigeos"] = listUbigeos;
 
+            //Si está caido el Servico de Tarifario en la Nube, se levanta el de contingencia(Tarifas no necesarimente actualizadas).
+            List<ViaticoWS.Tarifario> listTarifasContingencia = proxy.ListarTarifarioContingencia();
+            ViewData["tarifas"] = listTarifasContingencia;
+
             return View();
         } 
 
-        //
-        // POST: /Viaticos/Create
-
+      
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                int CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
+                int v_CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
+                List<ViaticoWS.Tarifario> listTarifasContingencia = proxy.ListarTarifarioContingencia();
 
-                proxy.CrearSolicitud(   DateTime.Today,   
-                                        CodigoEmpleadoSolicitante,
+                ViaticoWS.Item[] item = new ViaticoWS.Item[listTarifasContingencia.Count];
+                for (int i = 0; i < listTarifasContingencia.Count; i++) 
+                {
+                    ViaticoWS.Item itemY = new ViaticoWS.Item();
+                    itemY.Co_TipoViatico = listTarifasContingencia[i].Co_TipoViatico.Co_TipoViatico;
+                    itemY.Ss_MontoSolicitado = (Double)listTarifasContingencia[i].Ss_Costo;
+                    if (listTarifasContingencia[i].Co_Ubigeo.CodigoUbigeo == int.Parse(collection["ubigeoDestino.CodigoUbigeo"]))
+                    {
+                        item[i] = itemY;
+                    }
+                    
+                }
+
+                proxy.CrearSolicitud(   DateTime.Today,
+                                        v_CodigoEmpleadoSolicitante,
                                         int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
                                         int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
                                         DateTime.Parse(collection["FechaSalida"]),
                                         DateTime.Parse(collection["FechaRetorno"]),
                                         collection["SustentoViaje"],
-                                        Double.Parse(collection["TotalSolicitado"])
+                                        Double.Parse(collection["TotalSolicitado"]),
+                                        item.ToList()
                                      );                   
 
                 return RedirectToAction("Index");
@@ -75,10 +84,10 @@ namespace ControlViaticosApp.Controllers
                 TempData["alertMessage"] = ex.Detail.ValidationResult;               
                 return View();
             }
+
+
         }
         
-        //
-        // GET: /Viaticos/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -92,8 +101,6 @@ namespace ControlViaticosApp.Controllers
             return View(viaticoEditar);
         }
 
-        //
-        // POST: /Viaticos/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -119,8 +126,6 @@ namespace ControlViaticosApp.Controllers
             }
         }
 
-        //
-        // GET: /Viaticos/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -128,8 +133,6 @@ namespace ControlViaticosApp.Controllers
             return View(viaticoEliminar);
         }
 
-        //
-        // POST: /Viaticos/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

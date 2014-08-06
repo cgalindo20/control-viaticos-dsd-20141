@@ -15,6 +15,67 @@ namespace ControlViaticosApp.ViaticoWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Co_TipoViaticoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double Ss_MontoSolicitadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Co_TipoViatico {
+            get {
+                return this.Co_TipoViaticoField;
+            }
+            set {
+                if ((this.Co_TipoViaticoField.Equals(value) != true)) {
+                    this.Co_TipoViaticoField = value;
+                    this.RaisePropertyChanged("Co_TipoViatico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Ss_MontoSolicitado {
+            get {
+                return this.Ss_MontoSolicitadoField;
+            }
+            set {
+                if ((this.Ss_MontoSolicitadoField.Equals(value) != true)) {
+                    this.Ss_MontoSolicitadoField = value;
+                    this.RaisePropertyChanged("Ss_MontoSolicitado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Viatico", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
     [System.SerializableAttribute()]
     public partial class Viatico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -446,12 +507,183 @@ namespace ControlViaticosApp.ViaticoWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class ValidationException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MensajeErrorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodigoError {
+            get {
+                return this.CodigoErrorField;
+            }
+            set {
+                if ((this.CodigoErrorField.Equals(value) != true)) {
+                    this.CodigoErrorField = value;
+                    this.RaisePropertyChanged("CodigoError");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MensajeError {
+            get {
+                return this.MensajeErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MensajeErrorField, value) != true)) {
+                    this.MensajeErrorField = value;
+                    this.RaisePropertyChanged("MensajeError");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tarifario", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Tarifario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Co_EmpActualizaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Co_TarifaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.ViaticoWS.TipoViatico Co_TipoViaticoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlViaticosApp.ViaticoWS.Ubigeo Co_UbigeoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Ss_CostoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Co_EmpActualiza {
+            get {
+                return this.Co_EmpActualizaField;
+            }
+            set {
+                if ((this.Co_EmpActualizaField.Equals(value) != true)) {
+                    this.Co_EmpActualizaField = value;
+                    this.RaisePropertyChanged("Co_EmpActualiza");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Co_Tarifa {
+            get {
+                return this.Co_TarifaField;
+            }
+            set {
+                if ((this.Co_TarifaField.Equals(value) != true)) {
+                    this.Co_TarifaField = value;
+                    this.RaisePropertyChanged("Co_Tarifa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.ViaticoWS.TipoViatico Co_TipoViatico {
+            get {
+                return this.Co_TipoViaticoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Co_TipoViaticoField, value) != true)) {
+                    this.Co_TipoViaticoField = value;
+                    this.RaisePropertyChanged("Co_TipoViatico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlViaticosApp.ViaticoWS.Ubigeo Co_Ubigeo {
+            get {
+                return this.Co_UbigeoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Co_UbigeoField, value) != true)) {
+                    this.Co_UbigeoField = value;
+                    this.RaisePropertyChanged("Co_Ubigeo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Ss_Costo {
+            get {
+                return this.Ss_CostoField;
+            }
+            set {
+                if ((this.Ss_CostoField.Equals(value) != true)) {
+                    this.Ss_CostoField = value;
+                    this.RaisePropertyChanged("Ss_Costo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ViaticoWS.IViaticos")]
     public interface IViaticos {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/CrearSolicitud", ReplyAction="http://tempuri.org/IViaticos/CrearSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
+        [System.ServiceModel.FaultContractAttribute(typeof(ControlViaticosApp.ViaticoWS.ValidationException), Action="http://tempuri.org/IViaticos/CrearSolicitudValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+        ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Item> items);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ObtenerSolicitud", ReplyAction="http://tempuri.org/IViaticos/ObtenerSolicitudResponse")]
         ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud);
@@ -467,6 +699,9 @@ namespace ControlViaticosApp.ViaticoWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarUbigeos", ReplyAction="http://tempuri.org/IViaticos/ListarUbigeosResponse")]
         System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarTarifarioContingencia", ReplyAction="http://tempuri.org/IViaticos/ListarTarifarioContingenciaResponse")]
+        System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Tarifario> ListarTarifarioContingencia();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -496,8 +731,8 @@ namespace ControlViaticosApp.ViaticoWS {
                 base(binding, remoteAddress) {
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado) {
-            return base.Channel.CrearSolicitud(fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
+        public ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Item> items) {
+            return base.Channel.CrearSolicitud(fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado, items);
         }
         
         public ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud) {
@@ -518,6 +753,10 @@ namespace ControlViaticosApp.ViaticoWS {
         
         public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos() {
             return base.Channel.ListarUbigeos();
+        }
+        
+        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Tarifario> ListarTarifarioContingencia() {
+            return base.Channel.ListarTarifarioContingencia();
         }
     }
 }

@@ -3,8 +3,8 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:20000/Viaticos.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:20000/Viaticos.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:20000/Viaticos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio" />
+      <xsd:import schemaLocation="http://localhost:20000/Viaticos.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IViaticos_CrearSolicitud_InputMessage">
@@ -12,6 +12,9 @@
   </wsdl:message>
   <wsdl:message name="IViaticos_CrearSolicitud_OutputMessage">
     <wsdl:part name="parameters" element="tns:CrearSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IViaticos_CrearSolicitud_ValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio" name="detail" element="q1:ValidationException" />
   </wsdl:message>
   <wsdl:message name="IViaticos_ObtenerSolicitud_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerSolicitud" />
@@ -43,10 +46,17 @@
   <wsdl:message name="IViaticos_ListarUbigeos_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarUbigeosResponse" />
   </wsdl:message>
+  <wsdl:message name="IViaticos_ListarTarifarioContingencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTarifarioContingencia" />
+  </wsdl:message>
+  <wsdl:message name="IViaticos_ListarTarifarioContingencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTarifarioContingenciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IViaticos">
     <wsdl:operation name="CrearSolicitud">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/CrearSolicitud" message="tns:IViaticos_CrearSolicitud_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/CrearSolicitudResponse" message="tns:IViaticos_CrearSolicitud_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IViaticos/CrearSolicitudValidationExceptionFault" name="ValidationExceptionFault" message="tns:IViaticos_CrearSolicitud_ValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerSolicitud">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ObtenerSolicitud" message="tns:IViaticos_ObtenerSolicitud_InputMessage" />
@@ -68,6 +78,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ListarUbigeos" message="tns:IViaticos_ListarUbigeos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/ListarUbigeosResponse" message="tns:IViaticos_ListarUbigeos_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ListarTarifarioContingencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ListarTarifarioContingencia" message="tns:IViaticos_ListarTarifarioContingencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/ListarTarifarioContingenciaResponse" message="tns:IViaticos_ListarTarifarioContingencia_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IViaticos" type="tns:IViaticos">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -79,6 +93,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ObtenerSolicitud">
       <soap:operation soapAction="http://tempuri.org/IViaticos/ObtenerSolicitud" style="document" />
@@ -118,6 +135,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarUbigeos">
       <soap:operation soapAction="http://tempuri.org/IViaticos/ListarUbigeos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTarifarioContingencia">
+      <soap:operation soapAction="http://tempuri.org/IViaticos/ListarTarifarioContingencia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

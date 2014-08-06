@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ControlViaticosApp.ViaticoWS.Viatico>" %>
 
+<%@ Import Namespace = "ControlViaticosApp.Models" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
 </asp:Content>
@@ -22,14 +24,6 @@
         <fieldset>
             <legend>Campos</legend>                                             
             
-            <!--div class="editor-label">
-               Fecha Solicitud
-            </div>
-            <div class="editor-field"-->
-                <!--%: Html.TextBoxFor(model => model.FechaSolicitud)%-->
-                <!--%: Html.ValidationMessageFor(model => model.FechaSolicitud) %-->
-            <!--/div-->
-
             <div class="editor-label">
                 Origen
             </div>
@@ -42,7 +36,7 @@
             <div class="editor-field">
                 <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>
             </div>            
-            <div class="editor-label">
+            <div class="editor-label">  
                Fecha Salida
             </div>
             <div class="editor-field">
@@ -74,9 +68,38 @@
                 <%: Html.ValidationMessageFor(model => model.TotalSolicitado) %>
             </div>                        
             
+            <fieldset>	
+            <table>
+	            <thead>
+		            <tr>
+                        <th width="60" align="center">Tipo de Viatico</th>
+			            <th width="60" align="center">Monto Solicitado</th>
+		            </tr>
+	            </thead>
+			        
+                <tbody>
+	            <% foreach (var tarifa in ViewData["tarifas"] as List<ControlViaticosApp.ViaticoWS.Tarifario>)  { %>
+		            <tr>
+                        <td width="60">
+				            <%: tarifa.Co_Ubigeo.NoDescripcion%> 
+			            </td>
+			            <td width="60">
+				            <%: tarifa.Co_TipoViatico.No_Descripcion%> 
+			            </td>
+
+                        <td width="60">
+				            <%: tarifa.Ss_Costo%> 
+			            </td>
+		            </tr>
+	            <% }  %>			        
+                </tbody>
+            </table>        
+            </fieldset>	
+
             <p>
-                <input type="submit" value="Guardar" />
+                <input type="submit" value="Save" />
             </p>
+
         </fieldset>
 
     <% } %>
