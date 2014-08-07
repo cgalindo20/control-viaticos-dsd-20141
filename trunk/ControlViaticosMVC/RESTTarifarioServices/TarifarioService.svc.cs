@@ -4,6 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using RESTTarifarioServices.Dominio;
+using RESTTarifarioServices.Persistencia;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace RESTTarifarioServices
 {
@@ -11,29 +15,53 @@ namespace RESTTarifarioServices
     public class TarifarioService : ITarifarioService
     {
 
-        public Dominio.Tarifario crearTarifario(Dominio.Tarifario tarifarioACrear)
+        TarifarioDAO dao = new TarifarioDAO();
+
+        public Tarifario crearTarifario(Tarifario nuevoTarifario)
         {
-            throw new NotImplementedException();
+
+            Tarifario tarifario = dao.Obtener(nuevoTarifario.Co_Tarifa.ToString());
+            if (tarifario != null)
+                throw new WebFaultException<ValidationException>(
+                    new ValidationException()
+                    {
+                        CodigoError = "E001",
+                        MensajeError = "El tarifario ya existe."
+                    },
+                        HttpStatusCode.InternalServerError
+                    );
+
+            return dao.crear(nuevoTarifario);
         }
 
-        public Dominio.Tarifario obtenerTarifario(string codigo)
+        public Tarifario obtenerTarifario(string codigo)
         {
-            throw new NotImplementedException();
+            Tarifario tarifario = dao.Obtener(codigo);
+            if (tarifario == null)
+                throw new WebFaultException<ValidationException>(
+                    new ValidationException()
+                    {
+                        CodigoError = "E002",
+                        MensajeError = "El tarifario NO existe."
+                    },
+                        HttpStatusCode.InternalServerError
+                    );
+            return tarifario;
         }
 
-        public Dominio.Tarifario modificarTarifario(Dominio.Tarifario tarifarioAModificar)
+        public Tarifario modificarTarifario(Dominio.Tarifario tarifarioAModificar)
         {
-            throw new NotImplementedException();
+            return dao.Modificar(tarifarioAModificar);
         }
 
         public void eliminarTarifario(string codigo)
         {
-            throw new NotImplementedException();
+            dao.Eliminar(new Tarifario() { Co_Tarifa = int.Parse(codigo) });
         }
 
-        public List<Dominio.Tarifario> listarTarifarios()
+        public List<Tarifario> listarTarifarios()
         {
-            throw new NotImplementedException();
+            return dao.ListarTodos();
         }
     }
 }

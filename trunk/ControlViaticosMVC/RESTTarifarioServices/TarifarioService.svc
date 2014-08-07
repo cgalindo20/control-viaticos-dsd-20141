@@ -1,1 +1,6 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="RESTTarifarioServices.TarifarioService" CodeBehind="TarifarioService.svc.cs" %>
+﻿<%@ ServiceHost 
+Language="C#"
+ Debug="true" 
+ Service="RESTTarifarioServices.TarifarioService" 
+ CodeBehind="TarifarioService.svc.cs" 
+ Factory = "System.ServiceModel.Activation.WebServiceHostFactory"  %>
