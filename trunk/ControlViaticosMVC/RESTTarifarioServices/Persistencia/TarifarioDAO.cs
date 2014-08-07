@@ -13,7 +13,7 @@ namespace RESTTarifarioServices.Persistencia
         {
             Tarifario tarifarioCreado = null;
 
-            string sql = "INSERT INTO T_TARIFARIO VALUES (@Co_Tarifa, @Co_TipoViatico, @Co_Ubigeo, @Ss_Costo, Co_EmpActualiza)";
+            string sql = "INSERT INTO T_TARIFARIO VALUES (@Co_Tarifa, @Co_TipoViatico, @Co_Ubigeo, @Ss_Costo, @Co_EmpActualiza)";
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
                 con.Open();
@@ -32,7 +32,7 @@ namespace RESTTarifarioServices.Persistencia
             return tarifarioCreado;
         }
 
-        private Tarifario Obtener(string codigo)
+        public Tarifario Obtener(string codigo)
         {
             Tarifario tarifarioEncontrado = null;
             string sql = "SELECT * FROM T_TARIFARIO WHERE Co_Tarifa=@Co_Tarifa";
@@ -74,6 +74,7 @@ namespace RESTTarifarioServices.Persistencia
                     com.Parameters.Add(new SqlParameter("@Co_Ubigeo", tarifarioAModificar.Co_Ubigeo));
                     com.Parameters.Add(new SqlParameter("@Ss_Costo", tarifarioAModificar.Ss_Costo));
                     com.Parameters.Add(new SqlParameter("@Co_EmpActualiza", tarifarioAModificar.Co_EmpActualiza));
+                    com.Parameters.Add(new SqlParameter("@Co_Tarifa", tarifarioAModificar.Co_Tarifa));
                     com.ExecuteNonQuery();
                 }
             }
