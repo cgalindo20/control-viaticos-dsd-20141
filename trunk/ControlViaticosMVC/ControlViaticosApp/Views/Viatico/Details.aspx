@@ -9,7 +9,7 @@
     <h2>Ver Solicitud</h2>
 
     <fieldset>
-        <legend>Campos</legend>
+        <legend>Solicitud de Viatico</legend>
         
         <div class="display-label"><b>Codigo Solicitud</b></div>
         <div class="display-field"><%: Model.CodigoSolicitud %></div>
@@ -36,8 +36,34 @@
         <div class="display-field"><%: String.Format("{0:F}", Model.TotalSolicitado) %></div>        
         
     </fieldset>
+
+    <fieldset>	
+        <legend>Montos multiplicados por los días de estadía</legend>
+		<table>
+			<thead>
+				<tr>
+					<th width="60" align="center">Tipo de Viatico</th>
+					<th width="60" align="center">Monto Solicitado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% foreach (var item in Model.Detalles)  { %>
+					<tr>
+						<td width="60">
+							<%: item.PK.TipoViatico.No_Descripcion %> 
+						</td>
+			
+						<td width="60">
+							<%: String.Format("{0:F}", item.Ss_MontoSolicitado) %>
+						</td>
+					</tr>
+				<% }  %>
+			</tbody>
+		</table>
+	</fieldset>	
+
     <p>
-        <%: Html.ActionLink("Modificar", "Edit", new { id = Model.CodigoSolicitud })%> |
+        <%--<%: Html.ActionLink("Modificar", "Edit", new { id = Model.CodigoSolicitud })%> |--%>
         <%: Html.ActionLink("Regresar a la Lista", "Index") %>
     </p>
 

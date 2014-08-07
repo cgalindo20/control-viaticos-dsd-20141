@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AprobarController.cs" />
-    <Compile Include="Controllers\AutorizarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiquidarController.cs" />
     <Compile Include="Controllers\ViaticoController.cs" />
@@ -87,11 +86,6 @@
     <Compile Include="Models\Viatico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\AprobarWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\AutorizarWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -123,22 +117,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AprobarWS\ControlViaticosApp.AprobarWS.Ubigeo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\AutorizarWS\Autorizaciones1.wsdl" />
-    <None Include="Service References\AutorizarWS\Autorizaciones41.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AutorizarWS\Autorizaciones42.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AutorizarWS\Autorizaciones43.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AutorizarWS\ControlViaticosApp.AutorizarWS.Autorizar.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\AutorizarWS\ControlViaticosApp.AutorizarWS.Ubigeo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LiquidacionesWS\ControlViaticosApp.LiquidacionesWS.Liquidar.datasource">
@@ -179,12 +157,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\AutorizarWS\configuration91.svcinfo" />
-    <None Include="Service References\AutorizarWS\configuration.svcinfo" />
-    <None Include="Service References\AutorizarWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Service References\AprobarWS\configuration91.svcinfo" />
     <None Include="Service References\AprobarWS\configuration.svcinfo" />
     <None Include="Service References\AprobarWS\Reference.svcmap">
@@ -194,14 +166,13 @@
     <Content Include="Views\Aprobar\Details.aspx" />
     <Content Include="Views\Aprobar\Edit.aspx" />
     <Content Include="Views\Aprobar\Index.aspx" />
-    <Content Include="Views\Autorizar\Details.aspx" />
-    <Content Include="Views\Autorizar\Edit.aspx" />
-    <Content Include="Views\Autorizar\Index.aspx" />
     <Content Include="Views\Liquidar\BuscaSolicitud.aspx" />
     <Content Include="Views\Liquidar\Index.aspx" />
     <Content Include="Views\Liquidar\LiquidarCreate.aspx" />
     <Content Include="Views\Liquidar\LiquidarDelete.aspx" />
     <Content Include="Views\Liquidar\LiquidarEdit.aspx" />
+    <Content Include="Views\Viatico\EditAutorizar.aspx" />
+    <Content Include="Views\Viatico\IndexAutorizar.aspx" />
     <Content Include="Views\Viatico\Create.aspx" />
     <Content Include="Views\Viatico\Delete.aspx" />
     <Content Include="Views\Viatico\Details.aspx" />
@@ -247,7 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AprobarWS\" />
-    <WCFMetadataStorage Include="Service References\AutorizarWS\" />
     <WCFMetadataStorage Include="Service References\LiquidacionesWS\" />
     <WCFMetadataStorage Include="Service References\ViaticoWS\" />
   </ItemGroup>

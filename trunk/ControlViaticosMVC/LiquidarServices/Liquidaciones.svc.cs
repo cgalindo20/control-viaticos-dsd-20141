@@ -111,7 +111,7 @@ namespace LiquidarServices
                 solicitud = solicitudAux,
                 Ss_TotalAsignado = SsTotalAsignado,
                 Ss_TotalUtilizado = SsTotalUtilizado,
-                Ss_OtrosGastos = SsOtrosGastos,
+                Ss_OtrosGastos = SsOtrosGastos
 
             };
 

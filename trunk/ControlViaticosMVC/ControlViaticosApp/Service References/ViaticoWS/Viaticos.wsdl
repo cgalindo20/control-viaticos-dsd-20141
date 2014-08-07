@@ -28,6 +28,12 @@
   <wsdl:message name="IViaticos_ModificarSolicitud_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModificarSolicitudResponse" />
   </wsdl:message>
+  <wsdl:message name="IViaticos_AutorizarSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:AutorizarSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="IViaticos_AutorizarSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AutorizarSolicitudResponse" />
+  </wsdl:message>
   <wsdl:message name="IViaticos_EliminarSolicitud_InputMessage">
     <wsdl:part name="parameters" element="tns:EliminarSolicitud" />
   </wsdl:message>
@@ -65,6 +71,10 @@
     <wsdl:operation name="ModificarSolicitud">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/ModificarSolicitud" message="tns:IViaticos_ModificarSolicitud_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/ModificarSolicitudResponse" message="tns:IViaticos_ModificarSolicitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AutorizarSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/AutorizarSolicitud" message="tns:IViaticos_AutorizarSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IViaticos/AutorizarSolicitudResponse" message="tns:IViaticos_AutorizarSolicitud_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EliminarSolicitud">
       <wsdl:input wsaw:Action="http://tempuri.org/IViaticos/EliminarSolicitud" message="tns:IViaticos_EliminarSolicitud_InputMessage" />
@@ -108,6 +118,15 @@
     </wsdl:operation>
     <wsdl:operation name="ModificarSolicitud">
       <soap:operation soapAction="http://tempuri.org/IViaticos/ModificarSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutorizarSolicitud">
+      <soap:operation soapAction="http://tempuri.org/IViaticos/AutorizarSolicitud" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

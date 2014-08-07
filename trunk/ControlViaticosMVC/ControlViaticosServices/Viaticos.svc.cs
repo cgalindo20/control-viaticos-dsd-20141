@@ -16,18 +16,6 @@ namespace ControlViaticosServices
         private TarifarioDAO tarifarioDAO = new TarifarioDAO();
         private TipoViaticoDAO tipoViaticoDAO = new TipoViaticoDAO();
         private ViaticoDetalleDAO viaticoDetalleDAO = new ViaticoDetalleDAO();
-
-        //private ViaticoDAO viaticoDAO = null;
-        //private ViaticoDAO ViaticoDAO
-        //{
-        //    get
-        //    {
-        //        if (viaticoDAO == null)
-        //            viaticoDAO = new ViaticoDAO();
-        //        return viaticoDAO;
-        //    }
-        //}
-
         private UbigeoDAO ubigeoDAO = null;
         private UbigeoDAO UbigeoDAO
         {
@@ -42,45 +30,6 @@ namespace ControlViaticosServices
         public Viatico CrearSolicitud(  DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino,
                                         DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, List<Item> items)
         {
-            
-                ////La fecha de salida debe ser mayor a 10 dias de la fecha de la solicitud
-                //DateTime d1 = fechaSolicitud;
-                //DateTime d2 = fechaSalida;
-                //// Creamos una variable TimeSpan para almacenar el intervalo de tiempo
-                //TimeSpan ts = d2 - d1;
-                //// Diferencia en días.
-                //int NumDias = ts.Days;
-
-
-                //if (NumDias < 10)
-                //{
-                //    throw new FaultException<ValidationException>(
-                //        new ValidationException()
-                //        {
-                //            CodigoError = 6510,
-                //            MensajeError = "La Solicitud de viático debe ser mayor a 10 días de la fecha de salida."
-                //        });
-                //};
-
-                //Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
-                //Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);          
-
-                //Viatico viaticoACRear = new Viatico()
-
-                //{
-                //    FechaSolicitud = fechaSolicitud,
-                //    CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
-                //    ubigeoOrigen = ubigeoO,
-                //    ubigeoDestino = ubigeoD,
-                //    FechaSalida = fechaSalida,
-                //    FechaRetorno = fechaRetorno,
-                //    SustentoViaje = sustentoViaje,
-                //    TotalSolicitado = totalSolicitado
-                //};
-                //return ViaticoDAO.Crear(viaticoACRear);
-                /////////////////////////////
-            
-
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
 
@@ -94,7 +43,11 @@ namespace ControlViaticosServices
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
-                TotalSolicitado = totalSolicitado
+                TotalSolicitado = totalSolicitado,
+                FlagAutorizar = "P",
+                FechaAutorizar = fechaSolicitud,
+                CodigoEmpleadoAutorizar = codigoEmpleadoSolicitante
+   
             };
 
             viatico = viaticoDAO.Crear(viatico);
@@ -105,7 +58,7 @@ namespace ControlViaticosServices
                 tipoViaticoAux = tipoViaticoDAO.Obtener(item.Co_TipoViatico);
                 viaticoDetalleAux = new ViaticoDetalle()
                 {
-                    PK = new ViaticoDetallePK()
+                    PK = new ViaticoDetallePK() 
                     {
                         Viatico = viatico.CodigoSolicitud,
                         TipoViatico = tipoViaticoAux
@@ -124,36 +77,93 @@ namespace ControlViaticosServices
             return viaticoDAO.Obtener(codigoSolicitud);
         }
 
-        public Viatico ModificarSolicitud(int codigoSolicitud, DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado)
+        public Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje)
         {
 
             Ubigeo ubigeoOrigen = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoDestino = UbigeoDAO.Obtener(codigoUbigeoDestino);
+            Viatico viaticoOriginal = viaticoDAO.Obtener(codigoSolicitud);
 
             Viatico viaticoAModificar = new Viatico()
             {
                 CodigoSolicitud = codigoSolicitud,
-                FechaSolicitud = fechaSolicitud,
-                CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
+                FechaSolicitud = viaticoOriginal.FechaSolicitud,
+                CodigoEmpleadoSolicitante = viaticoOriginal.CodigoEmpleadoSolicitante,
                 ubigeoOrigen = ubigeoOrigen,
                 ubigeoDestino = ubigeoDestino,
                 FechaSalida = fechaSalida,
                 FechaRetorno = fechaRetorno,
                 SustentoViaje = sustentoViaje,
-                TotalSolicitado = totalSolicitado
+                TotalSolicitado = viaticoOriginal.TotalSolicitado,
+                FlagAutorizar = viaticoOriginal.FlagAutorizar,
+            };
+            return viaticoDAO.Modificar(viaticoAModificar);
+        }
+
+        public Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza)
+        {
+            Viatico viaticoOriginal = viaticoDAO.Obtener(codigoSolicitud);
+
+            Viatico viaticoAModificar = new Viatico()
+            {
+                CodigoSolicitud = codigoSolicitud,
+                FechaSolicitud = viaticoOriginal.FechaSolicitud,
+                CodigoEmpleadoSolicitante = viaticoOriginal.CodigoEmpleadoSolicitante,
+                ubigeoOrigen = viaticoOriginal.ubigeoOrigen,
+                ubigeoDestino = viaticoOriginal.ubigeoDestino,
+                FechaSalida = viaticoOriginal.FechaSalida,
+                FechaRetorno = viaticoOriginal.FechaRetorno,
+                SustentoViaje = viaticoOriginal.SustentoViaje,
+                TotalSolicitado = viaticoOriginal.TotalSolicitado,
+                //
+                FlagAutorizar = autorizar,
+                FechaAutorizar = DateTime.Today,
+                CodigoEmpleadoAutorizar = codigoEmpleadoAutoriza
+                //
             };
             return viaticoDAO.Modificar(viaticoAModificar);
         }
 
         public void EliminarSolicitud(int codigoSolicitud)
         {
+            
+            // Deberia eliminar primero su detalle
+
             Viatico viaticoExistente = viaticoDAO.Obtener(codigoSolicitud);
             viaticoDAO.Eliminar(viaticoExistente);
+
         }
 
         public List<Viatico> ListarSolicitudes()
         {
-            return viaticoDAO.ListarTodos().ToList();
+            //Se añade código para que liste solo los que están pendientes de Autorizar
+
+            //
+            List<Viatico> listSolicitudes = new List<Viatico>();
+            listSolicitudes = viaticoDAO.ListarTodos().ToList();
+            int j = 0;
+            for (int i = 0; i < listSolicitudes.Count; i++)
+            {
+                if (listSolicitudes[i].FlagAutorizar == "P")
+                {
+                    j = j + 1;
+                }
+            }
+            
+            //
+            Viatico[] viaticoArr = new Viatico[j];
+            j = 0;
+            for (int i = 0; i < listSolicitudes.Count; i++)
+            {
+                if (listSolicitudes[i].FlagAutorizar == "P")
+                {
+                    Viatico viaticoAdd = new Viatico();
+                    viaticoArr[j] = listSolicitudes[i];
+                    j = j + 1;
+                }
+            }
+
+            return viaticoArr.ToList();
         }
 
         public List<Ubigeo> ListarUbigeos()

@@ -41,8 +41,8 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Editar", "Edit", new {  id=item.CodigoSolicitud }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new {  id=item.CodigoSolicitud })%> |
+                <%--<%: Html.ActionLink("Editar", "Edit", new {  id=item.CodigoSolicitud }) %> |--%>
+                <%: Html.ActionLink("Ver", "Details", new {  id=item.CodigoSolicitud })%> |
                 <%: Html.ActionLink("Eliminar", "Delete", new {  id=item.CodigoSolicitud })%>
             </td>
             <td>

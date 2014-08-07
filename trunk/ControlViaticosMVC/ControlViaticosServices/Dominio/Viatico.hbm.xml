@@ -19,6 +19,8 @@
       <key column="Co_Solicitud" />
       <one-to-many class="ControlViaticosServices.Dominio.ViaticoDetalle" />
     </bag>
-    
+    <property name="FlagAutorizar" column="Fl_Autorizado" />
+    <property name="FechaAutorizar" column="Fe_Autorizado" />
+    <property name="CodigoEmpleadoAutorizar" column="Co_EmpAutoriza" />
   </class>
 </hibernate-mapping>
