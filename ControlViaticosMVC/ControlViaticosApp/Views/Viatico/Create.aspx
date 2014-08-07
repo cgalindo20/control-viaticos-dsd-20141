@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Nueva Solicitud</h2>
+    <h2>Nueva Solicitud de Viatico</h2>
 
      <% if(null != TempData["alertMessage"]) 
            { %>
@@ -22,22 +22,22 @@
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
-            <legend>Campos</legend>                                             
+            <legend>Nueva Solicitud de Viatico</legend>
             
             <div class="editor-label">
-                Origen
+                Origen :
             </div>
             <div class="editor-field">
                 <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>                
             </div>            
             <div class="editor-label">
-               Destino
+               Destino :
             </div>
             <div class="editor-field">
                 <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>
             </div>            
             <div class="editor-label">  
-               Fecha Salida
+               Fecha Salida :
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaSalida, new { @id = "datepicker1" })%>
@@ -45,7 +45,7 @@
             </div>
             
             <div class="editor-label">
-              Fecha Retorno
+              Fecha Retorno :
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.FechaRetorno, new { @id = "datepicker2" })%>
@@ -53,25 +53,30 @@
             </div>
             
             <div class="editor-label">
-               Motivo
+               Motivo :
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.SustentoViaje) %>
+                <%: Html.TextAreaFor(model => model.SustentoViaje) %>
                 <%: Html.ValidationMessageFor(model => model.SustentoViaje) %>
-            </div>
-            
-            <div class="editor-label">
-              Total Solicitado
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.TotalSolicitado) %>
-                <%: Html.ValidationMessageFor(model => model.TotalSolicitado) %>
             </div>                        
             
-            <fieldset>	
+            
+            <p>
+                <input type="submit" value="Solicitar" />
+            </p>
+            
+            <div>
+                <%: Html.ActionLink("Regresar a la Lista", "Index") %>
+            </div>
+
+        </fieldset>
+
+        <fieldset>	
+            <legend>Relación de tarifas por día según el destino y el tipo de viático</legend>
             <table>
 	            <thead>
 		            <tr>
+                        <th width="60" align="center">Destino</th>
                         <th width="60" align="center">Tipo de Viatico</th>
 			            <th width="60" align="center">Monto Solicitado</th>
 		            </tr>
@@ -94,19 +99,11 @@
 	            <% }  %>			        
                 </tbody>
             </table>        
-            </fieldset>	
+        </fieldset>	
 
-            <p>
-                <input type="submit" value="Save" />
-            </p>
-
-        </fieldset>
 
     <% } %>
 
-    <div>
-        <%: Html.ActionLink("Regresar a la Lista", "Index") %>
-    </div>
      <script type="text/javascript">
       
         $(function() {

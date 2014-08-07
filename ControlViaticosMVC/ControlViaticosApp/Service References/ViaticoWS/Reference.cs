@@ -84,6 +84,9 @@ namespace ControlViaticosApp.ViaticoWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoEmpleadoAutorizarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CodigoEmpleadoSolicitanteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -93,6 +96,9 @@ namespace ControlViaticosApp.ViaticoWS {
         private System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.ViaticoDetalle> DetallesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaAutorizarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaRetornoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -100,6 +106,9 @@ namespace ControlViaticosApp.ViaticoWS {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaSolicitudField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FlagAutorizarField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SustentoViajeField;
@@ -120,6 +129,19 @@ namespace ControlViaticosApp.ViaticoWS {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodigoEmpleadoAutorizar {
+            get {
+                return this.CodigoEmpleadoAutorizarField;
+            }
+            set {
+                if ((this.CodigoEmpleadoAutorizarField.Equals(value) != true)) {
+                    this.CodigoEmpleadoAutorizarField = value;
+                    this.RaisePropertyChanged("CodigoEmpleadoAutorizar");
+                }
             }
         }
         
@@ -163,6 +185,19 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaAutorizar {
+            get {
+                return this.FechaAutorizarField;
+            }
+            set {
+                if ((this.FechaAutorizarField.Equals(value) != true)) {
+                    this.FechaAutorizarField = value;
+                    this.RaisePropertyChanged("FechaAutorizar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime FechaRetorno {
             get {
                 return this.FechaRetornoField;
@@ -197,6 +232,19 @@ namespace ControlViaticosApp.ViaticoWS {
                 if ((this.FechaSolicitudField.Equals(value) != true)) {
                     this.FechaSolicitudField = value;
                     this.RaisePropertyChanged("FechaSolicitud");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FlagAutorizar {
+            get {
+                return this.FlagAutorizarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FlagAutorizarField, value) != true)) {
+                    this.FlagAutorizarField = value;
+                    this.RaisePropertyChanged("FlagAutorizar");
                 }
             }
         }
@@ -689,7 +737,10 @@ namespace ControlViaticosApp.ViaticoWS {
         ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ModificarSolicitud", ReplyAction="http://tempuri.org/IViaticos/ModificarSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado);
+        ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/AutorizarSolicitud", ReplyAction="http://tempuri.org/IViaticos/AutorizarSolicitudResponse")]
+        ControlViaticosApp.ViaticoWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/EliminarSolicitud", ReplyAction="http://tempuri.org/IViaticos/EliminarSolicitudResponse")]
         void EliminarSolicitud(int codigoSolicitud);
@@ -739,8 +790,12 @@ namespace ControlViaticosApp.ViaticoWS {
             return base.Channel.ObtenerSolicitud(codigoSolicitud);
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado) {
-            return base.Channel.ModificarSolicitud(codigoSolicitud, fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado);
+        public ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje) {
+            return base.Channel.ModificarSolicitud(codigoSolicitud, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje);
+        }
+        
+        public ControlViaticosApp.ViaticoWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza) {
+            return base.Channel.AutorizarSolicitud(codigoSolicitud, autorizar, codigoEmpleadoAutoriza);
         }
         
         public void EliminarSolicitud(int codigoSolicitud) {

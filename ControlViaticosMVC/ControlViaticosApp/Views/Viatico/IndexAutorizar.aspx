@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.AutorizarWS.Autorizar>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ControlViaticosApp.ViaticoWS.Viatico>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Control de Viáticos
@@ -6,18 +6,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Viáticos Por Autorizar</h2>
+    <h2>Solicitudes de Viáticos Pendientes de Autorizar</h2>
 
     <table>
         <tr>
             <th></th>
             <th>
-                Solicitud
-            </th>           
-             <th>
-                Solicitante
+                Codigo Solicitud
             </th>
-             <th>
+            <th>
+                Fecha Solicitud
+            </th>           
+            <th>
                 Origen
             </th>
             <th>
@@ -30,28 +30,26 @@
                 Fecha Retorno
             </th>
             <th>
-                Motivo Viaje
+                Sustento Viaje
             </th>
             <th>
                 Total Solicitado
-            </th>
-            <th>
-                Estado
-            </th>            
+            </th>           
+        
         </tr>
 
-   <% foreach (var item in Model) { %>
+    <% foreach (var item in Model) { %>
     
         <tr>
             <td>
-                <%: Html.ActionLink("Autorizar", "Edit", new { id = item.CodigoSolicitud })%>                               
+                <%: Html.ActionLink("Autorizar", "EditAutorizar", new { id = item.CodigoSolicitud })%>                               
             </td>
-            <td align='center'>
+            <td>
                 <%: item.CodigoSolicitud %>
-            </td>          
-             <td>
-                <%: item.empleado.TxAp_Paterno + " " + item.empleado.TxPreNombre %>
             </td>
+            <td>
+                <%: String.Format("{0:d}", item.FechaSolicitud) %>
+            </td>          
             <td>
                 <%: item.ubigeoOrigen.NoDescripcion%>
             </td>
@@ -69,19 +67,12 @@
             </td>
             <td>
                 <%: String.Format("{0:F}", item.TotalSolicitado) %>
-            </td>            
-            <td>
-            <% if (item.FlagAutorizar.Equals("P"))
-               { %>
-                Pendiente
-            <% }else{ %>
-                Autorizado            
-             <% } %>
             </td>           
         </tr>
     
     <% } %>
-    </table> 
+
+    </table>
 
 </asp:Content>
 

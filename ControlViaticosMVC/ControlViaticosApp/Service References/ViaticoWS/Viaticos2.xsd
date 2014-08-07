@@ -15,12 +15,15 @@
   <xs:element name="Item" nillable="true" type="tns:Item" />
   <xs:complexType name="Viatico">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoEmpleadoAutorizar" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoEmpleadoSolicitante" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoSolicitud" type="xs:int" />
       <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfViaticoDetalle" />
+      <xs:element minOccurs="0" name="FechaAutorizar" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRetorno" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaSalida" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaSolicitud" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FlagAutorizar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SustentoViaje" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalSolicitado" type="xs:double" />
       <xs:element minOccurs="0" name="ubigeoDestino" nillable="true" type="tns:Ubigeo" />
