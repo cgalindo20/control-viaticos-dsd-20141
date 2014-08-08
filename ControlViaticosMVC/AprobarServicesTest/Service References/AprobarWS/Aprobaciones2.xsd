@@ -15,7 +15,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ModificarSolicitud">
+  <xs:element name="AprobarSolicitud">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="codigoSolicitud" type="xs:int" />
@@ -33,10 +33,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ModificarSolicitudResponse">
+  <xs:element name="AprobarSolicitudResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="ModificarSolicitudResult" nillable="true" type="q2:Aprobar" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AprobarServices.Dominio" minOccurs="0" name="AprobarSolicitudResult" nillable="true" type="q2:Aprobar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
