@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Presupuesto.cs" />
+    <Compile Include="Dominio\Viatico.cs" />
     <Compile Include="IPresupuestoService.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\PresupuestoDAO.cs" />
