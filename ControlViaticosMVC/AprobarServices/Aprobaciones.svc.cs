@@ -49,14 +49,14 @@ namespace AprobarServices
             }
         }
 
+
         public Aprobar ObtenerSolicitud(int codigoSolicitud)
         {
             return AprobarDAO.Obtener(codigoSolicitud);
         }
-
-        public Aprobar AprobarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba)
+        
+        public Aprobar AprobarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba)
         {
-            Empleado empleadoObt = EmpleadoDAO.Obtener(codigoEmpleadoSolicitante);
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
             Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
             
@@ -65,7 +65,6 @@ namespace AprobarServices
             {
                 CodigoSolicitud = codigoSolicitud,
                 FechaSolicitud = fechaSolicitud,
-                empleado = empleadoObt,
                 ubigeoOrigen = ubigeoO,
                 ubigeoDestino = ubigeoD,
                 FechaSalida = fechaSalida,
@@ -93,6 +92,7 @@ namespace AprobarServices
 
                 // 5. Si el monto solicitado es mayor o igual al monto disponible, se manda execpcion, caso contrario se Aprueba.
                 if ( aprobarAModificar.TotalSolicitado > presupuestoObtenido.Ss_MontoDisponible)
+                    
                     throw new WebFaultException<ValidationException>(
                         new ValidationException()
                         {
@@ -123,7 +123,26 @@ namespace AprobarServices
             }
             //////////////
 
-            return AprobarDAO.Modificar(aprobarAModificar);
+            //Enviar mensaje de Aprobacion o Rechazo
+            string rutaColaIn = @".\private$\indestructiblesOut";
+            if (!MessageQueue.Exists(rutaColaIn))
+                MessageQueue.Create(rutaColaIn);
+            MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            Message mensajeIn = new Message();
+            mensajeIn.Label = "Solicitud de Viatico Aprobada";
+            mensajeIn.Body = new ViaticoMsg()
+            {
+                CodigoSolicitud = aprobarAModificar.CodigoSolicitud,
+                FechaSolicitud = aprobarAModificar.FechaSolicitud,
+                FlagAprobar = flagAprobado,
+                FechaAprobar = feAprobado,
+                CodigoEmpleadoAprobar = CodigoEmpleadoAprueba
+
+            };
+            colaIn.Send(mensajeIn);
+
+            //return AprobarDAO.Modificar(aprobarAModificar);
+            return aprobarAModificar;
         }
 
         public List<Aprobar> ListarSolicitudes()
@@ -138,7 +157,8 @@ namespace AprobarServices
             ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
             Console.WriteLine("Asunto Recibido: " + mensajeIn.Label);
             Console.WriteLine("Viatico Recibido: " + viaticoMsg.CodigoSolicitud + ", Total Solicitado: " + viaticoMsg.TotalSolicitado);
-            
+            Console.ReadLine();
+
             //2. Leer la Solicitud y mostrarlo en el List 
             Aprobar[] viaticoArr = new Aprobar[1];
 
@@ -156,9 +176,9 @@ namespace AprobarServices
                 viaticoArr[i] = viaticoAprobar;
             }
 
-            //            
-            //return AprobarDAO.ListarTodos().ToList();
+            //
             return viaticoArr.ToList();
+
         }
 
         public List<Ubigeo> ListarUbigeos()
@@ -166,7 +186,25 @@ namespace AprobarServices
             return UbigeoDAO.ListarTodos().ToList();
         }
 
+        public class ViaticoMsg
+        {
+            public int CodigoSolicitud { get; set; }
+            public DateTime FechaSolicitud { get; set; }
+            public int CodigoEmpleadoSolicitante { get; set; }
+            public Ubigeo ubigeoOrigen { get; set; }
+            public Ubigeo ubigeoDestino { get; set; }
+            public DateTime FechaSalida { get; set; }
+            public DateTime FechaRetorno { get; set; }
+            public String SustentoViaje { get; set; }
+            public Double TotalSolicitado { get; set; }
+            public String FlagAutorizar { get; set; }
+            public DateTime FechaAutorizar { get; set; }
+            public int CodigoEmpleadoAutorizar { get; set; }
+            public String FlagAprobar { get; set; }
+            public DateTime FechaAprobar { get; set; }
+            public int CodigoEmpleadoAprobar { get; set; }
 
+        }
 
     }
 }
