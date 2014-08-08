@@ -77,7 +77,6 @@
     <Compile Include="Dominio\Presupuesto.cs" />
     <Compile Include="Dominio\Ubigeo.cs" />
     <Compile Include="Dominio\ValidationException.cs" />
-    <Compile Include="Dominio\ViaticoMsg.cs" />
     <Compile Include="Persistencia\AprobarDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />

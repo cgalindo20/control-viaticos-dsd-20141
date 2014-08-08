@@ -33,5 +33,6 @@ namespace AprobarServices.Dominio
         public DateTime FeAprobado { get; set; }
         [DataMember]
         public int CodigoEmpleadoAprueba { get; set; }
+
     }
 }
