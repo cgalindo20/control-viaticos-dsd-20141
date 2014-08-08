@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Net;
 using ControlViaticosServices.Dominio;
 using ControlViaticosServices.Persistencia;
 using System.Messaging;
@@ -150,7 +151,6 @@ namespace ControlViaticosServices
             colaIn.Send(mensajeIn);
             //
 
-
             return viaticoDAO.Modificar(viaticoAutorizar);
         }
 
@@ -205,7 +205,29 @@ namespace ControlViaticosServices
         {
             return tarifarioDAO.ListarTodos().ToList();
         }
+<<<<<<< .mine
+
+        public class ViaticoMsg
+        {
+            public int CodigoSolicitud { get; set; }
+            public DateTime FechaSolicitud { get; set; }
+            public int CodigoEmpleadoSolicitante { get; set; }
+            public Ubigeo ubigeoOrigen { get; set; }
+            public Ubigeo ubigeoDestino { get; set; }
+            public DateTime FechaSalida { get; set; }
+            public DateTime FechaRetorno { get; set; }
+            public String SustentoViaje { get; set; }
+            public Double TotalSolicitado { get; set; }
+            public String FlagAutorizar { get; set; }
+            public DateTime FechaAutorizar { get; set; }
+            public int CodigoEmpleadoAutorizar { get; set; }
+
+        }
+=======
        
         
+>>>>>>> .r116
     }
+
+   
 }
