@@ -205,7 +205,7 @@ namespace ControlViaticosServices
         {
             return tarifarioDAO.ListarTodos().ToList();
         }
-<<<<<<< .mine
+
 
         public class ViaticoMsg
         {
@@ -223,10 +223,7 @@ namespace ControlViaticosServices
             public int CodigoEmpleadoAutorizar { get; set; }
 
         }
-=======
-       
-        
->>>>>>> .r116
+
     }
 
    
