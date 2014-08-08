@@ -11,7 +11,7 @@ namespace RESTServices.Persistencia
         {
             get
             {
-                return "Data Source=(local);Initial Catalog=CONTROLVIATICOS;Integrated Security=SSPI;";
+                return "Data Source=(local);Initial Catalog=PRESUPUESTO;Integrated Security=SSPI;";
                 //return @"Data Source=MAVERICK-PC\SQLEXPRESS;Initial Catalog=CONTROLVIATICOS;Integrated Security=True";
             }
         }

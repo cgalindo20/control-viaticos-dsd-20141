@@ -9,6 +9,33 @@ namespace RESTServices.Persistencia
 {
     public class PresupuestoDAO
     {
+
+        public Viatico CrearViatico(Viatico viaticoACrear)
+        {
+            Viatico viaticoCreado = null;
+            string sql = "INSERT INTO T_PRESUPUESTO VALUES (@Co_Solicitud, @Fe_Solicitud, @Ss_TotalSolicitado,@Fl_Autorizado, @Co_EmpAutoriza, @Fe_Autorizado, @Fl_Aprobado, @Co_EmpAprueba, @Fe_Aprobado)";
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+                    com.Parameters.Add(new SqlParameter("@Co_Solicitud", viaticoACrear.Co_Solicitud));
+                    com.Parameters.Add(new SqlParameter("@Fe_Solicitud", viaticoACrear.Fe_Solicitud));
+                    com.Parameters.Add(new SqlParameter("@Ss_TotalSolicitado", viaticoACrear.Ss_TotalSolicitado));
+                    com.Parameters.Add(new SqlParameter("@Fl_Autorizado", viaticoACrear.Fl_Autorizado));
+                    com.Parameters.Add(new SqlParameter("@Co_EmpAutoriza", viaticoACrear.Co_EmpAutoriza));
+                    com.Parameters.Add(new SqlParameter("@Fe_Autorizado", viaticoACrear.Fe_Autorizado));
+                    com.Parameters.Add(new SqlParameter("@Fl_Aprobado", viaticoACrear.Fl_Aprobado));
+                    com.Parameters.Add(new SqlParameter("@Co_EmpAprueba", viaticoACrear.Co_EmpAprueba));
+                    com.Parameters.Add(new SqlParameter("@Fe_Aprobado", viaticoACrear.Fe_Aprobado));                    
+                    com.ExecuteNonQuery();
+                }
+            }
+
+            viaticoCreado = viaticoACrear;
+            return viaticoCreado;
+        }
+
         public Presupuesto Crear(Presupuesto presupuestoACrear)
         {
             Presupuesto presupuestoCreado = null;
