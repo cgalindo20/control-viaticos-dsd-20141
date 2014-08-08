@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Messaging;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -11,62 +12,23 @@ namespace ControlViaticosApp.Controllers
         //Instanciar AutorizarService
         private AprobarWS.AprobacionesClient proxy = new AprobarWS.AprobacionesClient();
 
-        public ActionResult Index()
+        public ActionResult Edit()
         {
+            //1. Pasamos valores al Modelo del servicio
             List<AprobarWS.Aprobar> viaticos = proxy.ListarSolicitudes();
+            AprobarWS.Aprobar viaticoEditar = new AprobarWS.Aprobar();
 
-            return View(viaticos);
-        }
+            viaticoEditar.CodigoSolicitud = viaticos[0].CodigoSolicitud;
+            viaticoEditar.FechaSolicitud = viaticos[0].FechaSolicitud;
+            viaticoEditar.ubigeoOrigen = viaticos[0].ubigeoOrigen;
+            viaticoEditar.ubigeoDestino = viaticos[0].ubigeoDestino;
+            viaticoEditar.FechaSalida = viaticos[0].FechaSalida;
+            viaticoEditar.FechaRetorno = viaticos[0].FechaRetorno;
+            viaticoEditar.SustentoViaje = viaticos[0].SustentoViaje;
+            viaticoEditar.TotalSolicitado = viaticos[0].TotalSolicitado;
+            
 
-        //
-        // GET: /Aprobar/Details/5
-
-        public ActionResult Details(int id)
-        {
-            AprobarWS.Aprobar viaticoObtenido = proxy.ObtenerSolicitud(id);
-
-            return View(viaticoObtenido);
-        }
-
-        //
-        // GET: /Aprobar/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Aprobar/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /Aprobar/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            AprobarWS.Aprobar viaticoEditar = proxy.ObtenerSolicitud(id);
-
-            //Llenar los combobox de Ubigeos
-            List<AprobarWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
-            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
-            ViewData["ubigeos"] = listUbigeos;
-
-            //Llenar combobox de Estado
+            //3. Llenar combobox de Estado
             var list = new[] {   
                 new Estado { Id = "P", Name = "Pendiente" }, 
                 new Estado { Id = "A", Name = "Aprobado" }
@@ -75,21 +37,18 @@ namespace ControlViaticosApp.Controllers
             ViewData["estados"] = listEstados;
 
             return View(viaticoEditar);
-        }
-
-        //
-        // POST: /Aprobar/Edit/5
+        }              
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(FormCollection collection)
         {
             int CodigoEmpleadoAprobar = 3;//obtener de la sesion de login;
             try
             {
-                proxy.AprobarSolicitud(int.Parse(collection["CodigoSolicitud"]),
-                                        int.Parse(collection["empleado.CoEmpleado"]),
-                                        int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
-                                        int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
+
+                proxy.AprobarSolicitud( int.Parse(collection["CodigoSolicitud"]),
+                                        0,
+                                        0,
                                         DateTime.Parse(collection["FechaSolicitud"]),
                                         DateTime.Parse(collection["FechaSalida"]),
                                         DateTime.Parse(collection["FechaRetorno"]),
@@ -99,43 +58,39 @@ namespace ControlViaticosApp.Controllers
                                         DateTime.Today,
                                         CodigoEmpleadoAprobar);
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Edit");
+                return RedirectToAction("MsgOK");
             }
-            catch
+            catch(Exception e)
             {
                 return View();
             }
         }
 
-        //
-        // GET: /Aprobar/Delete/5
- 
-        public ActionResult Delete(int id)
+        public ActionResult MsgOk()
         {
             return View();
-        }
+        }             
 
-        //
-        // POST: /Aprobar/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
         public class Estado
         {
             public string Id { get; set; }
             public string Name { get; set; }
+        }
+
+        public class ViaticoMsg
+        {
+            public int CodigoSolicitud { get; set; }
+            public DateTime FechaSolicitud { get; set; }
+            public int CodigoEmpleadoSolicitante { get; set; }
+            public DateTime FechaSalida { get; set; }
+            public DateTime FechaRetorno { get; set; }
+            public String SustentoViaje { get; set; }
+            public Double TotalSolicitado { get; set; }
+            public String FlagAutorizar { get; set; }
+            public DateTime FechaAutorizar { get; set; }
+            public int CodigoEmpleadoAutorizar { get; set; }
+
         }
     }
 }

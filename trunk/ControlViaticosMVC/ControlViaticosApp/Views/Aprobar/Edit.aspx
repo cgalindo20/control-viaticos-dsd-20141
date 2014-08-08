@@ -15,75 +15,74 @@
             <legend>Campos</legend>
             
             <div class="editor-label">
-                Codigo de Solicitud
+               <span style="color:red">Solicitud</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.CodigoSolicitud) %>
+                <%: Html.TextBoxFor(model => model.CodigoSolicitud, new Dictionary<string, object> { { "readonly", "readonly" } })%>
                 <%: Html.ValidationMessageFor(model => model.CodigoSolicitud) %>
-            </div>                     
+            </div>
+            
             <div class="editor-label">
-                Fecha de Solicitud
+               <span style="color:red">Fecha Solicitud</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSolicitud, String.Format("{0:d}", Model.FechaSolicitud)) %>
+                <%: Html.TextBoxFor(model => model.FechaSolicitud, new Dictionary<string, object> { { "readonly", "readonly" } })%>
                 <%: Html.ValidationMessageFor(model => model.FechaSolicitud) %>
             </div>
-             <div class="editor-label">
-                Solicitante
+            
+            <div class="editor-label">
+                <span style="color:red">Origen</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.empleado.CoEmpleado)%>
-                <%: Html.ValidationMessageFor(model => model.empleado.CoEmpleado) %>
-            </div>   
-              <div class="editor-label">
-                Origen
-            </div>
-            <div class="editor-field">
-             <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+                <%: Html.TextBoxFor(model => model.ubigeoOrigen.NoDescripcion, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.ubigeoOrigen.NoDescripcion) %>
             </div>
             
             <div class="editor-label">
-               Destino
+                <span style="color:red">Destino</span>
             </div>
             <div class="editor-field">
-             <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList)%>                
+                <%: Html.TextBoxFor(model => model.ubigeoDestino.NoDescripcion, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.ubigeoDestino.NoDescripcion)%>
             </div>
+
             <div class="editor-label">
-               Fecha de Salida
+                <span style="color:red">Fecha de Salida</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaSalida, String.Format("{0:d}", Model.FechaSalida)) %>
-                <%: Html.ValidationMessageFor(model => model.FechaSalida) %>
+                <%: Html.TextBoxFor(model => model.FechaSalida, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.FechaSalida)%>
+            </div>
+
+            <div class="editor-label">
+                <span style="color:red">Fecha de Retorno</span>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.FechaRetorno, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.FechaRetorno)%>
             </div>
             
             <div class="editor-label">
-                Fecha de Retorno
+                <span style="color:red">Motivo de viaje</span>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.FechaRetorno, String.Format("{0:d}", Model.FechaRetorno)) %>
-                <%: Html.ValidationMessageFor(model => model.FechaRetorno) %>
+                <%: Html.TextAreaFor(model => model.SustentoViaje, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.SustentoViaje)%>
+            </div>
+                  
+            <div class="editor-label">
+                <span style="color:red">Total Solicitado</span>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.TotalSolicitado, new Dictionary<string, object> { { "readonly", "readonly" } })%>
+                <%: Html.ValidationMessageFor(model => model.TotalSolicitado)%>
             </div>
             
             <div class="editor-label">
-                Motivo de Viaje
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.SustentoViaje) %>
-                <%: Html.ValidationMessageFor(model => model.SustentoViaje) %>
-            </div>
-            
-            <div class="editor-label">
-                Total Solicitado            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.TotalSolicitado, String.Format("{0:F}", Model.TotalSolicitado)) %>
-                <%: Html.ValidationMessageFor(model => model.TotalSolicitado) %>
-            </div>
-            
-            <div class="editor-label">
-               Autorizar
+               Aprobar
             </div>           
-             <div class="editor-field">
-             <%: Html.DropDownList("FlagAprobado", ViewData["estados"] as SelectList)%>                
+            <div class="editor-field">
+                <%: Html.DropDownList("FlagAprobado", ViewData["estados"] as SelectList)%>                
             </div>                                                        
             <br />
             <br />
@@ -93,10 +92,6 @@
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%: Html.ActionLink("Regresar a la Lista", "Index") %>
-    </div>
 
 </asp:Content>
 
