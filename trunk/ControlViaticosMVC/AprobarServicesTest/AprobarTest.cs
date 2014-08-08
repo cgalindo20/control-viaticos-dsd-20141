@@ -11,14 +11,33 @@ namespace AprobarServicesTest
     public class AprobarTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethodListar()
+        {
+           
+            AprobarWS.AprobacionesClient proxy = new AprobarWS.AprobacionesClient();
+            AprobarWS.Aprobar[] PorAprobarArr = new AprobarWS.Aprobar[proxy.ListarSolicitudes().Count()];
+            PorAprobarArr = proxy.ListarSolicitudes();
+
+
+            AprobarWS.Aprobar aprobar = new AprobarWS.Aprobar();
+            for (int i = 0; i < PorAprobarArr.Count(); i++)
+            {                                    
+                aprobar = PorAprobarArr[i];                    
+            }
+
+            Assert.IsNotNull(aprobar);
+            
+        }
+
+        [TestMethod]
+        public void TestMethodAprobar()
         {
             try
             {
                 AprobarWS.AprobacionesClient proxy = new AprobarWS.AprobacionesClient();
 
                 AprobarWS.Aprobar aprobar = new AprobarWS.Aprobar();
-                aprobar = proxy.ModificarSolicitud( 3,
+                aprobar = proxy.AprobarSolicitud( 3,
                                                     1,
                                                     2,
                                                     3,
@@ -40,6 +59,7 @@ namespace AprobarServicesTest
 
             }
         }
+
     }
 
 }
