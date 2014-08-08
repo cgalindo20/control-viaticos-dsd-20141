@@ -10,6 +10,7 @@ using AprobarServices.Persistencia;
 using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Messaging;
 
 namespace AprobarServices
 {    
@@ -53,7 +54,7 @@ namespace AprobarServices
             return AprobarDAO.Obtener(codigoSolicitud);
         }
 
-        public Aprobar ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba)
+        public Aprobar AprobarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba)
         {
             Empleado empleadoObt = EmpleadoDAO.Obtener(codigoEmpleadoSolicitante);
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
@@ -127,12 +128,45 @@ namespace AprobarServices
 
         public List<Aprobar> ListarSolicitudes()
         {
-            return AprobarDAO.ListarTodos().ToList();
+            //1. Obtener las Solicitudes de Viaticos para Aprobar
+            string rutaColaIn = @".\private$\indestructiblesIn";
+            if (!MessageQueue.Exists(rutaColaIn))
+                MessageQueue.Create(rutaColaIn);
+            MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(ViaticoMsg) });
+            Message mensajeIn = colaIn.Receive();
+            ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
+            Console.WriteLine("Asunto Recibido: " + mensajeIn.Label);
+            Console.WriteLine("Viatico Recibido: " + viaticoMsg.CodigoSolicitud + ", Total Solicitado: " + viaticoMsg.TotalSolicitado);
+            
+            //2. Leer la Solicitud y mostrarlo en el List 
+            Aprobar[] viaticoArr = new Aprobar[1];
+
+            for (int i = 0; i < 1; i++) //Lo ideal es detectar la cantidad de mensajes y mostrarlos todos
+            {
+                Aprobar viaticoAprobar = new Aprobar();
+                viaticoAprobar.CodigoSolicitud = viaticoMsg.CodigoSolicitud;
+                viaticoAprobar.FechaSolicitud = viaticoMsg.FechaSolicitud;
+                viaticoAprobar.ubigeoOrigen = viaticoMsg.ubigeoOrigen;
+                viaticoAprobar.ubigeoDestino = viaticoMsg.ubigeoDestino;
+                viaticoAprobar.FechaSalida = viaticoMsg.FechaSalida;
+                viaticoAprobar.FechaRetorno = viaticoMsg.FechaRetorno;
+                viaticoAprobar.SustentoViaje = viaticoMsg.SustentoViaje;
+                viaticoAprobar.TotalSolicitado = viaticoMsg.TotalSolicitado;
+                viaticoArr[i] = viaticoAprobar;
+            }
+
+            //            
+            //return AprobarDAO.ListarTodos().ToList();
+            return viaticoArr.ToList();
         }
 
         public List<Ubigeo> ListarUbigeos()
         {
             return UbigeoDAO.ListarTodos().ToList();
         }
+
+
+
     }
 }

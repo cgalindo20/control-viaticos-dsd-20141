@@ -17,7 +17,7 @@ namespace AprobarServices
         Aprobar ObtenerSolicitud(int codigoSolicitud);
 
         [OperationContract]
-        Aprobar ModificarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, Double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba);
+        Aprobar AprobarSolicitud(int codigoSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSolicitud, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, Double totalSolicitado, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba);
 
         [OperationContract]
         List<Aprobar> ListarSolicitudes();
