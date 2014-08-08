@@ -86,7 +86,7 @@ namespace ControlViaticosApp.Controllers
             int CodigoEmpleadoAprobar = 3;//obtener de la sesion de login;
             try
             {
-                proxy.ModificarSolicitud(int.Parse(collection["CodigoSolicitud"]),
+                proxy.AprobarSolicitud(int.Parse(collection["CodigoSolicitud"]),
                                         int.Parse(collection["empleado.CoEmpleado"]),
                                         int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
                                         int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
