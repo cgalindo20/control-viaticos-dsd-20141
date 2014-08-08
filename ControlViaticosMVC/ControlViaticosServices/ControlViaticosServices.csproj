@@ -82,7 +82,6 @@
     <Compile Include="Dominio\Ubigeo.cs" />
     <Compile Include="Dominio\ValidationException.cs" />
     <Compile Include="Dominio\Viatico.cs" />
-    <Compile Include="Dominio\ViaticoMsg.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
