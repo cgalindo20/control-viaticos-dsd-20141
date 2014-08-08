@@ -13,10 +13,7 @@
             <th></th>
             <th>
                 Solicitud
-            </th>           
-             <th>
-                Solicitante
-            </th>
+            </th>                      
              <th>
                 Origen
             </th>
@@ -49,9 +46,6 @@
             <td align='center'>
                 <%: item.CodigoSolicitud %>
             </td>          
-             <td>
-                <%: item.empleado.TxAp_Paterno + " " + item.empleado.TxPreNombre %>
-            </td>
             <td>
                 <%: item.ubigeoOrigen.NoDescripcion%>
             </td>
