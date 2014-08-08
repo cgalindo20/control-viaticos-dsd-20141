@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using ControlViaticosServices.Dominio;
 using ControlViaticosServices.Persistencia;
+using System.Messaging;
 
 namespace ControlViaticosServices
 {
@@ -104,7 +105,7 @@ namespace ControlViaticosServices
         {
             Viatico viaticoOriginal = viaticoDAO.Obtener(codigoSolicitud);
 
-            Viatico viaticoAModificar = new Viatico()
+            Viatico viaticoAutorizar = new Viatico()
             {
                 CodigoSolicitud = codigoSolicitud,
                 FechaSolicitud = viaticoOriginal.FechaSolicitud,
@@ -121,7 +122,35 @@ namespace ControlViaticosServices
                 CodigoEmpleadoAutorizar = codigoEmpleadoAutoriza
                 //
             };
-            return viaticoDAO.Modificar(viaticoAModificar);
+            
+            //Enviar mensaje para que Finanzas reciba los datos de la Solicitud y lo apruebe o rechace
+            string rutaColaIn = @".\private$\indestructiblesIn";
+            if (!MessageQueue.Exists(rutaColaIn))
+                MessageQueue.Create(rutaColaIn);
+            MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            Message mensajeIn = new Message();
+            mensajeIn.Label = "Solicitud de Viatico por Aprobar";
+            mensajeIn.Body = new ViaticoMsg()
+            {
+                CodigoSolicitud = viaticoAutorizar.CodigoSolicitud,
+                FechaSolicitud = viaticoAutorizar.FechaSolicitud,
+                CodigoEmpleadoSolicitante = viaticoAutorizar.CodigoEmpleadoSolicitante,
+                ubigeoOrigen = viaticoAutorizar.ubigeoOrigen,
+                ubigeoDestino = viaticoAutorizar.ubigeoDestino,
+                FechaSalida = viaticoAutorizar.FechaSalida,
+                FechaRetorno = viaticoAutorizar.FechaRetorno,
+                SustentoViaje = viaticoAutorizar.SustentoViaje,
+                TotalSolicitado = viaticoAutorizar.TotalSolicitado,
+                FlagAutorizar = viaticoAutorizar.FlagAutorizar,
+                FechaAutorizar = viaticoAutorizar.FechaAutorizar,
+                CodigoEmpleadoAutorizar = viaticoAutorizar.CodigoEmpleadoAutorizar
+                
+            };
+            colaIn.Send(mensajeIn);
+            //
+
+
+            return viaticoDAO.Modificar(viaticoAutorizar);
         }
 
         public void EliminarSolicitud(int codigoSolicitud)
