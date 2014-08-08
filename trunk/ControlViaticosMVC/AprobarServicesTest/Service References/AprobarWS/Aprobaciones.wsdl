@@ -13,11 +13,11 @@
   <wsdl:message name="IAprobaciones_ObtenerSolicitud_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerSolicitudResponse" />
   </wsdl:message>
-  <wsdl:message name="IAprobaciones_ModificarSolicitud_InputMessage">
-    <wsdl:part name="parameters" element="tns:ModificarSolicitud" />
+  <wsdl:message name="IAprobaciones_AprobarSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:AprobarSolicitud" />
   </wsdl:message>
-  <wsdl:message name="IAprobaciones_ModificarSolicitud_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ModificarSolicitudResponse" />
+  <wsdl:message name="IAprobaciones_AprobarSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AprobarSolicitudResponse" />
   </wsdl:message>
   <wsdl:message name="IAprobaciones_ListarSolicitudes_InputMessage">
     <wsdl:part name="parameters" element="tns:ListarSolicitudes" />
@@ -36,9 +36,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAprobaciones/ObtenerSolicitud" message="tns:IAprobaciones_ObtenerSolicitud_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAprobaciones/ObtenerSolicitudResponse" message="tns:IAprobaciones_ObtenerSolicitud_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ModificarSolicitud">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAprobaciones/ModificarSolicitud" message="tns:IAprobaciones_ModificarSolicitud_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAprobaciones/ModificarSolicitudResponse" message="tns:IAprobaciones_ModificarSolicitud_OutputMessage" />
+    <wsdl:operation name="AprobarSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAprobaciones/AprobarSolicitud" message="tns:IAprobaciones_AprobarSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAprobaciones/AprobarSolicitudResponse" message="tns:IAprobaciones_AprobarSolicitud_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ListarSolicitudes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAprobaciones/ListarSolicitudes" message="tns:IAprobaciones_ListarSolicitudes_InputMessage" />
@@ -60,8 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ModificarSolicitud">
-      <soap:operation soapAction="http://tempuri.org/IAprobaciones/ModificarSolicitud" style="document" />
+    <wsdl:operation name="AprobarSolicitud">
+      <soap:operation soapAction="http://tempuri.org/IAprobaciones/AprobarSolicitud" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
