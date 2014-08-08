@@ -6,15 +6,19 @@
 	Control de Viáticos
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"> 
     <h2>Nueva Solicitud de Viatico</h2>
 
      <% if(null != TempData["alertMessage"]) 
            { %>
-              <script type="text/javascript">
-                  alert("@TempData[alertMessage]");
-              </script>
+              
+            <script type="text/javascript">
+                $(function () {
+                    var message = '<%:TempData["alertMessage"]%>';
+                    alert(message);
+                });       
+            </script>
+
            <% } %>
 
     <% using (Html.BeginForm()) {%>
@@ -23,18 +27,18 @@
 
         <fieldset>
             <legend>Nueva Solicitud de Viatico</legend>
-            
+                        
             <div class="editor-label">
                 Origen :
             </div>
             <div class="editor-field">
-                <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>                
+                <%: Html.DropDownList("ubigeoOrigen.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>                               
             </div>            
             <div class="editor-label">
                Destino :
             </div>
             <div class="editor-field">
-                <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>
+                <%: Html.DropDownList("ubigeoDestino.CodigoUbigeo", ViewData["ubigeos"] as SelectList) %>                
             </div>            
             <div class="editor-label">  
                Fecha Salida :
@@ -58,9 +62,7 @@
             <div class="editor-field">
                 <%: Html.TextAreaFor(model => model.SustentoViaje) %>
                 <%: Html.ValidationMessageFor(model => model.SustentoViaje) %>
-            </div>                        
-            
-            
+            </div>                                                
             <p>
                 <input type="submit" value="Solicitar" />
             </p>
@@ -70,7 +72,9 @@
             </div>
 
         </fieldset>
-
+        @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
         <fieldset>	
             <legend>Relación de tarifas por día según el destino y el tipo de viático</legend>
             <table>
