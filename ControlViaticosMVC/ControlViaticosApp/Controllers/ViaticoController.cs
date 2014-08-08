@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ControlViaticosApp.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ServiceModel;
+using System.Net;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -54,6 +55,15 @@ namespace ControlViaticosApp.Controllers
         {
             try
             {
+                //La fecha de salida debe ser mayor a 10 dias de la fecha de la solicitud
+                DateTime d1 =  DateTime.Today;
+                DateTime d2 = DateTime.Parse(collection["FechaSalida"]);
+                // Creamos una variable TimeSpan para almacenar el intervalo de tiempo
+                TimeSpan ts = d2 - d1;
+                // Diferencia en días.
+                int NumDias = ts.Days;
+
+                
                 int j = 0;
                 int v_CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
                 Double v_TotalSolicitado = 0;
