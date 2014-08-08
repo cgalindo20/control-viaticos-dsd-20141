@@ -32,9 +32,9 @@
             <th>
                 Total Solicitado
             </th>
-            <th>
+<%--            <th>
                 Estado
-            </th>            
+            </th>  --%>          
         </tr>
 
    <% foreach (var item in Model) { %>
@@ -64,14 +64,14 @@
             <td>
                 <%: String.Format("{0:F}", item.TotalSolicitado) %>
             </td>            
-            <td>
+           <%-- <td>
             <% if (item.FlagAprobado.Equals("P"))
                { %>
                 Pendiente
             <% }else{ %>
                 Aprobado            
              <% } %>
-            </td>           
+            </td>         --%>  
         </tr>
     
     <% } %>
