@@ -8,6 +8,7 @@ using System.Text;
 using ControlViaticosServices.Dominio;
 using ControlViaticosServices.Persistencia;
 using System.Messaging;
+using System.Net;
 
 namespace ControlViaticosServices
 {
@@ -32,44 +33,44 @@ namespace ControlViaticosServices
                                         DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, List<Item> items)
         {
             Ubigeo ubigeoO = UbigeoDAO.Obtener(codigoUbigeoOrigen);
-            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);
+            Ubigeo ubigeoD = UbigeoDAO.Obtener(codigoUbigeoDestino);                                
 
-            Viatico viatico = new Viatico()
+                Viatico viatico = new Viatico()
 
-            {
-                FechaSolicitud = fechaSolicitud,
-                CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
-                ubigeoOrigen = ubigeoO,
-                ubigeoDestino = ubigeoD,
-                FechaSalida = fechaSalida,
-                FechaRetorno = fechaRetorno,
-                SustentoViaje = sustentoViaje,
-                TotalSolicitado = totalSolicitado,
-                FlagAutorizar = "P",
-                FechaAutorizar = fechaSolicitud,
-                CodigoEmpleadoAutorizar = codigoEmpleadoSolicitante
-   
-            };
-
-            viatico = viaticoDAO.Crear(viatico);
-            TipoViatico tipoViaticoAux = null;
-            ViaticoDetalle viaticoDetalleAux = null;
-            foreach (Item item in items)
-            {
-                tipoViaticoAux = tipoViaticoDAO.Obtener(item.Co_TipoViatico);
-                viaticoDetalleAux = new ViaticoDetalle()
                 {
-                    PK = new ViaticoDetallePK() 
-                    {
-                        Viatico = viatico.CodigoSolicitud,
-                        TipoViatico = tipoViaticoAux
-                    },
-                    Ss_MontoSolicitado = item.Ss_MontoSolicitado
+                    FechaSolicitud = fechaSolicitud,
+                    CodigoEmpleadoSolicitante = codigoEmpleadoSolicitante,
+                    ubigeoOrigen = ubigeoO,
+                    ubigeoDestino = ubigeoD,
+                    FechaSalida = fechaSalida,
+                    FechaRetorno = fechaRetorno,
+                    SustentoViaje = sustentoViaje,
+                    TotalSolicitado = totalSolicitado,
+                    FlagAutorizar = "P",
+                    FechaAutorizar = fechaSolicitud,
+                    CodigoEmpleadoAutorizar = codigoEmpleadoSolicitante
 
                 };
-                viaticoDetalleDAO.Crear(viaticoDetalleAux);
-            }
-            return viatico;
+
+                viatico = viaticoDAO.Crear(viatico);
+                TipoViatico tipoViaticoAux = null;
+                ViaticoDetalle viaticoDetalleAux = null;
+                foreach (Item item in items)
+                {
+                    tipoViaticoAux = tipoViaticoDAO.Obtener(item.Co_TipoViatico);
+                    viaticoDetalleAux = new ViaticoDetalle()
+                    {
+                        PK = new ViaticoDetallePK()
+                        {
+                            Viatico = viatico.CodigoSolicitud,
+                            TipoViatico = tipoViaticoAux
+                        },
+                        Ss_MontoSolicitado = item.Ss_MontoSolicitado
+
+                    };
+                    viaticoDetalleDAO.Crear(viaticoDetalleAux);
+                }
+                return viatico;            
 
         }
 
@@ -204,6 +205,7 @@ namespace ControlViaticosServices
         {
             return tarifarioDAO.ListarTodos().ToList();
         }
+       
         
     }
 }

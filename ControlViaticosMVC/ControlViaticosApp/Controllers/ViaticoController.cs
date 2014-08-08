@@ -7,6 +7,7 @@ using ControlViaticosApp.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ServiceModel;
 using System.Net;
+using System.Web.SessionState; 
 
 namespace ControlViaticosApp.Controllers
 {
@@ -15,8 +16,8 @@ namespace ControlViaticosApp.Controllers
         private ViaticoWS.ViaticosClient proxy = new ViaticoWS.ViaticosClient();
 
         public ActionResult Index()
-        {            
-            List<ViaticoWS.Viatico> viaticos = proxy.ListarSolicitudes();                      
+        {
+            List<ViaticoWS.Viatico> viaticos = proxy.ListarSolicitudes();
 
             return View(viaticos);
         }
@@ -30,46 +31,44 @@ namespace ControlViaticosApp.Controllers
 
         public ActionResult Details(int id)
         {
-            ViaticoWS.Viatico viaticoObtenido = proxy.ObtenerSolicitud(id);            
+            ViaticoWS.Viatico viaticoObtenido = proxy.ObtenerSolicitud(id);
 
             return View(viaticoObtenido);
         }
 
         public ActionResult Create()
         {
-
-            //Llenar los combobox de Ubigeos
-            List<ViaticoWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
-            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
-            ViewData["ubigeos"] = listUbigeos;
-
-            //Si está caido el Servico de Tarifario en la Nube, se levanta el de contingencia(Tarifas no necesarimente actualizadas).
-            List<ViaticoWS.Tarifario> listTarifasContingencia = proxy.ListarTarifarioContingencia();
-            ViewData["tarifas"] = listTarifasContingencia;
-
+            llenarCombos();
             return View();
-        } 
-              
+        }
+
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
-            {
-                //La fecha de salida debe ser mayor a 10 dias de la fecha de la solicitud
-                DateTime d1 =  DateTime.Today;
-                DateTime d2 = DateTime.Parse(collection["FechaSalida"]);
-                // Creamos una variable TimeSpan para almacenar el intervalo de tiempo
-                TimeSpan ts = d2 - d1;
-                // Diferencia en días.
-                int NumDias = ts.Days;
+            {               
 
-                
+                    //La fecha de salida debe ser mayor a 10 dias de la fecha de la solicitud
+                    DateTime d1 = DateTime.Today;
+                    DateTime d2 = DateTime.Parse(collection["FechaSalida"]);
+                    // Creamos una variable TimeSpan para almacenar el intervalo de tiempo
+                    TimeSpan ts = d2 - d1;
+                    // Diferencia en días.
+                    int NumDias = ts.Days;
+
+                    if (NumDias < 10)
+                    {
+                        var details = new Error { MensajeError = "La Solicitud de viatico debe ser mayor a 10 dias de la fecha de salida" };
+                        throw new FaultException<Error>(details);                    
+                    };                
+
                 int j = 0;
                 int v_CodigoEmpleadoSolicitante = 1;//obtener de la sesion de login;
                 Double v_TotalSolicitado = 0;
 
                 List<ViaticoWS.Tarifario> listTarifasContingencia = proxy.ListarTarifarioContingencia();
-                for (int i = 0; i < listTarifasContingencia.Count; i++) {
+                for (int i = 0; i < listTarifasContingencia.Count; i++)
+                {
                     if (listTarifasContingencia[i].Co_Ubigeo.CodigoUbigeo == int.Parse(collection["ubigeoDestino.CodigoUbigeo"]))
                     {
                         j = j + 1;
@@ -77,15 +76,15 @@ namespace ControlViaticosApp.Controllers
                 }
 
                 //Obteniendo el numero de días de viaje
-                TimeSpan difFechas = DateTime.Parse(collection["FechaRetorno"]) - DateTime.Parse(collection["FechaSalida"]) ;
-                int dias = difFechas.Days; 
+                TimeSpan difFechas = DateTime.Parse(collection["FechaRetorno"]) - DateTime.Parse(collection["FechaSalida"]);
+                int dias = difFechas.Days;
                 //
 
                 ViaticoWS.Item[] item = new ViaticoWS.Item[j];
-                
+
                 j = 0;
 
-                for (int i = 0; i < listTarifasContingencia.Count; i++) 
+                for (int i = 0; i < listTarifasContingencia.Count; i++)
                 {
                     if (listTarifasContingencia[i].Co_Ubigeo.CodigoUbigeo == int.Parse(collection["ubigeoDestino.CodigoUbigeo"]))
                     {
@@ -96,10 +95,10 @@ namespace ControlViaticosApp.Controllers
                         v_TotalSolicitado = v_TotalSolicitado + (Double)listTarifasContingencia[i].Ss_Costo * dias;
                         j = j + 1;
                     }
-                    
+
                 }
 
-                proxy.CrearSolicitud(   DateTime.Today,
+                proxy.CrearSolicitud(DateTime.Today,
                                         v_CodigoEmpleadoSolicitante,
                                         int.Parse(collection["ubigeoOrigen.CodigoUbigeo"]),
                                         int.Parse(collection["ubigeoDestino.CodigoUbigeo"]),
@@ -108,14 +107,16 @@ namespace ControlViaticosApp.Controllers
                                         collection["SustentoViaje"],
                                         v_TotalSolicitado,
                                         item.ToList()
-                                     );                   
+                                     );
 
                 return RedirectToAction("Index");
             }
-            catch (FaultException<ValidationException> ex)
+            catch (FaultException<Error> ex)
             {
 
-                TempData["alertMessage"] = ex.Detail.ValidationResult;               
+                TempData["alertMessage"] = ex.Detail.MensajeError;
+                llenarCombos();
+
                 return View();
             }
 
@@ -147,7 +148,7 @@ namespace ControlViaticosApp.Controllers
                 return View();
             }
         }
-        
+
         public ActionResult EditAutorizar(int id)
         {
             //Llenar combobox de Estado
@@ -160,7 +161,7 @@ namespace ControlViaticosApp.Controllers
 
             ViaticoWS.Viatico viaticoAutorizar = proxy.ObtenerSolicitud(id);
             return View(viaticoAutorizar);
-        }   
+        }
 
         [HttpPost]
         public ActionResult EditAutorizar(int id, FormCollection collection)
@@ -169,7 +170,7 @@ namespace ControlViaticosApp.Controllers
             {
                 int v_CodigoEmpleadoAutoriza = 2;//obtener de la sesion de login;
 
-                proxy.AutorizarSolicitud(   int.Parse(collection["CodigoSolicitud"]),
+                proxy.AutorizarSolicitud(int.Parse(collection["CodigoSolicitud"]),
                                             collection["FlagAutorizar"],
                                             v_CodigoEmpleadoAutoriza
                                          );
@@ -181,13 +182,13 @@ namespace ControlViaticosApp.Controllers
                 return View();
             }
         }
- 
+
         public ActionResult Delete(int id)
         {
             ViaticoWS.Viatico viaticoEliminar = proxy.ObtenerSolicitud(id);
             return View(viaticoEliminar);
         }
-        
+
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -212,5 +213,18 @@ namespace ControlViaticosApp.Controllers
             public string Name { get; set; }
         }
 
+        public void llenarCombos()
+        {
+
+            //Llenar los combobox de Ubigeos
+            List<ViaticoWS.Ubigeo> listaUbi = proxy.ListarUbigeos();
+            var listUbigeos = new SelectList(listaUbi, "CodigoUbigeo", "NoDescripcion");
+            ViewData["ubigeos"] = listUbigeos;
+
+            //Si está caido el Servico de Tarifario en la Nube, se levanta el de contingencia(Tarifas no necesarimente actualizadas).
+            List<ViaticoWS.Tarifario> listTarifasContingencia = proxy.ListarTarifarioContingencia();
+            ViewData["tarifas"] = listTarifasContingencia;
+
+        }
     }
 }
