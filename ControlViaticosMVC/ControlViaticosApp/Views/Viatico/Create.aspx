@@ -72,9 +72,7 @@
             </div>
 
         </fieldset>
-        @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+        
         <fieldset>	
             <legend>Relación de tarifas por día según el destino y el tipo de viático</legend>
             <table>
