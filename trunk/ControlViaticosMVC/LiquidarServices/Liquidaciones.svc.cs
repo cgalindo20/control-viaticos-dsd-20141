@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using LiquidarServices.Persistencia;
 using LiquidarServices.Dominio;
+using System.Messaging;
 
 namespace LiquidarServices
 {
@@ -90,6 +91,21 @@ namespace LiquidarServices
 
         public List<Liquidar> ListarLiquidaciones()
         {
+            //1. Obtener las Solicitudes de Viaticos Aprobadas
+            string rutaColaIn = @".\private$\indestructiblesOut";
+            if (!MessageQueue.Exists(rutaColaIn))
+                MessageQueue.Create(rutaColaIn);
+            MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(ViaticoMsg) });
+            Message mensajeIn = colaIn.Receive();
+            ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
+            Console.WriteLine("Asunto Recibido: " + mensajeIn.Label);
+            Console.WriteLine("Viatico Recibido: " + viaticoMsg.CodigoSolicitud + ", Total Solicitado: " + viaticoMsg.TotalSolicitado);
+            Console.ReadLine();
+
+            //
+
+
             return liquidarDAO.ListarTodos().ToList();
         }
 
@@ -143,5 +159,25 @@ namespace LiquidarServices
         //{
         //    return liquidarDAO.ListarTodos();
         //}
+
+        public class ViaticoMsg
+        {
+            public int CodigoSolicitud { get; set; }
+            public DateTime FechaSolicitud { get; set; }
+            public int CodigoEmpleadoSolicitante { get; set; }
+            public Ubigeo ubigeoOrigen { get; set; }
+            public Ubigeo ubigeoDestino { get; set; }
+            public DateTime FechaSalida { get; set; }
+            public DateTime FechaRetorno { get; set; }
+            public String SustentoViaje { get; set; }
+            public Double TotalSolicitado { get; set; }
+            public String FlagAutorizar { get; set; }
+            public DateTime FechaAutorizar { get; set; }
+            public int CodigoEmpleadoAutorizar { get; set; }
+            public String FlagAprobar { get; set; }
+            public DateTime FechaAprobar { get; set; }
+            public int CodigoEmpleadoAprobar { get; set; }
+
+        }
     }
 }
