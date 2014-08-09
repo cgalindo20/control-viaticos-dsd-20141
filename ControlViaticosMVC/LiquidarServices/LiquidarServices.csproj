@@ -67,6 +67,22 @@
     <EmbeddedResource Include="Dominio\Ubigeo.hbm.xml" />
     <EmbeddedResource Include="Dominio\SolicitudDetalle.hbm.xml" />
     <Content Include="Liquidaciones.svc" />
+    <None Include="Service References\ViaticosWS\LiquidarServices.ViaticosWS.Tarifario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ViaticosWS\LiquidarServices.ViaticosWS.Ubigeo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ViaticosWS\LiquidarServices.ViaticosWS.Viatico.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ViaticosWS\Viaticos.disco" />
+    <None Include="Service References\ViaticosWS\configuration91.svcinfo" />
+    <None Include="Service References\ViaticosWS\configuration.svcinfo" />
+    <None Include="Service References\ViaticosWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -75,6 +91,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Service References\ViaticosWS\Viaticos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Item.cs" />
@@ -95,6 +114,11 @@
     <Compile Include="Persistencia\SolicitudDAO.cs" />
     <Compile Include="Persistencia\TipoViaticoDAO.cs" />
     <Compile Include="Persistencia\ValidationException.cs" />
+    <Compile Include="Service References\ViaticosWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -103,6 +127,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ViaticosWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ViaticosWS\Viaticos.wsdl" />
+    <None Include="Service References\ViaticosWS\Viaticos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticosWS\Viaticos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

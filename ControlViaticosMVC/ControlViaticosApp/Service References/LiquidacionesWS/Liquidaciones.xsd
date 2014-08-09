@@ -3,8 +3,11 @@
   <xs:complexType name="Liquidar">
     <xs:sequence>
       <xs:element minOccurs="0" name="Co_Liquidacion" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoEmpleadoAprobar" type="xs:int" />
       <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfLiquidarDetalle" />
       <xs:element minOccurs="0" name="Fe_Liquidacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaAprobar" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FlagAprobar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Ss_OtrosGastos" type="xs:double" />
       <xs:element minOccurs="0" name="Ss_TotalAsignado" type="xs:double" />
       <xs:element minOccurs="0" name="Ss_TotalUtilizado" type="xs:double" />

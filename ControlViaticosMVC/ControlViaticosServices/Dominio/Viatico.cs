@@ -48,5 +48,13 @@ namespace ControlViaticosServices.Dominio
         [DataMember(IsRequired = false)]
         public int CodigoEmpleadoAutorizar { get; set; }
 
+        [DataMember(IsRequired = false)]
+        public String FlagAprobar { get; set; }
+
+        [DataMember(IsRequired = false)]
+        public DateTime FechaAprobar { get; set; }
+
+        [DataMember(IsRequired = false)]
+        public int CodigoEmpleadoAprobar { get; set; }
     }
 }

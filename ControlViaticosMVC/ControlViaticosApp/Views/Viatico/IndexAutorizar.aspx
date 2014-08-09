@@ -35,6 +35,12 @@
             <th>
                 Total Solicitado
             </th>           
+            <th>
+                Autorizacion
+            </th>
+            <th>
+                Aprobación
+            </th>
         
         </tr>
 
@@ -67,7 +73,13 @@
             </td>
             <td>
                 <%: String.Format("{0:F}", item.TotalSolicitado) %>
-            </td>           
+            </td>  
+            <td>
+                <%: item.FlagAutorizar%>
+            </td>
+            <td>
+                <%: item.FlagAprobar%>
+            </td>          
         </tr>
     
     <% } %>

@@ -7,6 +7,7 @@ using System.Text;
 using LiquidarServices.Persistencia;
 using LiquidarServices.Dominio;
 using System.Messaging;
+using LiquidarServices.ViaticosWS;
 
 namespace LiquidarServices
 {
@@ -17,50 +18,7 @@ namespace LiquidarServices
         private TipoViaticoDAO tipoViaticoDAO = new TipoViaticoDAO();
         private LiquidarDAO liquidarDAO = new LiquidarDAO();
         private LiquidarDetalleDAO liquidarDetalleDAO = new LiquidarDetalleDAO();
-        /*
-        private LiquidarDAO liquidarDAO = null;
-        private LiquidarDAO LiquidarDAO
-        {
-            get
-            {
-                if (liquidarDAO == null)
-                    liquidarDAO = new LiquidarDAO();
-                return liquidarDAO;
-            }
-        }
-        private SolicitudDAO solicitudDAO = null;
-        private SolicitudDAO SolicitudDAO
-        {
-            get
-            {
-                if (solicitudDAO == null)
-                    solicitudDAO = new SolicitudDAO();
-                return solicitudDAO;
-            }
-        }
-        */
-        //public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos)
-        //{
-        //    if (SsOtrosGastos > 0.2 * (SsTotalUtilizado))
-        //    {
-        //        ValidationException validationException = new ValidationException { ValidationError = "Otros Gastos no puede ser mayor al 20% del monto utilizado." };
-        //        throw new FaultException<ValidationException>(validationException);
-        //    }
-        //        Solicitud solicitudExistente = SolicitudDAO.Obtener(CoSolicitud);
-        //        Liquidar liquidarCrear = new Liquidar()
-        //        {
-        //            Fe_Liquidacion = FeLiquidacion,
-        //            Ss_TotalAsignado = SsTotalAsignado,
-        //            Ss_TotalUtilizado = SsTotalUtilizado,
-        //            Ss_OtrosGastos = SsOtrosGastos,
-        //            solicitud = solicitudExistente
-        //        };
-
-        //        return LiquidarDAO.Crear(liquidarCrear);
-
-        //}
-
-
+        
 
         public Liquidar ObtenerLiquidacion(int CoLiquidacion)
         {
@@ -91,31 +49,70 @@ namespace LiquidarServices
 
         public List<Liquidar> ListarLiquidaciones()
         {
-            //1. Obtener las Solicitudes de Viaticos Aprobadas
-            string rutaColaIn = @".\private$\indestructiblesOut";
-            if (!MessageQueue.Exists(rutaColaIn))
-                MessageQueue.Create(rutaColaIn);
-            MessageQueue colaIn = new MessageQueue(rutaColaIn);
-            colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(ViaticoMsg) });
-            Message mensajeIn = colaIn.Receive();
-            ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
-            Console.WriteLine("Asunto Recibido: " + mensajeIn.Label);
-            Console.WriteLine("Viatico Recibido: " + viaticoMsg.CodigoSolicitud + ", Total Solicitado: " + viaticoMsg.TotalSolicitado);
-            Console.ReadLine();
+            ////1. Obtener las Solicitudes de Viaticos Aprobadas
+            //string rutaColaIn = @".\private$\indestructiblesOut";
+            //if (!MessageQueue.Exists(rutaColaIn))
+            //    MessageQueue.Create(rutaColaIn);
+            //MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            //colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(ViaticoMsg) });
+            //Message mensajeIn = colaIn.Receive();
+            //ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
+            
 
-            //
+            ////2. Busca la Solicitud y la actualiza
+            //ViaticosWS.ViaticosClient proxy = new ViaticosWS.ViaticosClient();
+            //ViaticosWS.Viatico viatico = new ViaticosWS.Viatico();
+
+            //viatico = proxy.ObtenerSolicitud(viaticoMsg.CodigoSolicitud);
+
+            //viatico = proxy.ModificarSolicitud( viatico.CodigoSolicitud,
+            //                                    viatico.ubigeoOrigen.CodigoUbigeo,
+            //                                    viatico.ubigeoDestino.CodigoUbigeo,
+            //                                    viatico.FechaSalida,
+            //                                    viatico.FechaRetorno,
+            //                                    viatico.SustentoViaje,
+            //                                    viaticoMsg.FlagAprobar,
+            //                                    viaticoMsg.FechaAprobar,
+            //                                    viaticoMsg.CodigoEmpleadoAprobar
+            //                                    );
 
 
+            //3. Mostrar solo los que esten aprobados
+            //List<Liquidar> listSolicitudes = new List<Liquidar>();
+            //listSolicitudes = liquidarDAO.ListarTodos().ToList();
+            //int j = 0;
+            //for (int i = 0; i < listSolicitudes.Count; i++)
+            //{
+            //    if (listSolicitudes[i].FlagAprobar == "A")
+            //    {
+            //        j = j + 1;
+            //    }
+            //}
+
+            
+            //Liquidar[] liquidarArr = new Liquidar[j];
+            //j = 0;
+            //for (int i = 0; i < listSolicitudes.Count; i++)
+            //{
+            //    if (listSolicitudes[i].FlagAprobar == "P")
+            //    {
+            //        Viatico viaticoAdd = new Viatico();
+            //        liquidarArr[j] = listSolicitudes[i];
+            //        j = j + 1;
+            //    }
+            //}
+
+            //return liquidarArr.ToList();
             return liquidarDAO.ListarTodos().ToList();
         }
 
 
-        public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, List<Item> items)
+        public Liquidar CrearLiquidacion(DateTime FeLiquidacion, int CoSolicitud, double SsTotalAsignado, double SsTotalUtilizado, double SsOtrosGastos, List<LiquidarServices.Dominio.Item> items)
         {
             Solicitud solicitudAux = solicitudDAO.Obtener(CoSolicitud);
             if (solicitudAux == null) //solicitud inexistente
-                throw new FaultException<ValidationException>(
-                    new ValidationException()
+                throw new FaultException<LiquidarServices.Persistencia.ValidationException>(
+                    new LiquidarServices.Persistencia.ValidationException()
                     {
                         CodigoError = 1,
                         MensajeError = "La Solicitud No Existe."
@@ -132,9 +129,9 @@ namespace LiquidarServices
             };
 
             liquidar = liquidarDAO.Crear(liquidar);
-            TipoViatico tipoViaticoAux = null;
+            LiquidarServices.Dominio.TipoViatico tipoViaticoAux = null;
             LiquidarDetalle liquidarDetalleAux = null;
-            foreach (Item item in items)
+            foreach (LiquidarServices.Dominio.Item item in items)
             {
                 tipoViaticoAux = tipoViaticoDAO.Obtener(item.Co_TipoViatico);
                 liquidarDetalleAux = new LiquidarDetalle()
@@ -153,20 +150,14 @@ namespace LiquidarServices
             return liquidar;
 
         }
-
-
-        //public ICollection<Liquidar> ListarLiquidaciones()
-        //{
-        //    return liquidarDAO.ListarTodos();
-        //}
-
+        
         public class ViaticoMsg
         {
             public int CodigoSolicitud { get; set; }
             public DateTime FechaSolicitud { get; set; }
             public int CodigoEmpleadoSolicitante { get; set; }
-            public Ubigeo ubigeoOrigen { get; set; }
-            public Ubigeo ubigeoDestino { get; set; }
+            public LiquidarServices.Dominio.Ubigeo ubigeoOrigen { get; set; }
+            public LiquidarServices.Dominio.Ubigeo ubigeoDestino { get; set; }
             public DateTime FechaSalida { get; set; }
             public DateTime FechaRetorno { get; set; }
             public String SustentoViaje { get; set; }

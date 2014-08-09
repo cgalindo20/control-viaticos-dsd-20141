@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ControlViaticosApp.ViaticoWS {
+namespace LiquidarServices.ViaticosWS {
     using System.Runtime.Serialization;
     using System;
     
@@ -96,7 +96,7 @@ namespace ControlViaticosApp.ViaticoWS {
         private int CodigoSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.ViaticoDetalle> DetallesField;
+        private LiquidarServices.ViaticosWS.ViaticoDetalle[] DetallesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaAprobarField;
@@ -126,10 +126,10 @@ namespace ControlViaticosApp.ViaticoWS {
         private double TotalSolicitadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.Ubigeo ubigeoDestinoField;
+        private LiquidarServices.ViaticosWS.Ubigeo ubigeoDestinoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.Ubigeo ubigeoOrigenField;
+        private LiquidarServices.ViaticosWS.Ubigeo ubigeoOrigenField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -194,7 +194,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.ViaticoDetalle> Detalles {
+        public LiquidarServices.ViaticosWS.ViaticoDetalle[] Detalles {
             get {
                 return this.DetallesField;
             }
@@ -324,7 +324,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.Ubigeo ubigeoDestino {
+        public LiquidarServices.ViaticosWS.Ubigeo ubigeoDestino {
             get {
                 return this.ubigeoDestinoField;
             }
@@ -337,7 +337,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.Ubigeo ubigeoOrigen {
+        public LiquidarServices.ViaticosWS.Ubigeo ubigeoOrigen {
             get {
                 return this.ubigeoOrigenField;
             }
@@ -430,7 +430,7 @@ namespace ControlViaticosApp.ViaticoWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.ViaticoDetallePK PKField;
+        private LiquidarServices.ViaticosWS.ViaticoDetallePK PKField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double Ss_MontoSolicitadoField;
@@ -446,7 +446,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.ViaticoDetallePK PK {
+        public LiquidarServices.ViaticosWS.ViaticoDetallePK PK {
             get {
                 return this.PKField;
             }
@@ -491,7 +491,7 @@ namespace ControlViaticosApp.ViaticoWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.TipoViatico TipoViaticoField;
+        private LiquidarServices.ViaticosWS.TipoViatico TipoViaticoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ViaticoField;
@@ -507,7 +507,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.TipoViatico TipoViatico {
+        public LiquidarServices.ViaticosWS.TipoViatico TipoViatico {
             get {
                 return this.TipoViaticoField;
             }
@@ -664,10 +664,10 @@ namespace ControlViaticosApp.ViaticoWS {
         private int Co_TarifaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.TipoViatico Co_TipoViaticoField;
+        private LiquidarServices.ViaticosWS.TipoViatico Co_TipoViaticoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlViaticosApp.ViaticoWS.Ubigeo Co_UbigeoField;
+        private LiquidarServices.ViaticosWS.Ubigeo Co_UbigeoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal Ss_CostoField;
@@ -709,7 +709,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.TipoViatico Co_TipoViatico {
+        public LiquidarServices.ViaticosWS.TipoViatico Co_TipoViatico {
             get {
                 return this.Co_TipoViaticoField;
             }
@@ -722,7 +722,7 @@ namespace ControlViaticosApp.ViaticoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlViaticosApp.ViaticoWS.Ubigeo Co_Ubigeo {
+        public LiquidarServices.ViaticosWS.Ubigeo Co_Ubigeo {
             get {
                 return this.Co_UbigeoField;
             }
@@ -758,42 +758,42 @@ namespace ControlViaticosApp.ViaticoWS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ViaticoWS.IViaticos")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ViaticosWS.IViaticos")]
     public interface IViaticos {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/CrearSolicitud", ReplyAction="http://tempuri.org/IViaticos/CrearSolicitudResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ControlViaticosApp.ViaticoWS.ValidationException), Action="http://tempuri.org/IViaticos/CrearSolicitudValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
-        ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Item> items);
+        [System.ServiceModel.FaultContractAttribute(typeof(LiquidarServices.ViaticosWS.ValidationException), Action="http://tempuri.org/IViaticos/CrearSolicitudValidationExceptionFault", Name="ValidationException", Namespace="http://schemas.datacontract.org/2004/07/ControlViaticosServices.Dominio")]
+        LiquidarServices.ViaticosWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, LiquidarServices.ViaticosWS.Item[] items);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ObtenerSolicitud", ReplyAction="http://tempuri.org/IViaticos/ObtenerSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud);
+        LiquidarServices.ViaticosWS.Viatico ObtenerSolicitud(int codigoSolicitud);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ModificarSolicitud", ReplyAction="http://tempuri.org/IViaticos/ModificarSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, string flagAprobado, System.DateTime feAprobado, int CodigoEmpleadoAprueba);
+        LiquidarServices.ViaticosWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, string flagAprobado, System.DateTime feAprobado, int CodigoEmpleadoAprueba);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/AutorizarSolicitud", ReplyAction="http://tempuri.org/IViaticos/AutorizarSolicitudResponse")]
-        ControlViaticosApp.ViaticoWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza);
+        LiquidarServices.ViaticosWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/EliminarSolicitud", ReplyAction="http://tempuri.org/IViaticos/EliminarSolicitudResponse")]
         void EliminarSolicitud(int codigoSolicitud);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarSolicitudes", ReplyAction="http://tempuri.org/IViaticos/ListarSolicitudesResponse")]
-        System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Viatico> ListarSolicitudes();
+        LiquidarServices.ViaticosWS.Viatico[] ListarSolicitudes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarUbigeos", ReplyAction="http://tempuri.org/IViaticos/ListarUbigeosResponse")]
-        System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos();
+        LiquidarServices.ViaticosWS.Ubigeo[] ListarUbigeos();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaticos/ListarTarifarioContingencia", ReplyAction="http://tempuri.org/IViaticos/ListarTarifarioContingenciaResponse")]
-        System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Tarifario> ListarTarifarioContingencia();
+        LiquidarServices.ViaticosWS.Tarifario[] ListarTarifarioContingencia();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IViaticosChannel : ControlViaticosApp.ViaticoWS.IViaticos, System.ServiceModel.IClientChannel {
+    public interface IViaticosChannel : LiquidarServices.ViaticosWS.IViaticos, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViaticosClient : System.ServiceModel.ClientBase<ControlViaticosApp.ViaticoWS.IViaticos>, ControlViaticosApp.ViaticoWS.IViaticos {
+    public partial class ViaticosClient : System.ServiceModel.ClientBase<LiquidarServices.ViaticosWS.IViaticos>, LiquidarServices.ViaticosWS.IViaticos {
         
         public ViaticosClient() {
         }
@@ -814,19 +814,19 @@ namespace ControlViaticosApp.ViaticoWS {
                 base(binding, remoteAddress) {
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Item> items) {
+        public LiquidarServices.ViaticosWS.Viatico CrearSolicitud(System.DateTime fechaSolicitud, int codigoEmpleadoSolicitante, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, double totalSolicitado, LiquidarServices.ViaticosWS.Item[] items) {
             return base.Channel.CrearSolicitud(fechaSolicitud, codigoEmpleadoSolicitante, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, totalSolicitado, items);
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico ObtenerSolicitud(int codigoSolicitud) {
+        public LiquidarServices.ViaticosWS.Viatico ObtenerSolicitud(int codigoSolicitud) {
             return base.Channel.ObtenerSolicitud(codigoSolicitud);
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, string flagAprobado, System.DateTime feAprobado, int CodigoEmpleadoAprueba) {
+        public LiquidarServices.ViaticosWS.Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, System.DateTime fechaSalida, System.DateTime fechaRetorno, string sustentoViaje, string flagAprobado, System.DateTime feAprobado, int CodigoEmpleadoAprueba) {
             return base.Channel.ModificarSolicitud(codigoSolicitud, codigoUbigeoOrigen, codigoUbigeoDestino, fechaSalida, fechaRetorno, sustentoViaje, flagAprobado, feAprobado, CodigoEmpleadoAprueba);
         }
         
-        public ControlViaticosApp.ViaticoWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza) {
+        public LiquidarServices.ViaticosWS.Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza) {
             return base.Channel.AutorizarSolicitud(codigoSolicitud, autorizar, codigoEmpleadoAutoriza);
         }
         
@@ -834,15 +834,15 @@ namespace ControlViaticosApp.ViaticoWS {
             base.Channel.EliminarSolicitud(codigoSolicitud);
         }
         
-        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Viatico> ListarSolicitudes() {
+        public LiquidarServices.ViaticosWS.Viatico[] ListarSolicitudes() {
             return base.Channel.ListarSolicitudes();
         }
         
-        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Ubigeo> ListarUbigeos() {
+        public LiquidarServices.ViaticosWS.Ubigeo[] ListarUbigeos() {
             return base.Channel.ListarUbigeos();
         }
         
-        public System.Collections.Generic.List<ControlViaticosApp.ViaticoWS.Tarifario> ListarTarifarioContingencia() {
+        public LiquidarServices.ViaticosWS.Tarifario[] ListarTarifarioContingencia() {
             return base.Channel.ListarTarifarioContingencia();
         }
     }

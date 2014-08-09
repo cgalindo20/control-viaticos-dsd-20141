@@ -49,7 +49,10 @@ namespace ControlViaticosServices
                     TotalSolicitado = totalSolicitado,
                     FlagAutorizar = "P",
                     FechaAutorizar = fechaSolicitud,
-                    CodigoEmpleadoAutorizar = codigoEmpleadoSolicitante
+                    CodigoEmpleadoAutorizar = codigoEmpleadoSolicitante,
+                    FlagAprobar = "P",
+                    FechaAprobar = fechaSolicitud,
+                    CodigoEmpleadoAprobar = codigoEmpleadoSolicitante
 
                 };
 
@@ -80,7 +83,7 @@ namespace ControlViaticosServices
             return viaticoDAO.Obtener(codigoSolicitud);
         }
 
-        public Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje)
+        public Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba)
         {
 
             Ubigeo ubigeoOrigen = UbigeoDAO.Obtener(codigoUbigeoOrigen);
@@ -99,6 +102,12 @@ namespace ControlViaticosServices
                 SustentoViaje = sustentoViaje,
                 TotalSolicitado = viaticoOriginal.TotalSolicitado,
                 FlagAutorizar = viaticoOriginal.FlagAutorizar,
+                FechaAutorizar =viaticoOriginal.FechaAutorizar,
+                CodigoEmpleadoAutorizar = viaticoOriginal.CodigoEmpleadoAutorizar,
+                FlagAprobar = flagAprobado,
+                FechaAprobar = feAprobado,
+                CodigoEmpleadoAprobar = CodigoEmpleadoAprueba
+
             };
             return viaticoDAO.Modificar(viaticoAModificar);
         }
@@ -121,8 +130,11 @@ namespace ControlViaticosServices
                 //
                 FlagAutorizar = autorizar,
                 FechaAutorizar = DateTime.Today,
-                CodigoEmpleadoAutorizar = codigoEmpleadoAutoriza
+                CodigoEmpleadoAutorizar = codigoEmpleadoAutoriza,
                 //
+                FlagAprobar = "P",
+                FechaAprobar = DateTime.Today,
+                CodigoEmpleadoAprobar = codigoEmpleadoAutoriza
             };
             
             //Enviar mensaje para que Finanzas reciba los datos de la Solicitud y lo apruebe o rechace
@@ -166,34 +178,38 @@ namespace ControlViaticosServices
 
         public List<Viatico> ListarSolicitudes()
         {
+
+
             //Se añade código para que liste solo los que están pendientes de Autorizar
 
-            //
-            List<Viatico> listSolicitudes = new List<Viatico>();
-            listSolicitudes = viaticoDAO.ListarTodos().ToList();
-            int j = 0;
-            for (int i = 0; i < listSolicitudes.Count; i++)
-            {
-                if (listSolicitudes[i].FlagAutorizar == "P")
-                {
-                    j = j + 1;
-                }
-            }
+            ////
+            //List<Viatico> listSolicitudes = new List<Viatico>();
+            //listSolicitudes = viaticoDAO.ListarTodos().ToList();
+            //int j = 0;
+            //for (int i = 0; i < listSolicitudes.Count; i++)
+            //{
+            //    if (listSolicitudes[i].FlagAutorizar == "P")
+            //    {
+            //        j = j + 1;
+            //    }
+            //}
             
-            //
-            Viatico[] viaticoArr = new Viatico[j];
-            j = 0;
-            for (int i = 0; i < listSolicitudes.Count; i++)
-            {
-                if (listSolicitudes[i].FlagAutorizar == "P")
-                {
-                    Viatico viaticoAdd = new Viatico();
-                    viaticoArr[j] = listSolicitudes[i];
-                    j = j + 1;
-                }
-            }
+            ////
+            //Viatico[] viaticoArr = new Viatico[j];
+            //j = 0;
+            //for (int i = 0; i < listSolicitudes.Count; i++)
+            //{
+            //    if (listSolicitudes[i].FlagAutorizar == "P")
+            //    {
+            //        Viatico viaticoAdd = new Viatico();
+            //        viaticoArr[j] = listSolicitudes[i];
+            //        j = j + 1;
+            //    }
+            //}
 
-            return viaticoArr.ToList();
+            //return viaticoArr.ToList();
+            return viaticoDAO.ListarTodos().ToList();
+
         }
 
         public List<Ubigeo> ListarUbigeos()
@@ -221,6 +237,9 @@ namespace ControlViaticosServices
             public String FlagAutorizar { get; set; }
             public DateTime FechaAutorizar { get; set; }
             public int CodigoEmpleadoAutorizar { get; set; }
+            public String FlagAprobar { get; set; }
+            public DateTime FechaAprobar { get; set; }
+            public int CodigoEmpleadoAprobar { get; set; }
 
         }
 

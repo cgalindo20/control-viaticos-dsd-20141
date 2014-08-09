@@ -17,6 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidarServices", "LiquidarServices\LiquidarServices.csproj", "{47FE4B2C-693B-449E-B9C6-7B3EF0DDE8F4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A} = {2A9A46A5-FFC3-440B-99D5-F7A7CFEC350A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{537451B2-77B5-44C3-86D3-32CBF126FE15}"
 	ProjectSection(SolutionItems) = preProject

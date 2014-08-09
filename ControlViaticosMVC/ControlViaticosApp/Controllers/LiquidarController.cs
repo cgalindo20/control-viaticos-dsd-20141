@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ControlViaticosApp.Models;
 using ControlViaticosApp.LiquidacionesWS;
+using System.Messaging;
 
 namespace ControlViaticosApp.Controllers
 {
@@ -15,10 +16,39 @@ namespace ControlViaticosApp.Controllers
         private LiquidacionesWS.LiquidacionesClient proxy = new LiquidacionesWS.LiquidacionesClient();
         private ViaticoWS.ViaticosClient proxy2 = new ViaticoWS.ViaticosClient();
 
+        public ActionResult MsgOk()
+        {
+            return View();
+        } 
+
         public ActionResult Index()
         {
             //List<LiquidacionesWS.Liquidar> liquidaciones = proxy.ListarLiquidaciones();
             //return View(liquidaciones);
+
+            ////1. Obtener las Solicitudes de Viaticos Aprobadas
+            //string rutaColaIn = @".\private$\indestructiblesOut";
+            //if (!MessageQueue.Exists(rutaColaIn))
+            //    MessageQueue.Create(rutaColaIn);
+            //MessageQueue colaIn = new MessageQueue(rutaColaIn);
+            //colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(ViaticoMsg) });
+            //Message mensajeIn = colaIn.Receive();
+            //ViaticoMsg viaticoMsg = (ViaticoMsg)mensajeIn.Body;
+
+            //ViaticoWS.Viatico viaticoAux = new ViaticoWS.Viatico();
+
+            //viaticoAux = proxy2.ObtenerSolicitud(viaticoMsg.CodigoSolicitud);
+
+            //viaticoAux = proxy2.ModificarSolicitud(viaticoAux.CodigoSolicitud,
+            //                                    viaticoAux.ubigeoOrigen.CodigoUbigeo,
+            //                                    viaticoAux.ubigeoDestino.CodigoUbigeo,
+            //                                    viaticoAux.FechaSalida,
+            //                                    viaticoAux.FechaRetorno,
+            //                                    viaticoAux.SustentoViaje,
+            //                                    viaticoMsg.FlagAprobar,
+            //                                    viaticoMsg.FechaAprobar,
+            //                                    viaticoMsg.CodigoEmpleadoAprobar
+            //                                    );
 
             List<ViaticoWS.Viatico> viaticos = proxy2.ListarSolicitudes();
             return View(viaticos);
@@ -191,6 +221,25 @@ namespace ControlViaticosApp.Controllers
                 return View();
             }
         }
-        
+
+        public class ViaticoMsg
+        {
+            public int CodigoSolicitud { get; set; }
+            public DateTime FechaSolicitud { get; set; }
+            public int CodigoEmpleadoSolicitante { get; set; }
+            public ControlViaticosApp.Models.Ubigeo ubigeoOrigen { get; set; }
+            public ControlViaticosApp.Models.Ubigeo ubigeoDestino { get; set; }
+            public DateTime FechaSalida { get; set; }
+            public DateTime FechaRetorno { get; set; }
+            public String SustentoViaje { get; set; }
+            public Double TotalSolicitado { get; set; }
+            public String FlagAutorizar { get; set; }
+            public DateTime FechaAutorizar { get; set; }
+            public int CodigoEmpleadoAutorizar { get; set; }
+            public String FlagAprobar { get; set; }
+            public DateTime FechaAprobar { get; set; }
+            public int CodigoEmpleadoAprobar { get; set; }
+
+        }
     }
 }
