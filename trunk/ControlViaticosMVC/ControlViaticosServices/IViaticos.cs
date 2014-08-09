@@ -20,7 +20,7 @@ namespace ControlViaticosServices
         Viatico ObtenerSolicitud(int codigoSolicitud);
 
         [OperationContract]
-        Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje);
+        Viatico ModificarSolicitud(int codigoSolicitud, int codigoUbigeoOrigen, int codigoUbigeoDestino, DateTime fechaSalida, DateTime fechaRetorno, string sustentoViaje, string flagAprobado, DateTime feAprobado, int CodigoEmpleadoAprueba);
 
         [OperationContract]
         Viatico AutorizarSolicitud(int codigoSolicitud, string autorizar, int codigoEmpleadoAutoriza);

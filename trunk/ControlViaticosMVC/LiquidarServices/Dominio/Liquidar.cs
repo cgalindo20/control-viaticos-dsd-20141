@@ -25,6 +25,11 @@ namespace LiquidarServices.Dominio
         public Double Ss_OtrosGastos { get; set; }
         [DataMember(IsRequired = false)]
         public IList<LiquidarDetalle> Detalles { get; set; }
-
+        [DataMember(IsRequired = false)]
+        public String FlagAprobar { get; set; }
+        [DataMember(IsRequired = false)]
+        public DateTime FechaAprobar { get; set; }
+        [DataMember(IsRequired = false)]
+        public int CodigoEmpleadoAprobar { get; set; }
     }
 }
